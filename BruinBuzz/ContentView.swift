@@ -1,10 +1,3 @@
-//
-//  ContentView.swift
-//  BruinBuzz
-//
-//  Created by Jeremy Dimas on 4/12/24.
-//
-
 import SwiftUI
 
 struct ContentView: View {
@@ -21,6 +14,7 @@ struct ContentView: View {
                 Image("LoginBackground")
                 VStack{
                     Text("Login")
+                        .foregroundColor(.white)
                         .font(.largeTitle)
                         .bold()
                         .padding()
@@ -36,17 +30,26 @@ struct ContentView: View {
                         .background(Color.white.opacity(1))
                         .cornerRadius(10)
                         .border(.red,width:CGFloat(wrongPassword))
-                    Button("Login"){
-                        
-                        authenticateUser(username: username, password: password)
-                        
+
+                        Button("Login"){
+                            authenticateUser(username: username, password: password)
+
                     }
-                    .foregroundColor(.white)
+                    .foregroundColor(.black)
                     .frame(width:300, height:50)
-                    .background(Color.black)
+                    .background(Color.white)
                     .cornerRadius(10)
                     
-                    NavigationLink(destination: Text("You are logged in @\(username)"),isActive:$showingLoginScreen){
+                    Text("Don't have an account?")
+                        .foregroundColor(.white)
+                    
+                    NavigationLink(destination: SignUpScreen()){
+                        Text("Sign Up")
+                    }
+                        .foregroundColor(.blue)
+                        .font(.subheadline)
+                    
+                    NavigationLink(destination: Homepage().navigationBarBackButtonHidden(true),isActive:$showingLoginScreen){
                         EmptyView()
                     }
                 }
@@ -56,20 +59,21 @@ struct ContentView: View {
     }
     
     func authenticateUser(username: String, password: String){
-        if username.lowercased() == ""{
+        if !username.isEmpty && !password.isEmpty {
+            // Any non-empty username and password combination will be considered valid
+            showingLoginScreen = true
             wrongUsername = 0
-            if password.lowercased() == ""{
-                wrongPassword = 0
-                showingLoginScreen = true
-            }else{
-                wrongPassword = 2
-            }
-        }else{
-            wrongUsername = 2
+            wrongPassword = 0
+        } else {
+            // If either username or password is empty, show an error
+            wrongUsername = username.isEmpty ? 2 : 0
+            wrongPassword = password.isEmpty ? 2 : 0
         }
     }
 }
 
-#Preview {
-    ContentView()
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView()
+    }
 }

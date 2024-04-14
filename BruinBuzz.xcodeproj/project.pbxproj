@@ -15,6 +15,8 @@
 		FBA88E072BC9B7BE00F92A9A /* BruinBuzzUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBA88E062BC9B7BE00F92A9A /* BruinBuzzUITests.swift */; };
 		FBA88E092BC9B7BE00F92A9A /* BruinBuzzUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBA88E082BC9B7BE00F92A9A /* BruinBuzzUITestsLaunchTests.swift */; };
 		FBA88E162BCB82FA00F92A9A /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBA88E152BCB82FA00F92A9A /* SplashScreen.swift */; };
+		FBA88E182BCC4A5700F92A9A /* SignUpScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBA88E172BCC4A5700F92A9A /* SignUpScreen.swift */; };
+		FBA88E1A2BCC4CC800F92A9A /* Homepage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBA88E192BCC4CC800F92A9A /* Homepage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +48,8 @@
 		FBA88E062BC9B7BE00F92A9A /* BruinBuzzUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BruinBuzzUITests.swift; sourceTree = "<group>"; };
 		FBA88E082BC9B7BE00F92A9A /* BruinBuzzUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BruinBuzzUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		FBA88E152BCB82FA00F92A9A /* SplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
+		FBA88E172BCC4A5700F92A9A /* SignUpScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpScreen.swift; sourceTree = "<group>"; };
+		FBA88E192BCC4CC800F92A9A /* Homepage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Homepage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +103,8 @@
 				FBA88E152BCB82FA00F92A9A /* SplashScreen.swift */,
 				FBA88DEB2BC9B7BC00F92A9A /* BruinBuzzApp.swift */,
 				FBA88DED2BC9B7BC00F92A9A /* ContentView.swift */,
+				FBA88E192BCC4CC800F92A9A /* Homepage.swift */,
+				FBA88E172BCC4A5700F92A9A /* SignUpScreen.swift */,
 				FBA88DEF2BC9B7BE00F92A9A /* Assets.xcassets */,
 				FBA88DF12BC9B7BE00F92A9A /* Preview Content */,
 			);
@@ -263,6 +269,8 @@
 				FBA88E162BCB82FA00F92A9A /* SplashScreen.swift in Sources */,
 				FBA88DEE2BC9B7BC00F92A9A /* ContentView.swift in Sources */,
 				FBA88DEC2BC9B7BC00F92A9A /* BruinBuzzApp.swift in Sources */,
+				FBA88E1A2BCC4CC800F92A9A /* Homepage.swift in Sources */,
+				FBA88E182BCC4A5700F92A9A /* SignUpScreen.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
