@@ -11,7 +11,7 @@ import SwiftUI
 struct BruinBuzzApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            SplashScreen()
         }
     }
 }
