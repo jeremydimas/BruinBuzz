@@ -49,7 +49,7 @@ struct ContentView: View {
                         .foregroundColor(.blue)
                         .font(.subheadline)
                     
-                    NavigationLink(destination: Homepage().navigationBarBackButtonHidden(true),isActive:$showingLoginScreen){
+                    NavigationLink(destination: Home().navigationBarBackButtonHidden(true),isActive:$showingLoginScreen){
                         EmptyView()
                     }
                 }

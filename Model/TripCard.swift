@@ -17,7 +17,7 @@ struct TripCard: Identifiable, Hashable {
 
 /// Sample Cards
 var tripCards: [TripCard] = [
-    .init(title: "London", subtitle: "England", image: "Pic 1"),
-    .init(title: "New York", subtitle: "USA", image: "Pic 2"),
-    .init(title: "Prague", subtitle: "Czech Republic", image: "Pic 3"),
+    .init(title: "Bruin Walk", subtitle: "UCLA", image: "UCLA1"),
+    .init(title: "Wilson Plaza", subtitle: "UCLA", image: "UCLA2"),
+    .init(title: "Powell Library", subtitle: "UCLA", image: "UCLA3"),
 ]
