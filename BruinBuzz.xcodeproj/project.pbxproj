@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		363D17D52BCF9661009EDA4D /* MickeyMouse.otf in Resources */ = {isa = PBXBuildFile; fileRef = 363D17D42BCF9661009EDA4D /* MickeyMouse.otf */; };
+		363D17D72BCFA825009EDA4D /* TripCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 363D17D62BCFA825009EDA4D /* TripCard.swift */; };
+		363D17DD2BCFAB29009EDA4D /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 363D17DC2BCFAB29009EDA4D /* Home.swift */; };
 		FBA88DEC2BC9B7BC00F92A9A /* BruinBuzzApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBA88DEB2BC9B7BC00F92A9A /* BruinBuzzApp.swift */; };
 		FBA88DEE2BC9B7BC00F92A9A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBA88DED2BC9B7BC00F92A9A /* ContentView.swift */; };
 		FBA88DF02BC9B7BE00F92A9A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FBA88DEF2BC9B7BE00F92A9A /* Assets.xcassets */; };
@@ -37,6 +40,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		363D17D42BCF9661009EDA4D /* MickeyMouse.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MickeyMouse.otf; sourceTree = "<group>"; };
+		363D17D62BCFA825009EDA4D /* TripCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripCard.swift; sourceTree = "<group>"; };
+		363D17DC2BCFAB29009EDA4D /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		FBA88DE82BC9B7BC00F92A9A /* BruinBuzz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BruinBuzz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FBA88DEB2BC9B7BC00F92A9A /* BruinBuzzApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BruinBuzzApp.swift; sourceTree = "<group>"; };
 		FBA88DED2BC9B7BC00F92A9A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -77,9 +83,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		363D17DA2BCFA86D009EDA4D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				363D17D62BCFA825009EDA4D /* TripCard.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		363D17DB2BCFAB16009EDA4D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				363D17DC2BCFAB29009EDA4D /* Home.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		FBA88DDF2BC9B7BC00F92A9A = {
 			isa = PBXGroup;
 			children = (
+				363D17DA2BCFA86D009EDA4D /* Model */,
+				363D17DB2BCFAB16009EDA4D /* View */,
 				FBA88DEA2BC9B7BC00F92A9A /* BruinBuzz */,
 				FBA88DFB2BC9B7BE00F92A9A /* BruinBuzzTests */,
 				FBA88E052BC9B7BE00F92A9A /* BruinBuzzUITests */,
@@ -100,6 +124,7 @@
 		FBA88DEA2BC9B7BC00F92A9A /* BruinBuzz */ = {
 			isa = PBXGroup;
 			children = (
+				363D17D42BCF9661009EDA4D /* MickeyMouse.otf */,
 				FBA88E152BCB82FA00F92A9A /* SplashScreen.swift */,
 				FBA88DEB2BC9B7BC00F92A9A /* BruinBuzzApp.swift */,
 				FBA88DED2BC9B7BC00F92A9A /* ContentView.swift */,
@@ -242,6 +267,7 @@
 			files = (
 				FBA88DF32BC9B7BE00F92A9A /* Preview Assets.xcassets in Resources */,
 				FBA88DF02BC9B7BE00F92A9A /* Assets.xcassets in Resources */,
+				363D17D52BCF9661009EDA4D /* MickeyMouse.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -266,11 +292,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				363D17D72BCFA825009EDA4D /* TripCard.swift in Sources */,
 				FBA88E162BCB82FA00F92A9A /* SplashScreen.swift in Sources */,
 				FBA88DEE2BC9B7BC00F92A9A /* ContentView.swift in Sources */,
 				FBA88DEC2BC9B7BC00F92A9A /* BruinBuzzApp.swift in Sources */,
 				FBA88E1A2BCC4CC800F92A9A /* Homepage.swift in Sources */,
 				FBA88E182BCC4A5700F92A9A /* SignUpScreen.swift in Sources */,
+				363D17DD2BCFAB29009EDA4D /* Home.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -436,6 +464,8 @@
 				DEVELOPMENT_ASSET_PATHS = "\"BruinBuzz/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = BruinBuzz/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = MickeyMouse.otf;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -464,6 +494,8 @@
 				DEVELOPMENT_ASSET_PATHS = "\"BruinBuzz/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = BruinBuzz/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = MickeyMouse.otf;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

@@ -1,10 +1,3 @@
-//
-//  SplashScreen.swift
-//  BruinBuzz
-//
-//  Created by Jeremy Dimas on 4/13/24.
-//
-
 import SwiftUI
 
 struct SplashScreen: View {
@@ -15,36 +8,55 @@ struct SplashScreen: View {
     
     var body: some View {
         
-        if isActive{
-            ContentView()
-        }else{
-            VStack{
-                VStack{
-                    Image("Icon")
-                        .resizable()
-                        .aspectRatio(contentMode:.fit)
-                        .frame(width: 100)
-                    Text("BruinBuzz")
-                }
-                
-                .scaleEffect(size)
-                .opacity(opacity)
-                .onAppear{
-                    withAnimation(.easeIn(duration: 1.2)){
-                        self.size = 1.25
-                        self.opacity = 1.0
+        // Add a ZStack to overlay the gradient background and content
+        ZStack {
+            // Background gradient
+            Color("Royal Blue")
+            .ignoresSafeArea()
+            
+            if isActive {
+                ContentView()
+            } else {
+                VStack {
+                    VStack {
+                        Image("Icon")
+                            .resizable()
+                            .aspectRatio(contentMode:.fit)
+                            .frame(width: 100)
+                        Text("BruinBuzz")
+                            .font(Font.custom("MickeyMousePERSONALUSE-Regular", size: 25)).foregroundStyle(
+                                LinearGradient(
+                                    colors: [.orange, .yellow, .orange],
+                                    startPoint: .leading,
+                                    endPoint: .trailing
+                                )
+                            )
+                    }
+                    .scaleEffect(size)
+                    .opacity(opacity)
+                    .onAppear {
+                        withAnimation(.easeIn(duration: 1.2)) {
+                            self.size = 1.25
+                            self.opacity = 1.0
+                        }
                     }
                 }
-            }
-            .onAppear{
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1.0){
-                    self.isActive = true
+                .onAppear {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                        self.isActive = true
+                    }
                 }
             }
         }
     }
 }
 
-#Preview {
-    SplashScreen()
+
+
+#if DEBUG
+struct SplashScreen_Previews: PreviewProvider {
+    static var previews: some View {
+        SplashScreen()
+    }
 }
+#endif
