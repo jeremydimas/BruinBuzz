@@ -80,7 +80,7 @@ struct SignUpScreen: View {
                         .foregroundColor(.blue)
                         .font(.subheadline)
                     
-                    NavigationLink(destination: Home().navigationBarBackButtonHidden(true),isActive:$showingLoginScreen){
+                    NavigationLink(destination: MainTabView().navigationBarBackButtonHidden(true),isActive:$showingLoginScreen){
                         EmptyView()
 
                     }

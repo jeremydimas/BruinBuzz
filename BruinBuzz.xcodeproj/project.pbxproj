@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		362955372BD0A5BF00CA8D7B /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 362955362BD0A5BF00CA8D7B /* MainTabView.swift */; };
 		363D17D52BCF9661009EDA4D /* MickeyMouse.otf in Resources */ = {isa = PBXBuildFile; fileRef = 363D17D42BCF9661009EDA4D /* MickeyMouse.otf */; };
 		363D17D72BCFA825009EDA4D /* TripCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 363D17D62BCFA825009EDA4D /* TripCard.swift */; };
 		363D17DD2BCFAB29009EDA4D /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 363D17DC2BCFAB29009EDA4D /* Home.swift */; };
@@ -19,7 +20,6 @@
 		FBA88E092BC9B7BE00F92A9A /* BruinBuzzUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBA88E082BC9B7BE00F92A9A /* BruinBuzzUITestsLaunchTests.swift */; };
 		FBA88E162BCB82FA00F92A9A /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBA88E152BCB82FA00F92A9A /* SplashScreen.swift */; };
 		FBA88E182BCC4A5700F92A9A /* SignUpScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBA88E172BCC4A5700F92A9A /* SignUpScreen.swift */; };
-		FBA88E1A2BCC4CC800F92A9A /* Homepage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBA88E192BCC4CC800F92A9A /* Homepage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +40,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		362955362BD0A5BF00CA8D7B /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		363D17D42BCF9661009EDA4D /* MickeyMouse.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MickeyMouse.otf; sourceTree = "<group>"; };
 		363D17D62BCFA825009EDA4D /* TripCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripCard.swift; sourceTree = "<group>"; };
 		363D17DC2BCFAB29009EDA4D /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
@@ -55,7 +56,6 @@
 		FBA88E082BC9B7BE00F92A9A /* BruinBuzzUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BruinBuzzUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		FBA88E152BCB82FA00F92A9A /* SplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
 		FBA88E172BCC4A5700F92A9A /* SignUpScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpScreen.swift; sourceTree = "<group>"; };
-		FBA88E192BCC4CC800F92A9A /* Homepage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Homepage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,9 +128,9 @@
 				FBA88E152BCB82FA00F92A9A /* SplashScreen.swift */,
 				FBA88DEB2BC9B7BC00F92A9A /* BruinBuzzApp.swift */,
 				FBA88DED2BC9B7BC00F92A9A /* ContentView.swift */,
-				FBA88E192BCC4CC800F92A9A /* Homepage.swift */,
 				FBA88E172BCC4A5700F92A9A /* SignUpScreen.swift */,
 				FBA88DEF2BC9B7BE00F92A9A /* Assets.xcassets */,
+				362955362BD0A5BF00CA8D7B /* MainTabView.swift */,
 				FBA88DF12BC9B7BE00F92A9A /* Preview Content */,
 			);
 			path = BruinBuzz;
@@ -295,8 +295,8 @@
 				363D17D72BCFA825009EDA4D /* TripCard.swift in Sources */,
 				FBA88E162BCB82FA00F92A9A /* SplashScreen.swift in Sources */,
 				FBA88DEE2BC9B7BC00F92A9A /* ContentView.swift in Sources */,
+				362955372BD0A5BF00CA8D7B /* MainTabView.swift in Sources */,
 				FBA88DEC2BC9B7BC00F92A9A /* BruinBuzzApp.swift in Sources */,
-				FBA88E1A2BCC4CC800F92A9A /* Homepage.swift in Sources */,
 				FBA88E182BCC4A5700F92A9A /* SignUpScreen.swift in Sources */,
 				363D17DD2BCFAB29009EDA4D /* Home.swift in Sources */,
 			);
