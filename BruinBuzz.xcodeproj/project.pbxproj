@@ -11,6 +11,8 @@
 		363D17D52BCF9661009EDA4D /* MickeyMouse.otf in Resources */ = {isa = PBXBuildFile; fileRef = 363D17D42BCF9661009EDA4D /* MickeyMouse.otf */; };
 		363D17D72BCFA825009EDA4D /* TripCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 363D17D62BCFA825009EDA4D /* TripCard.swift */; };
 		363D17DD2BCFAB29009EDA4D /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 363D17DC2BCFAB29009EDA4D /* Home.swift */; };
+		369528302BD0E105001D2AAB /* UploadPostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3695282F2BD0E105001D2AAB /* UploadPostView.swift */; };
+		369528322BD0E82F001D2AAB /* UploadPostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 369528312BD0E82F001D2AAB /* UploadPostViewModel.swift */; };
 		FBA88DEC2BC9B7BC00F92A9A /* BruinBuzzApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBA88DEB2BC9B7BC00F92A9A /* BruinBuzzApp.swift */; };
 		FBA88DEE2BC9B7BC00F92A9A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBA88DED2BC9B7BC00F92A9A /* ContentView.swift */; };
 		FBA88DF02BC9B7BE00F92A9A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FBA88DEF2BC9B7BE00F92A9A /* Assets.xcassets */; };
@@ -44,6 +46,8 @@
 		363D17D42BCF9661009EDA4D /* MickeyMouse.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MickeyMouse.otf; sourceTree = "<group>"; };
 		363D17D62BCFA825009EDA4D /* TripCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripCard.swift; sourceTree = "<group>"; };
 		363D17DC2BCFAB29009EDA4D /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
+		3695282F2BD0E105001D2AAB /* UploadPostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadPostView.swift; sourceTree = "<group>"; };
+		369528312BD0E82F001D2AAB /* UploadPostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadPostViewModel.swift; sourceTree = "<group>"; };
 		FBA88DE82BC9B7BC00F92A9A /* BruinBuzz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BruinBuzz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FBA88DEB2BC9B7BC00F92A9A /* BruinBuzzApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BruinBuzzApp.swift; sourceTree = "<group>"; };
 		FBA88DED2BC9B7BC00F92A9A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -99,6 +103,15 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		3695282E2BD0E0CB001D2AAB /* UploadPost */ = {
+			isa = PBXGroup;
+			children = (
+				3695282F2BD0E105001D2AAB /* UploadPostView.swift */,
+				369528312BD0E82F001D2AAB /* UploadPostViewModel.swift */,
+			);
+			path = UploadPost;
+			sourceTree = "<group>";
+		};
 		FBA88DDF2BC9B7BC00F92A9A = {
 			isa = PBXGroup;
 			children = (
@@ -129,8 +142,9 @@
 				FBA88DEB2BC9B7BC00F92A9A /* BruinBuzzApp.swift */,
 				FBA88DED2BC9B7BC00F92A9A /* ContentView.swift */,
 				FBA88E172BCC4A5700F92A9A /* SignUpScreen.swift */,
-				FBA88DEF2BC9B7BE00F92A9A /* Assets.xcassets */,
 				362955362BD0A5BF00CA8D7B /* MainTabView.swift */,
+				3695282E2BD0E0CB001D2AAB /* UploadPost */,
+				FBA88DEF2BC9B7BE00F92A9A /* Assets.xcassets */,
 				FBA88DF12BC9B7BE00F92A9A /* Preview Content */,
 			);
 			path = BruinBuzz;
@@ -294,9 +308,11 @@
 			files = (
 				363D17D72BCFA825009EDA4D /* TripCard.swift in Sources */,
 				FBA88E162BCB82FA00F92A9A /* SplashScreen.swift in Sources */,
+				369528322BD0E82F001D2AAB /* UploadPostViewModel.swift in Sources */,
 				FBA88DEE2BC9B7BC00F92A9A /* ContentView.swift in Sources */,
 				362955372BD0A5BF00CA8D7B /* MainTabView.swift in Sources */,
 				FBA88DEC2BC9B7BC00F92A9A /* BruinBuzzApp.swift in Sources */,
+				369528302BD0E105001D2AAB /* UploadPostView.swift in Sources */,
 				FBA88E182BCC4A5700F92A9A /* SignUpScreen.swift in Sources */,
 				363D17DD2BCFAB29009EDA4D /* Home.swift in Sources */,
 			);

@@ -11,28 +11,18 @@ struct Home: View
 {
     @State private var searchText: String = ""
     
-    
-    
 //    @State var index = 0
     
     var body: some View 
     {
-        
-        
-        
-        
-        
-        
-        
-        
         ScrollView(.vertical) {
             VStack(spacing: 15) {
                 HStack(spacing: 12) {
-                    Button(action: {}, label: {
-                        Image(systemName: "line.3.horizontal")
-                            .font(.title)
-                            .foregroundStyle(.blue)
-                    })
+//                    Button(action: {}, label: {
+//                        Image(systemName: "line.3.horizontal")
+//                            .font(.title)
+//                            .foregroundStyle(.blue)
+//                    })
                     HStack(spacing: 12) {
                         Image(systemName: "magnifyingglass")
                             .foregroundStyle(.gray)
@@ -100,7 +90,7 @@ struct Home: View
                 })
                 .frame(height: 500)
                 .padding(.horizontal, -15)
-                .padding(.top, 10)
+                .padding(.top, 100)
             }
             .padding(15)
         }

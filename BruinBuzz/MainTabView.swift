@@ -6,22 +6,30 @@
 //
 import SwiftUI
 struct MainTabView: View {
+    @State private var selectedIndex = 0
     var body: some View {
-        TabView {
-            NavigationView {
-                Home()
-            }
-            .tabItem {
-                Image(systemName: "house")
-            }
-            Text("Upload Post")
+        TabView(selection: $selectedIndex) {
+            Home()
+                .onAppear() {
+                    selectedIndex = 0
+                }
+                .tabItem {
+                    Image(systemName: "house")
+                }.tag(0)
+            UploadPostView(tabIndex: $selectedIndex)
+                .onAppear() {
+                    selectedIndex = 1
+                }
                 .tabItem {
                     Image(systemName: "plus.square")
-                }
+                }.tag(1)
             Text("Profile")
+                .onAppear() {
+                    selectedIndex = 2
+                }
                 .tabItem {
                     Image(systemName: "person")
-                }
+                }.tag(2)
         }
         .accentColor(.black)
     }
