@@ -23,7 +23,7 @@ struct MainTabView: View {
                 .tabItem {
                     Image(systemName: "plus.square")
                 }.tag(1)
-            Text("Profile")
+            ProfileView()
                 .onAppear() {
                     selectedIndex = 2
                 }

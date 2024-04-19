@@ -10,6 +10,7 @@ import SwiftUI
 struct Home: View 
 {
     @State private var searchText: String = ""
+    @State var showingBottomSheet = false
     
 //    @State var index = 0
     
@@ -95,6 +96,7 @@ struct Home: View
             .padding(15)
         }
         .scrollIndicators(.hidden)
+        
         
         
 //        VStack{

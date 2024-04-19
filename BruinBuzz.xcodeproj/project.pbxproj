@@ -13,6 +13,8 @@
 		363D17DD2BCFAB29009EDA4D /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 363D17DC2BCFAB29009EDA4D /* Home.swift */; };
 		369528302BD0E105001D2AAB /* UploadPostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3695282F2BD0E105001D2AAB /* UploadPostView.swift */; };
 		369528322BD0E82F001D2AAB /* UploadPostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 369528312BD0E82F001D2AAB /* UploadPostViewModel.swift */; };
+		FB1CD0AA2BD0FED400C7A798 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1CD0A92BD0FED400C7A798 /* ProfileView.swift */; };
+		FB1CD0AD2BD1060B00C7A798 /* UserStatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1CD0AC2BD1060B00C7A798 /* UserStatView.swift */; };
 		FBA88DEC2BC9B7BC00F92A9A /* BruinBuzzApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBA88DEB2BC9B7BC00F92A9A /* BruinBuzzApp.swift */; };
 		FBA88DEE2BC9B7BC00F92A9A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBA88DED2BC9B7BC00F92A9A /* ContentView.swift */; };
 		FBA88DF02BC9B7BE00F92A9A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FBA88DEF2BC9B7BE00F92A9A /* Assets.xcassets */; };
@@ -48,6 +50,8 @@
 		363D17DC2BCFAB29009EDA4D /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		3695282F2BD0E105001D2AAB /* UploadPostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadPostView.swift; sourceTree = "<group>"; };
 		369528312BD0E82F001D2AAB /* UploadPostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadPostViewModel.swift; sourceTree = "<group>"; };
+		FB1CD0A92BD0FED400C7A798 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ProfileView.swift; path = BruinBuzz/ProfileView.swift; sourceTree = SOURCE_ROOT; };
+		FB1CD0AC2BD1060B00C7A798 /* UserStatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserStatView.swift; path = BruinBuzz/UserStatView.swift; sourceTree = SOURCE_ROOT; };
 		FBA88DE82BC9B7BC00F92A9A /* BruinBuzz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BruinBuzz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FBA88DEB2BC9B7BC00F92A9A /* BruinBuzzApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BruinBuzzApp.swift; sourceTree = "<group>"; };
 		FBA88DED2BC9B7BC00F92A9A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -112,6 +116,14 @@
 			path = UploadPost;
 			sourceTree = "<group>";
 		};
+		FB1CD0AB2BD105AB00C7A798 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				FB1CD0AC2BD1060B00C7A798 /* UserStatView.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
 		FBA88DDF2BC9B7BC00F92A9A = {
 			isa = PBXGroup;
 			children = (
@@ -143,6 +155,8 @@
 				FBA88DED2BC9B7BC00F92A9A /* ContentView.swift */,
 				FBA88E172BCC4A5700F92A9A /* SignUpScreen.swift */,
 				362955362BD0A5BF00CA8D7B /* MainTabView.swift */,
+				FB1CD0A92BD0FED400C7A798 /* ProfileView.swift */,
+				FB1CD0AB2BD105AB00C7A798 /* Components */,
 				3695282E2BD0E0CB001D2AAB /* UploadPost */,
 				FBA88DEF2BC9B7BE00F92A9A /* Assets.xcassets */,
 				FBA88DF12BC9B7BE00F92A9A /* Preview Content */,
@@ -308,6 +322,8 @@
 			files = (
 				363D17D72BCFA825009EDA4D /* TripCard.swift in Sources */,
 				FBA88E162BCB82FA00F92A9A /* SplashScreen.swift in Sources */,
+				FB1CD0AD2BD1060B00C7A798 /* UserStatView.swift in Sources */,
+				FB1CD0AA2BD0FED400C7A798 /* ProfileView.swift in Sources */,
 				369528322BD0E82F001D2AAB /* UploadPostViewModel.swift in Sources */,
 				FBA88DEE2BC9B7BC00F92A9A /* ContentView.swift in Sources */,
 				362955372BD0A5BF00CA8D7B /* MainTabView.swift in Sources */,
