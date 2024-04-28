@@ -51,8 +51,6 @@ struct SplashScreen: View {
     }
 }
 
-
-
 #if DEBUG
 struct SplashScreen_Previews: PreviewProvider {
     static var previews: some View {

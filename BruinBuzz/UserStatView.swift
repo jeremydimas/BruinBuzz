@@ -21,8 +21,9 @@ struct UserStatView: View {
             
             Text("\(title)")
                 .font(.footnote)
+                .multilineTextAlignment(.center)
         }
-        .frame(width: 100)
+        .frame(width: 125)
     }
 }
 
