@@ -30,7 +30,7 @@ struct ProfileView: View {
                     )
                     .padding(.top, 15)
                     .padding(.bottom, 15)
-                CardView(cards: TripCard.tripCards[1])
+                CardView(cards: cards) // Pass the array of TripCard instances
                 
                 Text("Upcoming Events")
                     .font(Font.custom("MickeyMousePERSONALUSE-Regular", size: 25)).foregroundStyle(
@@ -41,12 +41,14 @@ struct ProfileView: View {
                     )
                     .padding(.top, -30)
                     .padding(.bottom, 10)
-                CardView(cards: TripCard.tripCards[1])
+                // Pass the array of TripCard instances again
+                CardView(cards: cards)
             }
             .navigationTitle("Profile")
             .navigationBarTitleDisplayMode(.inline)
     }
 }
+
 
 
 struct ProfileView_Previews: PreviewProvider {

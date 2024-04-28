@@ -31,7 +31,7 @@ extension TripCard {
             ownerUid: NSUUID().uuidString,
             imageUrl: "UCLA2",
             user: User.MOCK_USERS[1],
-            title: "Bruin Walk",
+            title: "Royce",
             subtitle: "UCLA"
         ),
         .init(
@@ -39,7 +39,7 @@ extension TripCard {
             ownerUid: NSUUID().uuidString,
             imageUrl: "UCLA3",
             user: User.MOCK_USERS[2],
-            title: "Bruin Walk",
+            title: "Wilson",
             subtitle: "UCLA"
         )
         

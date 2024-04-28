@@ -11,6 +11,10 @@ struct CurrentUserProfileView: View {
 //    let post: TripCard
     let user: User
     
+    var cards: [TripCard] {
+        return TripCard.tripCards.filter({ $0.user?.username == user.username })
+    }
+    
     var body: some View {
         NavigationStack {
             ScrollView {
@@ -28,7 +32,8 @@ struct CurrentUserProfileView: View {
                     .padding(.top, 15)
                     .padding(.bottom, 15)
                 
-                CardView(cards: TripCard.tripCards[0])
+                CardView(cards: cards)
+                    .frame(height: 400)
 
                 
                 Text("Upcoming Events")
@@ -40,7 +45,8 @@ struct CurrentUserProfileView: View {
                     )
                     .padding(.top, -30)
                     .padding(.bottom, 10)
-                CardView(cards: TripCard.tripCards[0])
+                CardView(cards: cards)
+                    .frame(height: 400)
             }
             .navigationTitle("Profile")
             .navigationBarTitleDisplayMode(.inline)

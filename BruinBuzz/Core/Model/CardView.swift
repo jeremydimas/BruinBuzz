@@ -8,25 +8,25 @@
 import SwiftUI
 
 struct CardView: View {
-    let cards: TripCard
+    let cards: [TripCard] // Change to array
     
     var body: some View {
         GeometryReader { geometry in
             let size = geometry.size
             ScrollView(.horizontal) {
                 HStack(spacing: 5) {
-                    ForEach(TripCard.tripCards) { card in
+                    ForEach(cards) { card in // Loop through cards array
                         GeometryReader { proxy in
                             let cardSize = proxy.size
                             let minX = min((proxy.frame(in: .scrollView).minX - 30) * 1.4, proxy.size.width * 1.4)
-                            Image(cards.imageUrl)
+                            Image(card.imageUrl) // Use card instead of cards
                                 .resizable()
                                 .aspectRatio(contentMode: .fill)
                                 .offset(x: -minX)
                                 .frame(width: proxy.size.width * 2.5)
                                 .frame(width: cardSize.width, height: cardSize.height)
                                 .overlay {
-                                    OverlayView(cards)
+                                    OverlayView(card) // Use card instead of cards
                                 }
                                 .clipShape(.rect(cornerRadius: 15))
                                 .shadow(color: Color.black.opacity(0.25), radius: 8, x: 5, y: 10)
@@ -44,10 +44,11 @@ struct CardView: View {
             .scrollTargetBehavior(.viewAligned)
             .scrollIndicators(.hidden)
         }
-        .frame(height: 400) // Adjust the height as needed
+        /*.frame(height: 400)*/ // Adjust the height as needed
         .padding(.horizontal, -15)
     }
 }
+
 
 @ViewBuilder
 func OverlayView(_ card: TripCard) -> some View{
@@ -79,6 +80,8 @@ func OverlayView(_ card: TripCard) -> some View{
 
 struct CardView_Previews: PreviewProvider {
     static var previews: some View {
-        CardView(cards: TripCard.tripCards[0])
+        // Provide an array of TripCard instances for preview
+        CardView(cards: TripCard.tripCards)
     }
 }
+

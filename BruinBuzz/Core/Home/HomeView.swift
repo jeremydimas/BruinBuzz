@@ -8,27 +8,33 @@
 import SwiftUI
 
 struct HomeView: View {
+    @State private var searchText: String = ""
     
     var body: some View {
         NavigationStack {
-            HStack(spacing: 12) {
-                Image(systemName: "magnifyingglass")
-                    .foregroundStyle(.gray)
-//                TextField("Search", text: "$searchText")
+            // Inside your view body
+            ZStack(alignment: .leading) {
+                Capsule()
+                    .fill(Color.gray.opacity(0.2)) // Use gray color with opacity
+                    .frame(height: 40) // Adjust the height as needed
+                
+                HStack(spacing: 12) {
+                    Image(systemName: "magnifyingglass")
+                        .foregroundColor(.gray)
+                        .padding(.horizontal, 10)
+                    
+                    TextField("Search", text: $searchText)
+                        .padding(.horizontal, -10)
+                }
+                .padding(.horizontal, 10)
             }
-            Text("BruinBuzz")
-                .font(Font.custom("MickeyMousePERSONALUSE-Regular", size: 25)).foregroundStyle(
-                    LinearGradient(
-                        colors: [.orange, .yellow, .orange],
-                        startPoint: .leading,
-                        endPoint: .trailing
-                    )
-                )
-            .padding(.horizontal, 15)
-            .padding(.vertical, 10)
-            .background(.ultraThinMaterial, in: .capsule)
+            .padding(.horizontal, 30)
+            .padding(.top, 10)
+
+            
+            
             ScrollView {
-                HomeCell(cards: TripCard.tripCards[0])
+                HomeCell(cards: TripCard.tripCards)
             }
         }
     }

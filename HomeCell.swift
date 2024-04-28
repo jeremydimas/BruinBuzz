@@ -9,7 +9,7 @@ import SwiftUI
 
 struct HomeCell: View {
     
-    let cards: TripCard
+    let cards: [TripCard]
     @State private var searchText: String = ""
     @State var showingBottomSheet = false
     
@@ -18,6 +18,7 @@ struct HomeCell: View {
             VStack(spacing: 15) {
                 HStack(spacing: 12) {
                     CardView(cards: cards)
+                        .frame(height: 600)
                 }
                 .padding(15)
             }
@@ -28,6 +29,6 @@ struct HomeCell: View {
 
 struct HomeCell_Previews: PreviewProvider {
     static var previews: some View {
-        HomeCell(cards: TripCard.tripCards[0])
+        HomeCell(cards: TripCard.tripCards)
     }
 }
