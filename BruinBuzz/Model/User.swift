@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Firebase
 
 struct User: Identifiable, Hashable, Codable {
     let id: String
@@ -14,6 +15,11 @@ struct User: Identifiable, Hashable, Codable {
     var fullname: String?
     var bio: String?
     let email: String
+    
+    var isCurrentUser: Bool {
+        guard let currentUid = Auth.auth().currentUser?.uid else { return false }
+        return currentUid == id
+    }
 }
 
 extension User {
@@ -21,7 +27,7 @@ extension User {
         .init(
             id: NSUUID().uuidString, 
             username: "yd1mas",
-            profileImageUrl: "UCLA1",
+            profileImageUrl: nil,
             fullname: "Harry Potter",
             bio: "Fuck around, find out",
             email: "yd1mas@outlook.com"
@@ -29,7 +35,7 @@ extension User {
         .init(
             id: NSUUID().uuidString,
             username: "peter",
-            profileImageUrl: "UCLA2",
+            profileImageUrl: nil,
             fullname: "Peter Andrews",
             bio: "Hi, I am Peter",
             email: "peter@gmail.com"
@@ -37,7 +43,7 @@ extension User {
         .init(
             id: NSUUID().uuidString,
             username: "jack",
-            profileImageUrl: "UCLA3",
+            profileImageUrl: nil,
             fullname: "Jack Black",
             bio: "Kung Fu Panda",
             email: "po@gmail.com"

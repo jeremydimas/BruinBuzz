@@ -14,7 +14,7 @@ struct ContentView: View {
     var body: some View {
         Group {
             // xcode suggested $
-            if viewModel.userSession == nil {
+            if $viewModel.userSession == nil {
                 LoginView()
                     .environmentObject(registrationViewModel)
             } else if let currentUser = viewModel.currentUser {

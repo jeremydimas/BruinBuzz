@@ -9,16 +9,14 @@ import SwiftUI
 
 struct ProfileHeaderView: View {
     let user: User
+    @State private var showEditProfile = false
+    
     var body: some View {
         VStack(spacing: 10) {
             // Profile Image and Events
             HStack {
                 UserStatView(value: 3, title: "My\nEvents")
-                Image(user.profileImageUrl ?? "")
-                    .resizable()
-                    .scaledToFill()
-                    .frame(width: 80, height: 80)
-                    .clipShape(/*@START_MENU_TOKEN@*/Circle()/*@END_MENU_TOKEN@*/)
+                CircularProfileImageView(user: user, size: .large)
                 UserStatView(value: 3, title: "Upcoming\nEvents")
             }
             // Name and biography
@@ -37,17 +35,30 @@ struct ProfileHeaderView: View {
             Text(user.username)
             
             Button{
-                
+                if user.isCurrentUser {
+                    showEditProfile.toggle()
+                } else {
+                    print("Follow user")
+                }
             } label: {
-                Text("Edit Profile")
+                Text(user.isCurrentUser ? "Edit Profile" : "Follow")
                     .font(.subheadline)
                     .fontWeight(.semibold)
                     .frame(width:360, height: 32) //w:360
-                    .foregroundColor(.black)
-                    .overlay(RoundedRectangle(cornerRadius: 6).stroke(Color.gray,lineWidth: 1))
+                    .background(user.isCurrentUser ? .white : Color(.systemBlue))
+                    .foregroundColor(user.isCurrentUser ? .black : .white)
+                    .cornerRadius(6)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 6)
+                            .stroke(user.isCurrentUser ? .gray : .clear, lineWidth: 1)
+                    )
             }
             Divider()
         }
+        .fullScreenCover(isPresented: $showEditProfile) {
+            EditProfileView(user: user)
+        }
+        
     }
 }
 
