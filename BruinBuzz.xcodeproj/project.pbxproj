@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		360A4BAD2BDF5D8900E0544A /* EditProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360A4BAC2BDF5D8900E0544A /* EditProfileView.swift */; };
-		360A4BB32BDF675000E0544A /* EditProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360A4BB22BDF675000E0544A /* EditProfileViewModel.swift */; };
 		3617349C2BDDF625007B08ED /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3617349B2BDDF625007B08ED /* CardView.swift */; };
 		362955372BD0A5BF00CA8D7B /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 362955362BD0A5BF00CA8D7B /* MainTabView.swift */; };
 		363D17D52BCF9661009EDA4D /* MickeyMouse.otf in Resources */ = {isa = PBXBuildFile; fileRef = 363D17D42BCF9661009EDA4D /* MickeyMouse.otf */; };
@@ -22,6 +21,7 @@
 		368549D42BE057A5000D9A6B /* ImageUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 368549D32BE057A5000D9A6B /* ImageUploader.swift */; };
 		368549D72BE05F92000D9A6B /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 368549D62BE05F92000D9A6B /* Kingfisher */; };
 		368549D92BE0600F000D9A6B /* CircularProfileImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 368549D82BE0600F000D9A6B /* CircularProfileImageView.swift */; };
+		368549DD2BE091DD000D9A6B /* EditProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 368549DC2BE091DD000D9A6B /* EditProfileViewModel.swift */; };
 		369486A02BDD5DD900010592 /* HomeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3694869F2BDD5DD900010592 /* HomeCell.swift */; };
 		369486A22BDD5DF900010592 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 369486A12BDD5DF900010592 /* HomeView.swift */; };
 		369486A42BDD6A3B00010592 /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 369486A32BDD6A3B00010592 /* ProfileHeaderView.swift */; };
@@ -70,7 +70,6 @@
 
 /* Begin PBXFileReference section */
 		360A4BAC2BDF5D8900E0544A /* EditProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileView.swift; sourceTree = "<group>"; };
-		360A4BB22BDF675000E0544A /* EditProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = EditProfileViewModel.swift; path = ../../../../../EditProfileViewModel.swift; sourceTree = "<group>"; };
 		3617349B2BDDF625007B08ED /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		362955362BD0A5BF00CA8D7B /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		363D17D42BCF9661009EDA4D /* MickeyMouse.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MickeyMouse.otf; sourceTree = "<group>"; };
@@ -83,6 +82,7 @@
 		367FBD642BDA3809007D1303 /* CompleteSignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteSignUpView.swift; sourceTree = "<group>"; };
 		368549D32BE057A5000D9A6B /* ImageUploader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUploader.swift; sourceTree = "<group>"; };
 		368549D82BE0600F000D9A6B /* CircularProfileImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProfileImageView.swift; sourceTree = "<group>"; };
+		368549DC2BE091DD000D9A6B /* EditProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewModel.swift; sourceTree = "<group>"; };
 		3694869F2BDD5DD900010592 /* HomeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HomeCell.swift; path = ../../../HomeCell.swift; sourceTree = "<group>"; };
 		369486A12BDD5DF900010592 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		369486A32BDD6A3B00010592 /* ProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
@@ -152,14 +152,6 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		360A4BB12BDF66ED00E0544A /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				360A4BB22BDF675000E0544A /* EditProfileViewModel.swift */,
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
 		363350672BDD5D7200039410 /* Home */ = {
 			isa = PBXGroup;
 			children = (
@@ -188,7 +180,7 @@
 			isa = PBXGroup;
 			children = (
 				360A4BB02BDF66E200E0544A /* View */,
-				360A4BB12BDF66ED00E0544A /* ViewModel */,
+				368549DE2BE091E1000D9A6B /* ViewModel */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -205,6 +197,14 @@
 			isa = PBXGroup;
 			children = (
 				369528312BD0E82F001D2AAB /* UploadPostViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		368549DE2BE091E1000D9A6B /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				368549DC2BE091DD000D9A6B /* EditProfileViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -551,7 +551,6 @@
 				3617349C2BDDF625007B08ED /* CardView.swift in Sources */,
 				367FBD652BDA3809007D1303 /* CompleteSignUpView.swift in Sources */,
 				363D17D72BCFA825009EDA4D /* TripCard.swift in Sources */,
-				360A4BB32BDF675000E0544A /* EditProfileViewModel.swift in Sources */,
 				36B2C7732BD7532D003E97B3 /* ContentView.swift in Sources */,
 				FB1CD0AD2BD1060B00C7A798 /* UserStatView.swift in Sources */,
 				36EEBBDC2BDCAB8200DEF6E0 /* CurrentUserProfileView.swift in Sources */,
@@ -560,6 +559,7 @@
 				360A4BAD2BDF5D8900E0544A /* EditProfileView.swift in Sources */,
 				36B2C76A2BD750DE003E97B3 /* SignUpScreen.swift in Sources */,
 				367FBD612BDA30A0007D1303 /* CreateUsernameView.swift in Sources */,
+				368549DD2BE091DD000D9A6B /* EditProfileViewModel.swift in Sources */,
 				36B2C7662BD75089003E97B3 /* AuthService.swift in Sources */,
 				369528322BD0E82F001D2AAB /* UploadPostViewModel.swift in Sources */,
 				367FBD5F2BDA2EB1007D1303 /* TextFieldModifier.swift in Sources */,
