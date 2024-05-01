@@ -5,6 +5,7 @@ struct PostView: View {
     let post: Post
     @State private var showingBottomSheet = false
     @State private var isImageTapped = false
+    
 
     var body: some View {
         GeometryReader { geometry in
@@ -28,6 +29,7 @@ struct PostView: View {
                                 showingBottomSheet.toggle()
                             }
                             .sheet(isPresented: $showingBottomSheet) {
+                                
                                 HStack {
                                     Image(post.imageUrl)
                                         .resizable()
@@ -40,6 +42,10 @@ struct PostView: View {
                                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                                 .edgesIgnoringSafeArea(.all)
                                 Divider()
+                                
+                                
+                                
+                                
                                 VStack {
                                     Text("Location")
                                         .fontWeight(.bold)
@@ -52,6 +58,7 @@ struct PostView: View {
                                         .padding()
                                 }
                                 .presentationDragIndicator(.visible)
+                                
                             }
                             .clipShape(.rect(cornerRadius: 15))
                             .shadow(color: Color.black.opacity(0.25), radius: 8, x: 5, y: 10)
