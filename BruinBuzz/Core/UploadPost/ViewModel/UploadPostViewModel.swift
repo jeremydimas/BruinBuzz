@@ -32,7 +32,7 @@ class UploadPostViewModel: ObservableObject {
         
         let postRef = Firestore.firestore().collection("posts").document()
         guard let imageUrl = try await ImageUploader.uploadImage(image: uiImage) else { return }
-        let post = TripCard(id: postRef.documentID, ownerUid: uid, imageUrl: imageUrl, title: "", subtitle: "")
+        let post = Post(id: postRef.documentID, ownerUid: uid, imageUrl: imageUrl, caption: caption, title: "")
         guard let encodedPost = try? Firestore.Encoder().encode(post) else { return }
          
         try await postRef.setData(encodedPost)

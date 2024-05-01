@@ -6,29 +6,28 @@
 //
 
 import SwiftUI
+import MapKit
 
 struct HomeCell: View {
     
-    let cards: [TripCard]
+    let post: Post
     @State private var searchText: String = ""
     @State var showingBottomSheet = false
+    @State private var isImageTapped = false
     
     var body: some View {
-        ScrollView(.vertical) {
-            VStack(spacing: 15) {
-                HStack(spacing: 12) {
-                    CardView(cards: cards)
-                        .frame(height: 600)
-                }
-                .padding(15)
-            }
+        VStack(spacing: 15) {
+            
+            // IMAGE FOR ONE - ASPECT
+            PostView(post: post)
+            
+            // ENDS HERE
         }
     }
 }
 
-
 struct HomeCell_Previews: PreviewProvider {
     static var previews: some View {
-        HomeCell(cards: TripCard.tripCards)
+        HomeCell(post: Post.MOCK_POSTS[0])
     }
 }

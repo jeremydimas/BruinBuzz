@@ -30,8 +30,9 @@ struct UploadPostView: View
     @State private var endtime = ""
     @State private var starttimezone = 0
     @State private var endtimezone = 0
-        let options = ["AM PST", "PM PST"]
+    let options = ["AM PST", "PM PST"]
     
+    @State private var caption = ""
     @StateObject var viewModel = UploadPostViewModel()
     @Binding var tabIndex: Int
     
@@ -45,10 +46,7 @@ struct UploadPostView: View
                 {
                     Button
                     {
-                        name = ""
-                        viewModel.selectedImage = nil
-                        viewModel.postImage = nil
-                        tabIndex = 0
+                        clearPostDataAndReturnToFeed()
                     } label:
                     {
                         Text("Cancel")
@@ -57,9 +55,11 @@ struct UploadPostView: View
                     Text("New Post")
                         .fontWeight(.semibold)
                     Spacer()
-                    Button
-                    {
-                        print("Upload")
+                    Button {
+                        Task {
+                            try await viewModel.uploadPost(caption: caption)
+                            clearPostDataAndReturnToFeed()
+                        }
                     } label:
                     {
                         Text("Upload")
@@ -397,6 +397,14 @@ struct UploadPostView: View
             }
             .photosPicker(isPresented: $imagePickerPresented, selection: $viewModel.selectedImage)
         }
+        
+    }
+    
+    func clearPostDataAndReturnToFeed() {
+        caption = ""
+        viewModel.selectedImage = nil
+        viewModel.postImage = nil
+        tabIndex = 0
     }
     
 }

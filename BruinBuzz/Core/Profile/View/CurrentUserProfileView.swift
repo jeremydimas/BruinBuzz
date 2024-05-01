@@ -11,8 +11,8 @@ struct CurrentUserProfileView: View {
 //    let post: TripCard
     let user: User
     
-    var cards: [TripCard] {
-        return TripCard.tripCards.filter({ $0.user?.username == user.username })
+    var posts: [Post] {
+        return Post.MOCK_POSTS.filter({ $0.user?.username == user.username })
     }
     
     var body: some View {
@@ -32,8 +32,15 @@ struct CurrentUserProfileView: View {
                     .padding(.top, 15)
                     .padding(.bottom, 15)
                 
-                CardView(cards: cards)
-                    .frame(height: 400)
+                ScrollView(.horizontal, showsIndicators: false) {
+                    HStack { // Adjust spacing between posts as needed
+                        ForEach(posts) { post in
+                            PostView(post: post) // Use PostView here
+                                .frame(width: 400, height: 650)
+            //                    .padding(.bottom)
+                        }
+                    }
+                }
 
                 
                 Text("Upcoming Events")
@@ -45,8 +52,16 @@ struct CurrentUserProfileView: View {
                     )
                     .padding(.top, -30)
                     .padding(.bottom, 10)
-                CardView(cards: cards)
-                    .frame(height: 400)
+                
+                ScrollView(.horizontal, showsIndicators: false) {
+                    HStack { // Adjust spacing between posts as needed
+                        ForEach(posts) { post in
+                            PostView(post: post) // Use PostView here
+                                .frame(width: 400, height: 650)
+            //                    .padding(.bottom)
+                        }
+                    }
+                }
             }
             .navigationTitle("Profile")
             .navigationBarTitleDisplayMode(.inline)
