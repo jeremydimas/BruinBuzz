@@ -14,9 +14,10 @@ class HomeViewModel: ObservableObject {
     init() {
         Task { try await fetchPosts() }
     }
-    
+    // Fetch Feed
+    @MainActor
     func fetchPosts() async throws {
-        let snapshot = try await Firestore.firestore().collection("posts").getDocuments()
-        self.posts = try snapshot.documents.compactMap({try $0.data(as: Post.self)})
+        self.posts = try await PostService.fetchFeedPosts()
+
     }
 }

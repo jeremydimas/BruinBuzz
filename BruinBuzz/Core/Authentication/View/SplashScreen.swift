@@ -23,8 +23,9 @@ struct SplashScreen: View {
                             .resizable()
                             .aspectRatio(contentMode:.fit)
                             .frame(width: 100)
-                        Text("BruinBuzz")
-                            .font(Font.custom("MickeyMousePERSONALUSE-Regular", size: 25)).foregroundStyle(
+                        Text("BRUINBUZZ")
+                            .shadow(color: .black, radius: 6, x: 4, y: 3)
+                            .font(Font.custom("NexaRustSans-Trial-Black2", size: 20)).foregroundStyle(
                                 LinearGradient(
                                     colors: [.orange, .yellow, .orange],
                                     startPoint: .leading,

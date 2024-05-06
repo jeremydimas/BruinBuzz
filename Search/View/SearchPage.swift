@@ -22,7 +22,7 @@ struct SearchPage: View
         {
             ScrollView
             {
-                HStack 
+                HStack
                 {
                     ZStack(alignment: .leading)
                     {
@@ -45,11 +45,11 @@ struct SearchPage: View
                     .padding(.bottom)
                     .offset(x:-10)
                     
-                    Button(action: 
+                    Button(action:
                     {
                         isMainTabViewActive = true
                         presentationMode.wrappedValue.dismiss()
-                    }) 
+                    })
                     {Text("Done")
                     .foregroundColor(.blue)}
                     .offset(x:-10)
@@ -101,9 +101,9 @@ struct SearchPage: View
     }
 }
     
-struct SearchPage_Previews: PreviewProvider 
+struct SearchPage_Previews: PreviewProvider
 {
-    static var previews: some View 
+    static var previews: some View
     {
         SearchPage()
     }

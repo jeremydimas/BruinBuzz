@@ -8,12 +8,7 @@
 import SwiftUI
 
 struct CurrentUserProfileView: View {
-//    let post: TripCard
     let user: User
-    
-    var posts: [Post] {
-        return Post.MOCK_POSTS.filter({ $0.user?.username == user.username })
-    }
     
     var body: some View {
         NavigationStack {
@@ -23,45 +18,26 @@ struct CurrentUserProfileView: View {
                 
                 // Post grid view
                 Text("My Events")
-                    .font(Font.custom("MickeyMousePERSONALUSE-Regular", size: 25)).foregroundStyle(
-                        LinearGradient(
-                            colors: [.orange, .yellow, .orange],
-                            startPoint: .leading,
-                            endPoint: .trailing)
-                    )
+                    .font(Font.custom("NexaRustSans-Trial-Black2", size: 20))
+                    .foregroundStyle(Color(.black))
                     .padding(.top, 15)
-                    .padding(.bottom, 15)
+                    .padding(.bottom, 1)
+                    .padding(.leading, -180) // Adjust this value as needed
                 
-                ScrollView(.horizontal, showsIndicators: false) {
-                    HStack { // Adjust spacing between posts as needed
-                        ForEach(posts) { post in
-                            PostView(post: post) // Use PostView here
-                                .frame(width: 400, height: 650)
-            //                    .padding(.bottom)
-                        }
-                    }
-                }
-
+//                    .padding(.bottom, 10)
+                
+                    PostView(user: user)
                 
                 Text("Upcoming Events")
-                    .font(Font.custom("MickeyMousePERSONALUSE-Regular", size: 25)).foregroundStyle(
-                        LinearGradient(
-                            colors: [.orange, .yellow, .orange],
-                            startPoint: .leading,
-                            endPoint: .trailing)
-                    )
-                    .padding(.top, -30)
-                    .padding(.bottom, 10)
+                    .font(Font.custom("NexaRustSans-Trial-Black2", size: 20))
+                    .foregroundStyle(Color(.black))
+                    .padding(.leading, -145) // Adjust this value as needed
+                    .padding(.top, -15)
+                    .padding(.bottom, 1)
                 
-                ScrollView(.horizontal, showsIndicators: false) {
-                    HStack { // Adjust spacing between posts as needed
-                        ForEach(posts) { post in
-                            PostView(post: post) // Use PostView here
-                                .frame(width: 400, height: 650)
-            //                    .padding(.bottom)
-                        }
-                    }
-                }
+                /*ScrollView(.horizontal, showsIndicators: false)*/
+                    PostView(user: user)
+
             }
             .navigationTitle("Profile")
             .navigationBarTitleDisplayMode(.inline)

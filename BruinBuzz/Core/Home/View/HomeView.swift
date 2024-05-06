@@ -7,66 +7,63 @@
 
 import SwiftUI
 
-struct HomeView: View 
-{
-    @State private var searchText: String = ""
-    @State private var isSearching: Bool = false
+struct HomeView: View {
+    // Fetch Feed
     @StateObject var viewModel = HomeViewModel()
+    @State private var isSearching: Bool = false
+    // Ends here
     
-    var body: some View 
-    {
-        NavigationStack 
-        {
+    @State private var searchText: String = ""
+    
+    var body: some View {
+        NavigationStack {
             // Search Bar
-            VStack
-            {
-                ZStack(alignment: .leading)
-                {
-                    Capsule()
-                        .fill(Color.gray.opacity(0.2)) // Use gray color with opacity
-                        .frame(height: 40) // Adjust the height as needed
-                        
-                    
-                    HStack(spacing: 12)
-                    {
-                        Image(systemName: "magnifyingglass")
-                            .foregroundColor(.gray)
-                            .padding(.horizontal, 10)
-                        
-                        TextField("Search", text: $searchText)
-                            .padding(.horizontal, -10)
-                            .onTapGesture
-                            {
-                                isSearching = true // Set searching state to true when tapped
-                            }
-                    }
-                    .padding(.horizontal, 10)
-                }
-                .padding(.horizontal, 30)
-                .padding(.top, 10)
-                .padding(.bottom)
+            Text("BRUINBUZZ")
+                .font(Font.custom("NexaRustSans-Trial-Black2", size: 20))
+                .foregroundStyle(Color(.black))
+                .padding(.bottom, 5)
+                .padding(.top, 20)
+                .padding(.leading, -180) // Adjust this value as needed
+            
+            ZStack(alignment: .leading) {
+                Capsule()
+                    .fill(Color.gray.opacity(0.2))
+                    .frame(height: 40)
                 
-                ScrollView(.horizontal, showsIndicators: false)
+                HStack(spacing: 12)
                 {
-                    HStack
-                    { // Adjust spacing between posts as needed
-                        ForEach(Post.MOCK_POSTS) { post in
-                            HomeCell(post: post)
-                                .frame(width: 400) // Adjust post width as needed
+                    Image(systemName: "magnifyingglass")
+                        .foregroundColor(.gray)
+                        .padding(.horizontal, 10)
+                    
+                    TextField("Search", text: $searchText)
+                        .padding(.horizontal, -10)
+                        .onTapGesture
+                        {
+                            isSearching = true // Set searching state to true when tapped
                         }
+                }
+                .padding(.horizontal, 10)
+            }
+            .padding(.horizontal, 30)
+            .padding(.bottom)
+            
+            ScrollView(.horizontal, showsIndicators: false) {
+                HStack {
+                    ForEach(viewModel.posts) { post in
+                        HomeCell(post: post)
+                            .frame(width: 430)
                     }
                 }
+                Spacer()
             }
         }
-        .fullScreenCover(isPresented: $isSearching) 
+        .fullScreenCover(isPresented: $isSearching)
         {
-            // Your search page view goes here
             SearchPage()
         }
     }
 }
-
-
 
 struct Home_Previews: PreviewProvider {
     static var previews: some View {
