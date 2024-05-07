@@ -19,7 +19,7 @@ struct CurrentUserProfileView: View {
                 // Post grid view
                 Text("My Events")
                     .font(Font.custom("NexaRustSans-Trial-Black2", size: 20))
-                    .foregroundStyle(Color(.black))
+                    .foregroundColor(.primary)
                     .padding(.top, 15)
                     .padding(.bottom, 1)
                     .padding(.leading, -180) // Adjust this value as needed
@@ -30,7 +30,7 @@ struct CurrentUserProfileView: View {
                 
                 Text("Upcoming Events")
                     .font(Font.custom("NexaRustSans-Trial-Black2", size: 20))
-                    .foregroundStyle(Color(.black))
+                    .foregroundColor(.primary)
                     .padding(.leading, -145) // Adjust this value as needed
                     .padding(.top, -15)
                     .padding(.bottom, 1)
@@ -40,6 +40,7 @@ struct CurrentUserProfileView: View {
 
             }
             .navigationTitle("Profile")
+            .foregroundColor(.primary)
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
@@ -47,7 +48,7 @@ struct CurrentUserProfileView: View {
                         AuthService.shared.signout()
                     } label: {
                         Image(systemName: "arrowshape.forward.fill")
-                            .foregroundColor(.black)
+                            .foregroundColor(.primary)
                     }
                 }
             }

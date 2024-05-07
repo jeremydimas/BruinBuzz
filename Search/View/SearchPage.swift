@@ -88,7 +88,7 @@ struct SearchPage: View
                                 .offset(x:-40)
                                 Spacer()
                             }
-                            .foregroundColor(.black)
+                            .foregroundColor(.primary)
                             .padding(.horizontal)
                         }
                     }

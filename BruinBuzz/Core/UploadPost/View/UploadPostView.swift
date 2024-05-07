@@ -377,12 +377,8 @@ struct UploadPostView: View
                                 .cornerRadius(10)
                                 
                                 .foregroundColor(.gray)
-                                
-                                
-                            
-                            
+                                 
                         }
-                        
                         
                         Spacer()
                     }
@@ -425,9 +421,3 @@ struct UploadPostView_Previews: PreviewProvider {
     }
 }
 
-
-// Name
-// Description, date, time, location
-// organization
-// organizer
-// PDF

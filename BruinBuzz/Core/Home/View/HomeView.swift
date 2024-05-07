@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Foundation
 
 struct HomeView: View {
     // Fetch Feed
@@ -20,7 +21,7 @@ struct HomeView: View {
             // Search Bar
             Text("BRUINBUZZ")
                 .font(Font.custom("NexaRustSans-Trial-Black2", size: 20))
-                .foregroundStyle(Color(.black))
+                .foregroundColor(.primary)
                 .padding(.bottom, 5)
                 .padding(.top, 20)
                 .padding(.leading, -180) // Adjust this value as needed
@@ -57,8 +58,10 @@ struct HomeView: View {
                           
                     }
                 }
+                
                 Spacer()
             }
+        
         }
         .fullScreenCover(isPresented: $isSearching)
         {

@@ -53,8 +53,6 @@ struct EditProfileView: View {
                     if let image = viewModel.profileImage {
                         image
                             .resizable()
-                            .foregroundColor(.white)
-                            .background(.gray)
                             .clipShape(Circle())
                             .frame(width: 80, height: 80)
                     } else {
@@ -71,17 +69,35 @@ struct EditProfileView: View {
             .padding(.vertical, 8)
             
             // edit profile info
-            
-            VStack {
-                EditProfileRowView(
-                    title: "Name",
-                    placeholder: "Enter your name..", 
-                    text: $viewModel.fullname)
+
+            VStack
+            {
+                VStack (alignment: .leading)
+                {
+                    EditProfileRowView(
+                        title: "Name",
+                        placeholder: "Enter your name..",
+                        text: $viewModel.fullname)
+                    .padding(.top, 10)
+                    
+                    EditProfileRowView(
+                        title: "Bio",
+                        placeholder: "Enter your bio..",
+                        text: $viewModel.bio)
+                    .padding(.bottom, 10)
+                    
+                }
+                .padding(.horizontal, 20) // Add horizontal padding to keep elements away from the border line
+                .padding(.bottom,15)
                 
-                EditProfileRowView(
-                    title: "Bio",
-                    placeholder: "Enter your bio..",
-                    text: $viewModel.bio)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 20)
+                        .stroke(Color.black, lineWidth: 1) // Add border line
+                        
+                )
+                .padding() // Add padding to the outer VStack to ensure border visibility and spacing
+                .cornerRadius(20)
+                .frame(width: 350)
             }
             
             Spacer()
@@ -98,17 +114,27 @@ struct EditProfileRowView: View {
     var body: some View {
         HStack {
             Text(title)
-                .padding(.leading, 8)
-                .frame(width: 100, alignment: .leading)
+//                .padding(.leading, 8)
+//                .frame(width: 100, alignment: .leading)
+                .font(.title2)
+                .bold()
+                .padding(.top, 10)
             
-            VStack {
-                TextField(placeholder, text: $text)
-                Divider()
-            }
         }
         .font(.subheadline)
         .frame(height: 36)
+        VStack {
+            TextField(placeholder, text: $text)
+                .autocapitalization(.none)
+                .padding()
+                .background(Color.gray.opacity(0.2))
+                .cornerRadius(10)
+                .frame(width: 325, height: 50)
+            Divider()
+        }
+        
     }
+    
 }
 
 struct EditProfileView_Previews: PreviewProvider {

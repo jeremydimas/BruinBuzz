@@ -40,19 +40,12 @@ struct Payment: View {
         HStack
         {
             Button("RSVP"){}
-                .foregroundColor(.white)
+                .foregroundColor(Color("DarkMode"))
                 .padding() // Add padding to the content
                 .frame(width: 110, height: 50)
-                .background(Color(.black)) // Add a background color to the button
+                .background(Color("LightMode")) // Add a background color to the button
                 .cornerRadius(8) // Add corner radius to the button
-            
-            
-            
-            
-            
-            
-            
-            
+
             Button(action: {
                 isButtonTapped.toggle()
                 showingBottomSheet.toggle()

@@ -31,9 +31,12 @@ struct MainTabView: View {
                 }
                 .tabItem {
                     Image(systemName: "person")
+                        
                 }.tag(2)
         }
-        .accentColor(.black)
+        
+        .accentColor(Color("LightMode"))
+        
     }
 }
 struct MainTabView_Previews: PreviewProvider {

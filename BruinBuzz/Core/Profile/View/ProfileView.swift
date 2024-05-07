@@ -13,7 +13,7 @@ struct ProfileView: View {
             // Post grid view
             Text("My Events")
                 .font(Font.custom("NexaRustSans-Trial-Black2", size: 20))
-                .foregroundStyle(Color(.black))
+                .foregroundColor(.primary)
                 .padding(.top, 15)
                 .padding(.bottom, 1)
                 .padding(.leading, -180) // Adjust this value as needed
@@ -22,7 +22,7 @@ struct ProfileView: View {
 
             Text("Upcoming Events")
                 .font(Font.custom("NexaRustSans-Trial-Black2", size: 20))
-                .foregroundStyle(Color(.black))
+                .foregroundColor(.primary)
                 .padding(.leading, -145) // Adjust this value as needed
                 .padding(.top, -20)
                 .padding(.bottom, 1)
@@ -31,6 +31,7 @@ struct ProfileView: View {
             
         }
         .navigationTitle("Profile")
+        .foregroundColor(.primary)
         .navigationBarTitleDisplayMode(.inline)
     }
 }
