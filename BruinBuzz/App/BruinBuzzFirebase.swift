@@ -7,6 +7,7 @@
 
 import SwiftUI
 import FirebaseCore
+import Stripe
 
 class AppDelegate: NSObject, UIApplicationDelegate {
   func application(_ application: UIApplication,
@@ -18,6 +19,13 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 
 @main
 struct BruinBuzzFirebase: App {
+
+    init()
+    {
+        StripeAPI.defaultPublishableKey = "pk_live_51PBlWCA3TDPnptjG14dVqL0WJAbC33aKNiGg51SmzYTOhXZitWP4KRhkDufOqWLun7V0bPr8gHa5qYiMoiCKGh6M003PrDHGxx"
+    }
+    
+    
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     var body: some Scene {
         WindowGroup {

@@ -1,5 +1,5 @@
 {
-  "originHash" : "bc240f009e1fa45c62a841709821f40ecac7be19de79cf2a8db25e79d8ea121b",
+  "originHash" : "55b09dc40a04422a4c3a7f1eac5fa5d05a22fce3c431422681cae8c218dc91cb",
   "pins" : [
     {
       "identity" : "abseil-cpp-binary",
@@ -22,7 +22,7 @@
     {
       "identity" : "firebase-ios-sdk",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/firebase/firebase-ios-sdk",
+      "location" : "https://github.com/firebase/firebase-ios-sdk.git",
       "state" : {
         "revision" : "42eae77a0af79e9c3f41df04a23c76f05cfdda77",
         "version" : "10.24.0"
@@ -116,6 +116,15 @@
       "state" : {
         "revision" : "540318ecedd63d883069ae7f1ed811a2df00b6ac",
         "version" : "2.4.0"
+      }
+    },
+    {
+      "identity" : "stripe-ios-spm",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/stripe/stripe-ios-spm",
+      "state" : {
+        "revision" : "9d491f5076b886b19c6c020f1f06e4cc045ce5c3",
+        "version" : "23.27.2"
       }
     },
     {

@@ -49,6 +49,11 @@
 		36FA18182BD6C5E200586641 /* BruinBuzzFirebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36FA18152BD6150E00586641 /* BruinBuzzFirebase.swift */; };
 		36FA9E9B2BE9603500F03E25 /* NexaRustSans-Trial-Black2.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 36FA9E9A2BE9603500F03E25 /* NexaRustSans-Trial-Black2.ttf */; };
 		FB1CD0AD2BD1060B00C7A798 /* UserStatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1CD0AC2BD1060B00C7A798 /* UserStatView.swift */; };
+		FB33AD762BE9B19F008CE113 /* CheckoutIntentResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB33AD712BE9B19F008CE113 /* CheckoutIntentResponse.swift */; };
+		FB33AD772BE9B19F008CE113 /* Payment.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB33AD722BE9B19F008CE113 /* Payment.swift */; };
+		FB33AD782BE9B19F008CE113 /* PaymentConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB33AD732BE9B19F008CE113 /* PaymentConfig.swift */; };
+		FB33AD792BE9B19F008CE113 /* PaymentGatewayController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB33AD742BE9B19F008CE113 /* PaymentGatewayController.swift */; };
+		FB33AD7C2BE9B1F8008CE113 /* Stripe in Frameworks */ = {isa = PBXBuildFile; productRef = FB33AD7B2BE9B1F8008CE113 /* Stripe */; };
 		FB4123682BE2A50900816ED2 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB4123672BE2A50900816ED2 /* UserService.swift */; };
 		FB673C0A2BE2FB09002BF176 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = FB673C092BE2FB09002BF176 /* FirebaseAnalytics */; };
 		FB673C0C2BE2FB09002BF176 /* FirebaseAnalyticsOnDeviceConversion in Frameworks */ = {isa = PBXBuildFile; productRef = FB673C0B2BE2FB09002BF176 /* FirebaseAnalyticsOnDeviceConversion */; };
@@ -117,6 +122,10 @@
 		36FA18152BD6150E00586641 /* BruinBuzzFirebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BruinBuzzFirebase.swift; sourceTree = "<group>"; };
 		36FA9E9A2BE9603500F03E25 /* NexaRustSans-Trial-Black2.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NexaRustSans-Trial-Black2.ttf"; sourceTree = "<group>"; };
 		FB1CD0AC2BD1060B00C7A798 /* UserStatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserStatView.swift; path = BruinBuzz/Components/View/UserStatView.swift; sourceTree = SOURCE_ROOT; };
+		FB33AD712BE9B19F008CE113 /* CheckoutIntentResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutIntentResponse.swift; sourceTree = "<group>"; };
+		FB33AD722BE9B19F008CE113 /* Payment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Payment.swift; sourceTree = "<group>"; };
+		FB33AD732BE9B19F008CE113 /* PaymentConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentConfig.swift; sourceTree = "<group>"; };
+		FB33AD742BE9B19F008CE113 /* PaymentGatewayController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentGatewayController.swift; sourceTree = "<group>"; };
 		FB4123672BE2A50900816ED2 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		FBA88DE82BC9B7BC00F92A9A /* BruinBuzz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BruinBuzz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FBA88DEF2BC9B7BE00F92A9A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -140,6 +149,7 @@
 				FB673C0E2BE2FB09002BF176 /* FirebaseAnalyticsSwift in Frameworks */,
 				36FA17FB2BD608E800586641 /* FirebaseFirestore in Frameworks */,
 				36FA17FD2BD608E800586641 /* FirebaseFirestoreSwift in Frameworks */,
+				FB33AD7C2BE9B1F8008CE113 /* Stripe in Frameworks */,
 				FB673C102BE2FB09002BF176 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */,
 				FB673C122BE2FB09002BF176 /* FirebaseAppCheck in Frameworks */,
 				368549D72BE05F92000D9A6B /* Kingfisher in Frameworks */,
@@ -391,6 +401,7 @@
 				FB1CD0AB2BD105AB00C7A798 /* Components */,
 				363350672BDD5D7200039410 /* Home */,
 				36C0493D2BE8300F00E59C15 /* Search */,
+				FB33AD752BE9B19F008CE113 /* Payment */,
 				367FBD6A2BDCAA2E007D1303 /* Profile */,
 				3695282E2BD0E0CB001D2AAB /* UploadPost */,
 				36FA9E9A2BE9603500F03E25 /* NexaRustSans-Trial-Black2.ttf */,
@@ -427,6 +438,17 @@
 			);
 			name = Components;
 			path = ../Components;
+			sourceTree = "<group>";
+		};
+		FB33AD752BE9B19F008CE113 /* Payment */ = {
+			isa = PBXGroup;
+			children = (
+				FB33AD712BE9B19F008CE113 /* CheckoutIntentResponse.swift */,
+				FB33AD722BE9B19F008CE113 /* Payment.swift */,
+				FB33AD732BE9B19F008CE113 /* PaymentConfig.swift */,
+				FB33AD742BE9B19F008CE113 /* PaymentGatewayController.swift */,
+			);
+			path = Payment;
 			sourceTree = "<group>";
 		};
 		FBA88DDF2BC9B7BC00F92A9A = {
@@ -516,6 +538,7 @@
 				FB673C0D2BE2FB09002BF176 /* FirebaseAnalyticsSwift */,
 				FB673C0F2BE2FB09002BF176 /* FirebaseAnalyticsWithoutAdIdSupport */,
 				FB673C112BE2FB09002BF176 /* FirebaseAppCheck */,
+				FB33AD7B2BE9B1F8008CE113 /* Stripe */,
 			);
 			productName = BruinBuzz;
 			productReference = FBA88DE82BC9B7BC00F92A9A /* BruinBuzz.app */;
@@ -592,6 +615,7 @@
 			packageReferences = (
 				36FA17F72BD608E800586641 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				368549D52BE05F92000D9A6B /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				FB33AD7A2BE9B1F8008CE113 /* XCRemoteSwiftPackageReference "stripe-ios-spm" */,
 			);
 			productRefGroup = FBA88DE92BC9B7BC00F92A9A /* Products */;
 			projectDirPath = "";
@@ -650,9 +674,11 @@
 				36B2C7782BD78971003E97B3 /* User.swift in Sources */,
 				360A4BAD2BDF5D8900E0544A /* EditProfileView.swift in Sources */,
 				36C049432BE8318A00E59C15 /* SearchPage.swift in Sources */,
+				FB33AD792BE9B19F008CE113 /* PaymentGatewayController.swift in Sources */,
 				36359D912BE1FE350060C464 /* PostView.swift in Sources */,
 				367FBD612BDA30A0007D1303 /* CreateUsernameView.swift in Sources */,
 				368549DD2BE091DD000D9A6B /* EditProfileViewModel.swift in Sources */,
+				FB33AD772BE9B19F008CE113 /* Payment.swift in Sources */,
 				36B2C7662BD75089003E97B3 /* AuthService.swift in Sources */,
 				369528322BD0E82F001D2AAB /* UploadPostViewModel.swift in Sources */,
 				367FBD5F2BDA2EB1007D1303 /* TextFieldModifier.swift in Sources */,
@@ -666,6 +692,8 @@
 				36EEBBDA2BDCAACE00DEF6E0 /* ProfileView.swift in Sources */,
 				36B2C76E2BD75148003E97B3 /* RegistrationViewModel.swift in Sources */,
 				367FBD632BDA36C1007D1303 /* CreatePasswordView.swift in Sources */,
+				FB33AD762BE9B19F008CE113 /* CheckoutIntentResponse.swift in Sources */,
+				FB33AD782BE9B19F008CE113 /* PaymentConfig.swift in Sources */,
 				369486A42BDD6A3B00010592 /* ProfileHeaderView.swift in Sources */,
 				369528302BD0E105001D2AAB /* UploadPostView.swift in Sources */,
 				36B2C7682BD750BA003E97B3 /* LoginView.swift in Sources */,
@@ -1020,6 +1048,14 @@
 				minimumVersion = 10.24.0;
 			};
 		};
+		FB33AD7A2BE9B1F8008CE113 /* XCRemoteSwiftPackageReference "stripe-ios-spm" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/stripe/stripe-ios-spm";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 23.27.2;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1047,6 +1083,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 36FA17F72BD608E800586641 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseStorage;
+		};
+		FB33AD7B2BE9B1F8008CE113 /* Stripe */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FB33AD7A2BE9B1F8008CE113 /* XCRemoteSwiftPackageReference "stripe-ios-spm" */;
+			productName = Stripe;
 		};
 		FB673C092BE2FB09002BF176 /* FirebaseAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;
