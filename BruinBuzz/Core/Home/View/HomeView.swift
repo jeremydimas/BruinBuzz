@@ -53,16 +53,11 @@ struct HomeView: View {
                     ForEach(viewModel.posts) { post in
                         HomeCell(post: post)
                             .frame(width: 430)
-                        Payment()
-                            .offset(x:-335,y:340)
                         
-                        
+                          
                     }
                 }
                 Spacer()
-                VStack {
-                    
-                }    
             }
         }
         .fullScreenCover(isPresented: $isSearching)

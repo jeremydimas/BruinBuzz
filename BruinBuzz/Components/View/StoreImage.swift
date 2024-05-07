@@ -42,20 +42,30 @@ struct StoreImage: View {
                         .padding(.bottom, 15)
                 }
                 .edgesIgnoringSafeArea(.all)
-                Divider()
-                VStack {
-                    Text("Location")
+
+                HStack {
+                    Text("Organizer:")
                         .fontWeight(.bold)
-                        .offset(x: -145, y: 15)
-                    Text("Dockweiler Beach, Los Angeles")
-                        .offset(x: -60, y: 15)
+                    Text(post.organizer)
+                    Spacer()
+                }
+                .padding(.leading, 40)
+                .padding(.bottom, 20)
+
+                VStack {
+                    HStack {
+                        Text("Location:")
+                            .fontWeight(.bold)
+                        Text(post.location)
+                        Spacer()
+                    }
+                    .padding(.leading, 40)
                     MapView()
-                        .frame(width: 360, height: 200)
+                        .frame(width: 350, height: 200)
                         .clipShape(CurvedShape())
-                        .padding()
+                        .padding(.top, -1)
                 }
                 .presentationDragIndicator(.visible)
-
             }
             .clipShape(.rect(cornerRadius: 15))
             .shadow(color: Color.black.opacity(0.25), radius: 8, x: 5, y: 10)

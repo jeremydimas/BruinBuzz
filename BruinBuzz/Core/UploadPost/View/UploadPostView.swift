@@ -60,9 +60,9 @@ struct UploadPostView: View
                             try await viewModel.uploadPost(
                                 title: title,
                                 caption: caption,
-                                organizer: location,
-                                organization: organizer,
-                                location: organization
+                                organizer: organizer,
+                                organization: organization,
+                                location: location
                             )
                             clearPostDataAndReturnToFeed()
                         }

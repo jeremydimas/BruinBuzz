@@ -46,6 +46,13 @@ struct Payment: View {
                 .background(Color(.black)) // Add a background color to the button
                 .cornerRadius(8) // Add corner radius to the button
             
+            
+            
+            
+            
+            
+            
+            
             Button(action: {
                 isButtonTapped.toggle()
                 showingBottomSheet.toggle()

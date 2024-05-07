@@ -45,28 +45,41 @@ struct HomeCell: View {
                                     .frame(width: 350, height: 350)
                                     .clipShape(.rect(cornerRadius: 15))
                             )
-                            .padding(.bottom, 15)
+                            .padding(.bottom, 5)
                     }
                     .edgesIgnoringSafeArea(.all)
                     
+                    HStack {
+                        Text("Organizer:")
+                            .fontWeight(.bold)
+                        Text(post.organizer)
+                        Spacer()
+                    }
+                    .padding(.leading, 40)
+                    .padding(.bottom, 20)
+
                     VStack {
-                        Text("Organizer: " + post.organizer)
-                            .fontWeight(.bold)
-                            .padding(.leading, -120)
-                            .padding(.top, -15) // To adjust the y-offset effect
-                        Text("Location: " + post.location)
-                            .fontWeight(.bold)
-                            .offset(x: -120, y: 15)
+                        HStack {
+                            Text("Location:")
+                                .fontWeight(.bold)
+                            Text(post.location)
+                            Spacer()
+                        }
+                        .padding(.leading, 40)
                         MapView()
-                            .frame(width: 360, height: 200)
+                            .frame(width: 350, height: 200)
                             .clipShape(CurvedShape())
-                            .padding()
+                            .padding(.top, -1)
                     }
                     .presentationDragIndicator(.visible)
                 }
                 .clipShape(.rect(cornerRadius: 15))
                 .shadow(color: Color.black.opacity(0.25), radius: 8, x: 5, y: 10)
+            
+            Payment()
+                .padding(.top)
         }
+        
     }
 }
 
@@ -112,7 +125,7 @@ func OverlayView(_ post: Post) -> some View{
                 .font(.title2)
                 .fontWeight(.black)
                 .foregroundStyle(.white)
-            Text(post.caption)
+            Text(post.organization)
                 .font(.callout)
                 .foregroundStyle(.white.opacity(0.8))
         })
