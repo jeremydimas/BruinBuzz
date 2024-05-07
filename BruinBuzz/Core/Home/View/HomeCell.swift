@@ -11,6 +11,10 @@ import Kingfisher
 
 struct HomeCell: View {
     let post: Post
+    
+    //bio changes
+    @StateObject var viewModel = UploadPostViewModel()
+    // ends here
     @State private var searchText: String = ""
     @State var showingBottomSheet = false
     @State private var isImageTapped = false
@@ -21,6 +25,11 @@ struct HomeCell: View {
                 .resizable()
                 .frame(width: 360, height: 550)
                 .aspectRatio(contentMode: .fill)
+                .overlay(
+                    OverlayView(post)
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+                        .clipShape(.rect(cornerRadius: 15))
+                )
                 .onTapGesture {
                     isImageTapped.toggle()
                     showingBottomSheet.toggle()
@@ -31,16 +40,23 @@ struct HomeCell: View {
                             .resizable()
                             .frame(width: 350, height: 350)
                             .clipShape(CurvedShape())
+                            .overlay(
+                                OverlayView(post)
+                                    .frame(width: 350, height: 350)
+                                    .clipShape(.rect(cornerRadius: 15))
+                            )
                             .padding(.bottom, 15)
                     }
                     .edgesIgnoringSafeArea(.all)
-                    Divider()
+                    
                     VStack {
-                        Text("Location")
+                        Text("Organizer: " + post.organizer)
                             .fontWeight(.bold)
-                            .offset(x: -145, y: 15)
-                        Text("Dockweiler Beach, Los Angeles")
-                            .offset(x: -60, y: 15)
+                            .padding(.leading, -120)
+                            .padding(.top, -15) // To adjust the y-offset effect
+                        Text("Location: " + post.location)
+                            .fontWeight(.bold)
+                            .offset(x: -120, y: 15)
                         MapView()
                             .frame(width: 360, height: 200)
                             .clipShape(CurvedShape())
@@ -75,6 +91,33 @@ struct CurvedShape: Shape
         
         return path
     }
+}
+
+@ViewBuilder
+func OverlayView(_ post: Post) -> some View{
+    ZStack(alignment: .bottomLeading, content:{
+        LinearGradient(colors: [
+            .clear,
+            .clear,
+            .clear,
+            .clear,
+            .clear,
+            .black.opacity(0.1),
+            .black.opacity(0.5),
+            .black
+        ], startPoint: .top, endPoint: .bottom)
+
+        VStack(alignment: .leading, spacing: 4, content: {
+            Text(post.title)
+                .font(.title2)
+                .fontWeight(.black)
+                .foregroundStyle(.white)
+            Text(post.caption)
+                .font(.callout)
+                .foregroundStyle(.white.opacity(0.8))
+        })
+        .padding(20)
+    })
 }
 
 struct MapView: UIViewRepresentable

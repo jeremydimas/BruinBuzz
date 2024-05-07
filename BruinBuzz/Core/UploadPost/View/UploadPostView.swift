@@ -10,7 +10,7 @@ import PhotosUI
 
 struct UploadPostView: View
 {
-    @State private var name = ""
+    @State private var title = ""
     @State private var description = ""
     @State private var organizer = ""
     @State private var organization = ""
@@ -57,7 +57,13 @@ struct UploadPostView: View
                     Spacer()
                     Button {
                         Task {
-                            try await viewModel.uploadPost(caption: caption)
+                            try await viewModel.uploadPost(
+                                title: title,
+                                caption: caption,
+                                organizer: location,
+                                organization: organizer,
+                                location: organization
+                            )
                             clearPostDataAndReturnToFeed()
                         }
                     } label:
@@ -122,7 +128,7 @@ struct UploadPostView: View
                                 .bold()
                                 .padding(.top, 5)
                         }
-                        TextField("Name of Event", text: $name)
+                        TextField("Name of Event", text: $title)
                             .autocapitalization(.none)
                             .padding()
                             .background(Color.gray.opacity(0.2))
@@ -143,7 +149,7 @@ struct UploadPostView: View
                                 .bold()
                                 .padding(.top, 5)
                         }
-                        TextField("Write your event's description here.", text: $description)
+                        TextField("Write your event's description here.", text: $caption)
                             .autocapitalization(.none)
                             .padding()
                             .background(Color.gray.opacity(0.2))
@@ -199,7 +205,7 @@ struct UploadPostView: View
                                 .padding(.top, 5)
                         }
 
-                        TextField("Event's Location", text: $organizer)
+                        TextField("Event's Location", text: $location)
                             .autocapitalization(.none)
                             .padding()
                             
@@ -402,6 +408,10 @@ struct UploadPostView: View
     
     func clearPostDataAndReturnToFeed() {
         caption = ""
+        title = ""
+        location = ""
+        organizer = ""
+        organization = ""
         viewModel.selectedImage = nil
         viewModel.postImage = nil
         tabIndex = 0

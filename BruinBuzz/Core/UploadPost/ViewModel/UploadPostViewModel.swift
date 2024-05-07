@@ -26,13 +26,13 @@ class UploadPostViewModel: ObservableObject {
         self.postImage = Image(uiImage: uiImage)
     }
     
-    func uploadPost(caption: String) async throws {
+    func uploadPost(title: String, caption: String, organizer: String, organization: String, location: String) async throws {
         guard let uid = Auth.auth().currentUser?.uid else { return }
         guard let uiImage = uiImage else { return }
         
         let postRef = Firestore.firestore().collection("posts").document()
         guard let imageUrl = try await ImageUploader.uploadImage(image: uiImage) else { return }
-        let post = Post(id: postRef.documentID, ownerUid: uid, imageUrl: imageUrl, caption: caption, title: "")
+        let post = Post(id: postRef.documentID, ownerUid: uid, imageUrl: imageUrl, caption: caption, title: title, location: location, organizer: organizer, organization: organization)
         guard let encodedPost = try? Firestore.Encoder().encode(post) else { return }
          
         try await postRef.setData(encodedPost)

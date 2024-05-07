@@ -19,6 +19,11 @@ struct StoreImage: View {
             .resizable()
             .frame(width: 360, height: 360)
             .aspectRatio(contentMode: .fill)
+            .overlay(
+                OverlayView(post)
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .clipShape(.rect(cornerRadius: 15))
+            )
             .onTapGesture {
                 isImageTapped.toggle()
                 showingBottomSheet.toggle()
@@ -29,6 +34,11 @@ struct StoreImage: View {
                         .resizable()
                         .frame(width: 350, height: 350)
                         .clipShape(CurvedShape())
+                        .overlay(
+                            OverlayView(post)
+                                .frame(width: 350, height: 350)
+                                .clipShape(.rect(cornerRadius: 15))
+                        )
                         .padding(.bottom, 15)
                 }
                 .edgesIgnoringSafeArea(.all)

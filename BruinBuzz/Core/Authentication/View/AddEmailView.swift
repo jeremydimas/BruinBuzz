@@ -32,6 +32,7 @@ struct AddEmailView: View {
                     .multilineTextAlignment(.center)
                     .padding(.bottom, 8)
                 
+
                 TextField("Email", text: $viewModel.email)
                     .autocapitalization(/*@START_MENU_TOKEN@*/.none/*@END_MENU_TOKEN@*/)
                     .font(.subheadline)

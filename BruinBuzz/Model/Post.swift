@@ -14,6 +14,9 @@ struct Post: Identifiable, Hashable, Codable {
     let caption: String
     var user: User?
     let title: String
+    let location: String
+    let organizer: String
+    let organization: String
 }
 
 extension Post {
@@ -24,7 +27,10 @@ extension Post {
             imageUrl: "UCLA1",
             caption: "UCLA",
             user: User.MOCK_USERS[0],
-            title: "Bruin Walk"
+            title: "Bruin Walk",
+            location: "ucla",
+            organizer: "gene block",
+            organization: "charity"
         ),
         .init(
             id: NSUUID().uuidString,
@@ -32,7 +38,10 @@ extension Post {
             imageUrl: "UCLA2",
             caption: "UCLA",
             user: User.MOCK_USERS[1],
-            title: "Royce"
+            title: "Royce",
+            location: "ucla",
+            organizer: "gene block",
+            organization: "charity"
 
         ),
         .init(
@@ -41,7 +50,10 @@ extension Post {
             imageUrl: "UCLA2",
             caption: "UCLA",
             user: User.MOCK_USERS[1],
-            title: "Royce"
+            title: "Royce",
+            location: "ucla",
+            organizer: "gene block",
+            organization: "charity"
 
         ),
         .init(
@@ -50,7 +62,10 @@ extension Post {
             imageUrl: "UCLA3",
             caption: "UCLA",
             user: User.MOCK_USERS[2],
-            title: "Wilson"
+            title: "Wilson",
+            location: "ucla",
+            organizer: "gene block",
+            organization: "charity"
         )
         
     ]
