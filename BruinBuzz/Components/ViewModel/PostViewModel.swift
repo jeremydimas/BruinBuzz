@@ -11,9 +11,23 @@ class PostViewModel: ObservableObject {
     private let user: User
     @Published var posts = [Post]()
     
+    // rsvp implementation
+    @Published var rsvpPosts = [Post]()
+    private let service = PostService()
+    private let userService = UserService()
+    // ends here
+    
     init(user: User) {
         self.user = user
+        self.fetchRsvpPosts()
         Task { try await fetchUserPosts() }
+    }
+    
+    func posts(forFilter filter: PostFilterViewModel) -> [Post] {
+        switch filter {
+        case .rsvp:
+            return rsvpPosts
+        }
     }
     
     @MainActor
@@ -22,6 +36,13 @@ class PostViewModel: ObservableObject {
         
         for i in 0 ..< posts.count {
             posts[i].user = self.user
+        }
+    }
+    
+    func fetchRsvpPosts() {
+        /*guard */let uid = user.id /*else { return }*/
+        service.fetchRsvpPosts(forUid: uid) { posts in
+            self.rsvpPosts = posts
         }
     }
 }

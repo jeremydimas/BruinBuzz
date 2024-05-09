@@ -10,7 +10,17 @@ import MapKit
 import Kingfisher
 
 struct HomeCell: View {
+    
+    // like implementation changes
     let post: Post
+    let darkerRed = Color(UIColor(red: 0.7, green: 0, blue: 0, alpha: 1.0))
+    @ObservedObject var RsvpViewModel: HomeCellViewModel
+    
+    init(post: Post) {
+        self.post = post // i need this
+        self.RsvpViewModel = HomeCellViewModel(post: post)
+    }
+    // ends here
     
     //bio changes
     @StateObject var viewModel = UploadPostViewModel()
@@ -23,7 +33,7 @@ struct HomeCell: View {
         VStack(spacing: 15) {
             KFImage(URL(string: post.imageUrl))
                 .resizable()
-                .frame(width: 360, height: 550)
+                .frame(width: 360, height: 535)
                 .aspectRatio(contentMode: .fill)
                 .overlay(
                     OverlayView(post)
@@ -56,6 +66,41 @@ struct HomeCell: View {
                         Spacer()
                     }
                     .padding(.leading, 40)
+                    .padding(.bottom, 10)
+                    
+                    HStack {
+                        Text("Start Date:")
+                            .fontWeight(.bold)
+                        Text("\(post.startMM)/\(post.startDD)/\(post.startYYYY)")
+                        Spacer()
+                        Text("Start Time:")
+                            .fontWeight(.bold)
+                        Text(post.starttime)
+                    }
+                    .padding(.leading, 40)
+                    .padding(.trailing, 40)
+                    .padding(.bottom, 10)
+                    
+                    HStack {
+                        Text("End Date:")
+                            .fontWeight(.bold)
+                        Text("\(post.endMM)/\(post.endDD)/\(post.endYYYY)")
+                        Spacer()
+                        Text("End Time:")
+                            .fontWeight(.bold)
+                        Text(post.endtime)
+                    }
+                    .padding(.leading, 40)
+                    .padding(.trailing, 40)
+                    .padding(.bottom, 10)
+                    
+                    HStack {
+                        Text("Description:")
+                            .fontWeight(.bold)
+                        Text(post.caption)
+                        Spacer()
+                    }
+                    .padding(.leading, 40)
                     .padding(.bottom, 20)
 
                     VStack {
@@ -75,9 +120,21 @@ struct HomeCell: View {
                 }
                 .clipShape(.rect(cornerRadius: 15))
                 .shadow(color: Color.black.opacity(0.25), radius: 8, x: 5, y: 10)
-            
-            Payment()
-                .padding(.top)
+  
+            Button {
+                RsvpViewModel.post.didRsvp ?? false ?
+                RsvpViewModel.unRsvpPost() :
+                RsvpViewModel.likePost()
+            } label: {
+                Text("RSVP")
+                    .foregroundColor(.white) // Set foreground color to white
+                    .padding() // Add padding to the content
+                    .frame(width: 110, height: 50)
+                    .background(RsvpViewModel.post.didRsvp ?? false ? darkerRed : Color("LightMode")) // Change background color based on toggle state
+                    .cornerRadius(8) // Add corner radius to the button
+            }
+//            Payment()
+//                .padding(.top)
         }
         
     }

@@ -62,7 +62,18 @@ struct UploadPostView: View
                                 caption: caption,
                                 organizer: organizer,
                                 organization: organization,
-                                location: location
+                                location: location,
+                                
+                                startMM: startMM,
+                                startDD: startDD,
+                                startYYYY: startYYYY,
+
+                                endMM: endMM,
+                                endDD: endDD,
+                                endYYYY: endYYYY,
+
+                                starttime: starttime,
+                                endtime: endtime
                             )
                             clearPostDataAndReturnToFeed()
                         }

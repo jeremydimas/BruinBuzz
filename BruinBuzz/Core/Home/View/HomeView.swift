@@ -9,6 +9,10 @@ import SwiftUI
 import Foundation
 
 struct HomeView: View {
+    
+
+    
+    
     // Fetch Feed
     @StateObject var viewModel = HomeViewModel()
     @State private var isSearching: Bool = false
@@ -47,12 +51,20 @@ struct HomeView: View {
                 .padding(.horizontal, 10)
             }
             .padding(.horizontal, 30)
-            .padding(.bottom)
+//            .padding(.bottom)
+            
+            Text("All Events")
+                .font(Font.custom("NexaRustSans-Trial-Black2", size: 20))
+                .foregroundColor(.primary)
+                .padding(.top, 10)
+                .padding(.bottom, 1)
+                .padding(.leading, -180) // Adjust this value as needed
             
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack {
                     ForEach(viewModel.posts) { post in
                         HomeCell(post: post)
+
                             .frame(width: 430)
                         
                           

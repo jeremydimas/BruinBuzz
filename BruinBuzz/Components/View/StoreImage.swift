@@ -17,7 +17,7 @@ struct StoreImage: View {
     var body: some View {
         KFImage(URL(string: post.imageUrl))
             .resizable()
-            .frame(width: 360, height: 360)
+            .frame(width: 360, height: 535)
             .aspectRatio(contentMode: .fill)
             .overlay(
                 OverlayView(post)
@@ -47,6 +47,41 @@ struct StoreImage: View {
                     Text("Organizer:")
                         .fontWeight(.bold)
                     Text(post.organizer)
+                    Spacer()
+                }
+                .padding(.leading, 40)
+                .padding(.bottom, 10)
+                
+                HStack {
+                    Text("Start Date:")
+                        .fontWeight(.bold)
+                    Text("\(post.startMM)/\(post.startDD)/\(post.startYYYY)")
+                    Spacer()
+                    Text("Start Time:")
+                        .fontWeight(.bold)
+                    Text(post.starttime)
+                }
+                .padding(.leading, 40)
+                .padding(.trailing, 40)
+                .padding(.bottom, 10)
+                
+                HStack {
+                    Text("End Date:")
+                        .fontWeight(.bold)
+                    Text("\(post.endMM)/\(post.endDD)/\(post.endYYYY)")
+                    Spacer()
+                    Text("End Time:")
+                        .fontWeight(.bold)
+                    Text(post.endtime)
+                }
+                .padding(.leading, 40)
+                .padding(.trailing, 40)
+                .padding(.bottom, 10)
+                
+                HStack {
+                    Text("Description:")
+                        .fontWeight(.bold)
+                    Text(post.caption)
                     Spacer()
                 }
                 .padding(.leading, 40)

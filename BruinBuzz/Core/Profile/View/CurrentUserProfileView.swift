@@ -27,16 +27,6 @@ struct CurrentUserProfileView: View {
 //                    .padding(.bottom, 10)
                 
                     PostView(user: user)
-                
-                Text("Upcoming Events")
-                    .font(Font.custom("NexaRustSans-Trial-Black2", size: 20))
-                    .foregroundColor(.primary)
-                    .padding(.leading, -145) // Adjust this value as needed
-                    .padding(.top, -15)
-                    .padding(.bottom, 1)
-                
-                /*ScrollView(.horizontal, showsIndicators: false)*/
-                    PostView(user: user)
 
             }
             .navigationTitle("Profile")
