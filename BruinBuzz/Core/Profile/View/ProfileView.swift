@@ -19,16 +19,6 @@ struct ProfileView: View {
                 .padding(.leading, -180) // Adjust this value as needed
             
             PostView(user: user)
-
-            Text("Upcoming Events")
-                .font(Font.custom("NexaRustSans-Trial-Black2", size: 20))
-                .foregroundColor(.primary)
-                .padding(.leading, -145) // Adjust this value as needed
-                .padding(.top, -20)
-                .padding(.bottom, 1)
-            
-            PostView(user: user)
-            
         }
         .navigationTitle("Profile")
         .foregroundColor(.primary)

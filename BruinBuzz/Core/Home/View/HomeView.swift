@@ -10,9 +10,6 @@ import Foundation
 
 struct HomeView: View {
     
-
-    
-    
     // Fetch Feed
     @StateObject var viewModel = HomeViewModel()
     @State private var isSearching: Bool = false

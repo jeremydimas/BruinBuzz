@@ -87,36 +87,38 @@ struct UploadPostView: View
                 .padding(.horizontal)
                 
                 // Post image and caption
-                HStack(spacing: 8)
-                {
-                    
-                    if let image = viewModel.postImage
+                PhotosPicker(selection: $viewModel.selectedImage){
+                    HStack(spacing: 8)
                     {
-                        image
-                            .resizable()
-                            .scaledToFill()
-                            .frame(width: 350, height: 350)
-                            .clipShape(.rect(cornerRadius: 15))
-                            .shadow(color: Color.black.opacity(0.25), radius: 8, x: 5, y: 10)
-                            .padding(.top, 15)
-                    }
-                    else
-                    {
-                        ZStack
+                        
+                        if let image = viewModel.postImage
                         {
-                            RoundedRectangle(cornerRadius: 10)
-                                .stroke(Color.gray, lineWidth: 2)
-                                .background(Color.gray.opacity(0.2))
-                                .frame(width: 350, height: 350)
-                                // Adjust the frame size as needed
-                            
-                            Image(systemName: "photo.on.rectangle.angled")
+                            image
                                 .resizable()
                                 .scaledToFill()
-                                .frame(width: 100, height: 100) // Set the width and height to your desired size
-                                .foregroundColor(Color(.gray))
+                                .frame(width: 350, height: 350)
+                                .clipShape(.rect(cornerRadius: 15))
+                                .shadow(color: Color.black.opacity(0.25), radius: 8, x: 5, y: 10)
+                                .padding(.top, 15)
                         }
-                        .padding(.top, 15)
+                        else
+                        {
+                            ZStack
+                            {
+                                RoundedRectangle(cornerRadius: 10)
+                                    .stroke(Color.gray, lineWidth: 2)
+                                    .background(Color.gray.opacity(0.2))
+                                    .frame(width: 350, height: 350)
+                                // Adjust the frame size as needed
+                                
+                                Image(systemName: "photo.on.rectangle.angled")
+                                    .resizable()
+                                    .scaledToFill()
+                                    .frame(width: 100, height: 100) // Set the width and height to your desired size
+                                    .foregroundColor(Color(.gray))
+                            }
+                            .padding(.top, 15)
+                        }
                     }
                 }
                 

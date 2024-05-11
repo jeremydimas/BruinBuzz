@@ -1,10 +1,3 @@
-//
-//  Home.swift
-//  BruinBuzz
-//
-//  Created by Yahir Dimas on 4/17/24.
-//
-
 import SwiftUI
 import MapKit
 import Kingfisher
@@ -45,78 +38,87 @@ struct HomeCell: View {
                     showingBottomSheet.toggle()
                 }
                 .sheet(isPresented: $showingBottomSheet) {
-                    HStack {
-                        KFImage(URL(string: post.imageUrl))
-                            .resizable()
-                            .frame(width: 350, height: 350)
-                            .clipShape(CurvedShape())
-                            .overlay(
-                                OverlayView(post)
+                    ScrollView 
+                    {
+                        VStack {
+                            HStack {
+                                KFImage(URL(string: post.imageUrl))
+                                    .resizable()
                                     .frame(width: 350, height: 350)
-                                    .clipShape(.rect(cornerRadius: 15))
-                            )
-                            .padding(.bottom, 5)
-                    }
-                    .edgesIgnoringSafeArea(.all)
-                    
-                    HStack {
-                        Text("Organizer:")
-                            .fontWeight(.bold)
-                        Text(post.organizer)
-                        Spacer()
-                    }
-                    .padding(.leading, 40)
-                    .padding(.bottom, 10)
-                    
-                    HStack {
-                        Text("Start Date:")
-                            .fontWeight(.bold)
-                        Text("\(post.startMM)/\(post.startDD)/\(post.startYYYY)")
-                        Spacer()
-                        Text("Start Time:")
-                            .fontWeight(.bold)
-                        Text(post.starttime)
-                    }
-                    .padding(.leading, 40)
-                    .padding(.trailing, 40)
-                    .padding(.bottom, 10)
-                    
-                    HStack {
-                        Text("End Date:")
-                            .fontWeight(.bold)
-                        Text("\(post.endMM)/\(post.endDD)/\(post.endYYYY)")
-                        Spacer()
-                        Text("End Time:")
-                            .fontWeight(.bold)
-                        Text(post.endtime)
-                    }
-                    .padding(.leading, 40)
-                    .padding(.trailing, 40)
-                    .padding(.bottom, 10)
-                    
-                    HStack {
-                        Text("Description:")
-                            .fontWeight(.bold)
-                        Text(post.caption)
-                        Spacer()
-                    }
-                    .padding(.leading, 40)
-                    .padding(.bottom, 20)
+                                    .clipShape(CurvedShape())
+                                    .overlay(
+                                        OverlayView(post)
+                                            .frame(width: 350, height: 350)
+                                            .clipShape(.rect(cornerRadius: 15))
+                                    )
+                                    .padding(.bottom, 5)
+                                    .padding(.top, 30)
+                            }
+                            
+                            HStack {
+                                Text("Organizer:")
+                                    .fontWeight(.bold)
+                                Text(post.organizer)
+                                Spacer()
+                            }
+                            .padding(.leading, 40)
+                            .padding(.bottom, 10)
 
-                    VStack {
-                        HStack {
-                            Text("Location:")
-                                .fontWeight(.bold)
-                            Text(post.location)
-                            Spacer()
+                            HStack {
+                                Text("Description: ")
+                                    .fontWeight(.bold) +
+                                Text(post.caption)
+
+                                Spacer()
+                            }
+                            .padding(.leading, 40)
+                            .padding(.trailing, 40)
+                            .padding(.bottom, 10)
+
+                            HStack {
+                                Text("Start Date: ")
+                                    .fontWeight(.bold) +
+                                Text("\(post.startMM)/\(post.startDD)/\(post.startYYYY)") +
+                                Text(" - ")
+                                    .fontWeight(.bold) +
+                                Text(post.starttime)
+                                    .fontWeight(.regular)
+                                Spacer()
+                            }
+                            .padding(.leading, 40)
+                            .padding(.trailing, 40)
+                            .padding(.bottom, 10)
+                            
+                            HStack {
+                                Text("End Date: ")
+                                    .fontWeight(.bold) +
+                                Text("\(post.endMM)/\(post.endDD)/\(post.endYYYY)") +
+                                Text(" - ")
+                                    .fontWeight(.bold) +
+                                Text(post.endtime)
+                                    .fontWeight(.regular)
+                                Spacer()
+                            }
+                            .padding(.leading, 40)
+                            .padding(.trailing, 40)
+                            .padding(.bottom, 10)
+                            
+                            VStack {
+                                HStack {
+                                    Text("Location:")
+                                        .fontWeight(.bold)
+                                    Text(post.location)
+                                    Spacer()
+                                }
+                                .padding(.leading, 40)
+                                MapView()
+                                    .frame(width: 350, height: 200)
+                                    .clipShape(CurvedShape())
+                                    .padding(.top, -1)
+                            }
+                            .presentationDragIndicator(.visible)
                         }
-                        .padding(.leading, 40)
-                        MapView()
-                            .frame(width: 350, height: 200)
-                            .clipShape(CurvedShape())
-                            .padding(.top, -1)
                     }
-                    .presentationDragIndicator(.visible)
                 }
                 .clipShape(.rect(cornerRadius: 15))
                 .shadow(color: Color.black.opacity(0.25), radius: 8, x: 5, y: 10)
@@ -127,7 +129,7 @@ struct HomeCell: View {
                 RsvpViewModel.likePost()
             } label: {
                 Text("RSVP")
-                    .foregroundColor(.white) // Set foreground color to white
+                    .foregroundColor(Color("DarkMode")) // Set foreground color to white
                     .padding() // Add padding to the content
                     .frame(width: 110, height: 50)
                     .background(RsvpViewModel.post.didRsvp ?? false ? darkerRed : Color("LightMode")) // Change background color based on toggle state
