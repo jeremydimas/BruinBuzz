@@ -10,7 +10,6 @@ import SwiftUI
 struct LoginView: View {
     
     @StateObject var viewModel = LoginViewModel()
-    @State private var text = ""
     
     var body: some View {
         NavigationStack{
@@ -20,8 +19,7 @@ struct LoginView: View {
                     .aspectRatio(contentMode: .fill)
                     .edgesIgnoringSafeArea(.all)
                 
-                VStack 
-                {
+                VStack {
                     VStack{
                         Text("Login")
                             .foregroundColor(.white)
@@ -29,18 +27,45 @@ struct LoginView: View {
                             .bold()
                             .padding()
                         
-                        TextField("Email", text: $viewModel.email)
-                            .autocapitalization(.none)
-                            .foregroundColor(.black)
-                            .modifier(TextFieldModifier())
-                            .foregroundColor(.black)
-                        
-                        SecureField("Password", text: $viewModel.password)
-                            .autocapitalization(.none)
-                            .modifier(TextFieldModifier())
-                            .foregroundColor(.black)
-                    }
 
+                        TextField("", text: $viewModel.email)
+                            .autocapitalization(.none)
+                            .modifier(TextFieldModifier())
+                            .foregroundColor(.black) // Set the color of the entered text
+                            .accentColor(.black) // Set the color of the cursor and selection
+                            .colorScheme(.dark) // Ensure that the dark mode color scheme is used
+                            .overlay(
+                                Group {
+                                    if viewModel.email.isEmpty {
+                                        Text("Email")
+                                            .foregroundColor(Color(.lightGray)) // Set the color of the placeholder text
+                                        .padding(.leading, -138)                                    }
+                                }
+                            )
+                        
+                        SecureField("", text: $viewModel.password)
+                            .autocapitalization(.none)
+                            .modifier(TextFieldModifier())
+                            .foregroundColor(.black) // Set the color of the entered text
+                            .accentColor(.black) // Set the color of the cursor and selection
+                            .colorScheme(.dark) // Ensure that the dark mode color scheme is used
+                            .overlay(
+                                Group {
+                                    if viewModel.password.isEmpty {
+                                        Text("Password")
+                                            .foregroundColor(Color(.lightGray)) // Set the color of the placeholder text
+                                            .padding(.leading, -138)
+
+                                    }
+                                }
+                            )
+                        
+                        
+//                        SecureField("Password", text: $viewModel.password)
+//                            .autocapitalization(.none)
+//                            .modifier(TextFieldModifier())
+                }
+                    
                     Button {
                         Task { try await viewModel.signIn() }
                     } label: {

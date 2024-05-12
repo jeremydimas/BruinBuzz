@@ -10,11 +10,9 @@ import SwiftUI
 struct TextFieldModifier: ViewModifier {
     func body(content: Content) -> some View {
         content
-            .foregroundColor(.black)
             .padding(12)
             .frame(width:300, height:50)
-            .background(Color.white.opacity(1))
-//            .background(Color.gray)
+            .background(.white)
             .cornerRadius(10)
     }
 }

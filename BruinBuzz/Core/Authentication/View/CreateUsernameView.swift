@@ -31,11 +31,22 @@ struct CreateUsernameView: View {
                     .multilineTextAlignment(.center)
                     .padding(.bottom, 8)
                 
-                TextField("Username", text: $viewModel.username)
-                    .autocapitalization(/*@START_MENU_TOKEN@*/.none/*@END_MENU_TOKEN@*/)
+                TextField("", text: $viewModel.username)
+                    .autocapitalization(.none)
                     .font(.subheadline)
-                    .foregroundColor(.black)
                     .modifier(TextFieldModifier())
+                    .foregroundColor(.black) // Set the color of the entered text
+                    .accentColor(.black) // Set the color of the cursor and selection
+                    .colorScheme(.dark) // Ensure that the dark mode color scheme is used
+                    .overlay(
+                        Group {
+                            if viewModel.username.isEmpty {
+                                Text("Username")
+                                    .foregroundColor(Color(.lightGray)) // Set the color of the placeholder text
+                                    .padding(.leading, -138)
+                            }
+                        }
+                    )
                 
                 NavigationLink {
                     CreatePasswordView()

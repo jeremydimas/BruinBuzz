@@ -52,7 +52,7 @@ struct HomeCell: View {
                                             .clipShape(.rect(cornerRadius: 15))
                                     )
                                     .padding(.bottom, 5)
-                                    .padding(.top, 30)
+                                    .padding(.top, 40)
                             }
                             
                             HStack {

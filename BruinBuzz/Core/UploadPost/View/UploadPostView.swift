@@ -258,7 +258,7 @@ struct UploadPostView: View
                                 .background(Color.gray.opacity(0.2))
                                 .cornerRadius(10)
                                 .frame(width: 100)
-                            TextField("YYYY", text: $startYYYY)
+                            TextField("YY", text: $startYYYY)
                                 .autocapitalization(.none)
                                 .padding()
                                 
@@ -298,7 +298,7 @@ struct UploadPostView: View
                                 .background(Color.gray.opacity(0.2))
                                 .cornerRadius(10)
                                 .frame(width: 100)
-                            TextField("YYYY", text: $endYYYY)
+                            TextField("YY", text: $endYYYY)
                                 .autocapitalization(.none)
                                 .padding()
                                 
@@ -331,7 +331,7 @@ struct UploadPostView: View
                                 
                                 .background(Color.gray.opacity(0.2))
                                 .cornerRadius(10)
-                                .frame(width: 350)
+                                .frame(width: 325)
                             
                             
 //                                Picker(selection: $starttimezone, label: Text("Select an option"))
@@ -352,7 +352,7 @@ struct UploadPostView: View
                         
                         HStack
                         {
-                            Text("12:00 PM")
+                            Text("End Time")
                                 .padding(.top, 10)
                                 .font(.title2)
                                 .bold()
@@ -367,13 +367,13 @@ struct UploadPostView: View
                         
                         HStack
                         {
-                            TextField("Time", text: $endtime)
+                            TextField("12:00 PM", text: $endtime)
                                 .autocapitalization(.none)
                                 .padding()
                                 
                                 .background(Color.gray.opacity(0.2))
                                 .cornerRadius(10)
-                                .frame(width: 350)
+                                .frame(width: 325)
                             
                             
 //                                Picker(selection: $endtimezone, label: Text("Select an option"))
