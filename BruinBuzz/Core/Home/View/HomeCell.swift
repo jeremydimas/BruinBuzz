@@ -111,10 +111,10 @@ struct HomeCell: View {
                                     Spacer()
                                 }
                                 .padding(.leading, 40)
-                                MapView()
-                                    .frame(width: 350, height: 200)
-                                    .clipShape(CurvedShape())
-                                    .padding(.top, -1)
+//                                MapView()
+//                                    .frame(width: 350, height: 200)
+//                                    .clipShape(CurvedShape())
+//                                    .padding(.top, -1)
                             }
                             .presentationDragIndicator(.visible)
                         }
@@ -129,11 +129,11 @@ struct HomeCell: View {
                 RsvpViewModel.likePost()
             } label: {
                 Text("RSVP")
-                    .foregroundColor(Color("DarkMode")) // Set foreground color to white
-                    .padding() // Add padding to the content
+                    .foregroundColor(Color("DarkMode"))
+                    .padding()
                     .frame(width: 110, height: 50)
-                    .background(RsvpViewModel.post.didRsvp ?? false ? darkerRed : Color("LightMode")) // Change background color based on toggle state
-                    .cornerRadius(8) // Add corner radius to the button
+                    .background(RsvpViewModel.post.didRsvp ?? false ? darkerRed : Color("LightMode"))
+                    .cornerRadius(8)
             }
 //            Payment()
 //                .padding(.top)
@@ -148,7 +148,7 @@ struct CurvedShape: Shape
     {
         let width = rect.size.width
         let height = rect.size.height
-        let radius: CGFloat = 30 // Adjust the radius to control the curvature
+        let radius: CGFloat = 30
         var path = Path()
         
         path.move(to: CGPoint(x: 0, y: radius))
@@ -201,7 +201,6 @@ struct MapView: UIViewRepresentable
 
     func updateUIView(_ view: MKMapView, context: Context)
     {
-        // Update the map view if needed
     }
 }
 

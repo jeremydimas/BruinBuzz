@@ -27,8 +27,8 @@ struct SearchPage: View
                     ZStack(alignment: .leading)
                     {
                         Capsule()
-                            .fill(Color.gray.opacity(0.2)) // Use gray color with opacity
-                            .frame(height: 40) // Adjust the height as needed
+                            .fill(Color.gray.opacity(0.2)) 
+                            .frame(height: 40)
                             
                         HStack(spacing: 12)
                         {

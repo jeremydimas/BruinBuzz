@@ -34,6 +34,7 @@ struct CreateUsernameView: View {
                 TextField("Username", text: $viewModel.username)
                     .autocapitalization(/*@START_MENU_TOKEN@*/.none/*@END_MENU_TOKEN@*/)
                     .font(.subheadline)
+                    .foregroundColor(.black)
                     .modifier(TextFieldModifier())
                 
                 NavigationLink {

@@ -41,10 +41,10 @@ struct Payment: View {
         {
             Button("RSVP"){}
                 .foregroundColor(Color("DarkMode"))
-                .padding() // Add padding to the content
+                .padding() 
                 .frame(width: 110, height: 50)
-                .background(Color("LightMode")) // Add a background color to the button
-                .cornerRadius(8) // Add corner radius to the button
+                .background(Color("LightMode"))
+                .cornerRadius(8)
 
             Button(action: {
                 isButtonTapped.toggle()
@@ -54,15 +54,15 @@ struct Payment: View {
                     Image(systemName: "creditcard.fill")
                         .resizable()
                         .frame(width: 35, height: 30)
-                        .foregroundColor(.white) // Customize image color if needed
+                        .foregroundColor(.white)
                     
                     Text("Pay")
-                        .foregroundColor(.white) // Customize text color if needed
+                        .foregroundColor(.white)
                 }
-                .padding() // Add padding to the content
+                .padding()
                 .frame(width: 110, height: 50)
-                .background(Color(.systemBlue)) // Add a background color to the button
-                .cornerRadius(8) // Add corner radius to the button
+                .background(Color(.systemBlue))
+                .cornerRadius(8)
             }
             .sheet(isPresented: $showingBottomSheet) {
                 // Content of the bottom sheet

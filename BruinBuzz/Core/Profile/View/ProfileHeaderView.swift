@@ -15,9 +15,9 @@ struct ProfileHeaderView: View {
         VStack(spacing: 10) {
             // Profile Image and Events
             HStack {
-                UserStatView(value: 3, title: "My\nEvents")
+//                UserStatView(value: 3, title: "My\nEvents")
                 CircularProfileImageView(user: user, size: .large)
-                UserStatView(value: 3, title: "Upcoming\nEvents")
+//                UserStatView(value: 3, title: "Upcoming\nEvents")
             }
             // Name and biography
             VStack {

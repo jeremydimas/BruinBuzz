@@ -10,6 +10,7 @@ import SwiftUI
 struct LoginView: View {
     
     @StateObject var viewModel = LoginViewModel()
+    @State private var text = ""
     
     var body: some View {
         NavigationStack{
@@ -19,21 +20,27 @@ struct LoginView: View {
                     .aspectRatio(contentMode: .fill)
                     .edgesIgnoringSafeArea(.all)
                 
-                VStack {
+                VStack 
+                {
                     VStack{
                         Text("Login")
                             .foregroundColor(.white)
                             .font(.largeTitle)
                             .bold()
                             .padding()
+                        
                         TextField("Email", text: $viewModel.email)
                             .autocapitalization(.none)
+                            .foregroundColor(.black)
                             .modifier(TextFieldModifier())
+                            .foregroundColor(.black)
+                        
                         SecureField("Password", text: $viewModel.password)
                             .autocapitalization(.none)
                             .modifier(TextFieldModifier())
+                            .foregroundColor(.black)
                     }
-                    
+
                     Button {
                         Task { try await viewModel.signIn() }
                     } label: {

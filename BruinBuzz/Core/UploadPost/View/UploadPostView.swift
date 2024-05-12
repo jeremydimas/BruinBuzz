@@ -109,12 +109,12 @@ struct UploadPostView: View
                                     .stroke(Color.gray, lineWidth: 2)
                                     .background(Color.gray.opacity(0.2))
                                     .frame(width: 350, height: 350)
-                                // Adjust the frame size as needed
+                                
                                 
                                 Image(systemName: "photo.on.rectangle.angled")
                                     .resizable()
                                     .scaledToFill()
-                                    .frame(width: 100, height: 100) // Set the width and height to your desired size
+                                    .frame(width: 100, height: 100)
                                     .foregroundColor(Color(.gray))
                             }
                             .padding(.top, 15)
@@ -167,7 +167,7 @@ struct UploadPostView: View
                             .padding()
                             .background(Color.gray.opacity(0.2))
                             .cornerRadius(10)
-                            .frame(width: 325) // Increased height
+                            .frame(width: 325)
 //                          .multilineTextAlignment(.center)
                         
                         HStack
@@ -325,34 +325,34 @@ struct UploadPostView: View
                         
                         HStack
                         {
-                            TextField("Time", text: $starttime)
+                            TextField("12:00 AM", text: $starttime)
                                 .autocapitalization(.none)
                                 .padding()
                                 
                                 .background(Color.gray.opacity(0.2))
                                 .cornerRadius(10)
-                                .frame(width: 100)
+                                .frame(width: 350)
                             
                             
-                                Picker(selection: $starttimezone, label: Text("Select an option"))
-                                {
-                                    ForEach(0..<options.count)
-                                    { index in
-                                        Text(options[index]).tag(index)
-                                    }
-                                }
-                                .pickerStyle(MenuPickerStyle())
-                                .frame(height:22)
-                                .padding()
-                                .background(Color.gray.opacity(0.2))
-                                .cornerRadius(10)
-                                
-                                .foregroundColor(.gray)
+//                                Picker(selection: $starttimezone, label: Text("Select an option"))
+//                                {
+//                                    ForEach(0..<options.count)
+//                                    { index in
+//                                        Text(options[index]).tag(index)
+//                                    }
+//                                }
+//                                .pickerStyle(MenuPickerStyle())
+//                                .frame(height:22)
+//                                .padding()
+//                                .background(Color.gray.opacity(0.2))
+//                                .cornerRadius(10)
+//                                
+//                                .foregroundColor(.gray)
                         }
                         
                         HStack
                         {
-                            Text("End Time")
+                            Text("12:00 PM")
                                 .padding(.top, 10)
                                 .font(.title2)
                                 .bold()
@@ -373,21 +373,21 @@ struct UploadPostView: View
                                 
                                 .background(Color.gray.opacity(0.2))
                                 .cornerRadius(10)
-                                .frame(width: 100)
+                                .frame(width: 350)
                             
                             
-                                Picker(selection: $endtimezone, label: Text("Select an option"))
-                                {
-                                    ForEach(0..<options.count)
-                                    { index in
-                                        Text(options[index]).tag(index)
-                                    }
-                                }
-                                .pickerStyle(MenuPickerStyle())
-                                .frame(height:22)
-                                .padding()
-                                .background(Color.gray.opacity(0.2))
-                                .cornerRadius(10)
+//                                Picker(selection: $endtimezone, label: Text("Select an option"))
+//                                {
+//                                    ForEach(0..<options.count)
+//                                    { index in
+//                                        Text(options[index]).tag(index)
+//                                    }
+//                                }
+//                                .pickerStyle(MenuPickerStyle())
+//                                .frame(height:22)
+//                                .padding()
+//                                .background(Color.gray.opacity(0.2))
+//                                .cornerRadius(10)
                                 
                                 .foregroundColor(.gray)
                                  

@@ -8,7 +8,6 @@ struct SplashScreen: View {
     
     var body: some View {
         
-        // Add a ZStack to overlay the gradient background and content
         ZStack {
             // Background gradient
             Color("Royal Blue")

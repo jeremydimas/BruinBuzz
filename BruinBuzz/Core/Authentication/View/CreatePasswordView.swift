@@ -34,6 +34,7 @@ struct CreatePasswordView: View {
                 TextField("Password", text: $viewModel.password)
                     .autocapitalization(/*@START_MENU_TOKEN@*/.none/*@END_MENU_TOKEN@*/)
                     .font(.subheadline)
+                    .foregroundColor(.black)
                     .modifier(TextFieldModifier())
                 
                 NavigationLink {

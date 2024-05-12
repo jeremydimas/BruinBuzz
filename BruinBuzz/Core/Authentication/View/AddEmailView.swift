@@ -36,6 +36,7 @@ struct AddEmailView: View {
                 TextField("Email", text: $viewModel.email)
                     .autocapitalization(/*@START_MENU_TOKEN@*/.none/*@END_MENU_TOKEN@*/)
                     .font(.subheadline)
+                    .foregroundColor(.black)
                     .modifier(TextFieldModifier())
 
                 NavigationLink {
