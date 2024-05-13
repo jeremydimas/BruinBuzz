@@ -131,6 +131,7 @@
 		FB33AD732BE9B19F008CE113 /* PaymentConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentConfig.swift; sourceTree = "<group>"; };
 		FB33AD742BE9B19F008CE113 /* PaymentGatewayController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentGatewayController.swift; sourceTree = "<group>"; };
 		FB4123672BE2A50900816ED2 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
+		FB69A8C52BF29CCA00D26F74 /* BruinBuzz.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BruinBuzz.entitlements; sourceTree = "<group>"; };
 		FBA88DE82BC9B7BC00F92A9A /* BruinBuzz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BruinBuzz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FBA88DEF2BC9B7BE00F92A9A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FBA88DF22BC9B7BE00F92A9A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -471,6 +472,7 @@
 		FBA88DEA2BC9B7BC00F92A9A /* BruinBuzz */ = {
 			isa = PBXGroup;
 			children = (
+				FB69A8C52BF29CCA00D26F74 /* BruinBuzz.entitlements */,
 				36FA18162BD6150E00586641 /* App */,
 				36FA18192BD6C70600586641 /* Core */,
 				FBA88E052BC9B7BE00F92A9A /* BruinBuzzUITests */,
@@ -861,6 +863,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = BruinBuzz/BruinBuzz.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"BruinBuzz/Preview Content\"";
@@ -869,6 +872,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BruinBuzz/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.business";
+				INFOPLIST_KEY_NSCameraUsageDescription = "";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -893,6 +897,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = BruinBuzz/BruinBuzz.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"BruinBuzz/Preview Content\"";
@@ -901,6 +906,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BruinBuzz/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.business";
+				INFOPLIST_KEY_NSCameraUsageDescription = "";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

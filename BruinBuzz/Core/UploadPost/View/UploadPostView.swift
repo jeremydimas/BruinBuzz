@@ -389,7 +389,7 @@ struct UploadPostView: View
 //                                .background(Color.gray.opacity(0.2))
 //                                .cornerRadius(10)
                                 
-                                .foregroundColor(.gray)
+//                                .foregroundColor(.gray)
                                  
                         }
                         
