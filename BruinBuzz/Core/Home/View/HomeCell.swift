@@ -26,6 +26,7 @@ struct HomeCell: View {
         VStack(spacing: 15) {
             KFImage(URL(string: post.imageUrl))
                 .resizable()
+            // orginal - w: 360, h: 535
                 .frame(width: 360, height: 535)
                 .aspectRatio(contentMode: .fill)
                 .overlay(

@@ -41,12 +41,12 @@ struct ProfileHeaderView: View {
                     print("Follow user")
                 }
             } label: {
-                Text(user.isCurrentUser ? "Edit Profile" : "Follow")
+                Text(user.isCurrentUser ? "Edit Profile" : "")
                     .font(.subheadline)
                     .fontWeight(.semibold)
                     .frame(width:360, height: 32) //w:360
-                    .background(user.isCurrentUser ? .white : Color(.systemBlue))
-                    .foregroundColor(user.isCurrentUser ? .black : .white)
+                    .background(user.isCurrentUser ? .white : Color("DarkMode"))
+                    .foregroundColor(user.isCurrentUser ? .black : .black)
                     .cornerRadius(6)
                     .overlay(
                         RoundedRectangle(cornerRadius: 6)
