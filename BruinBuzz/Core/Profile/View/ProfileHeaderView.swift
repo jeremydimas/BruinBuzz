@@ -9,6 +9,9 @@ import SwiftUI
 
 struct ProfileHeaderView: View {
     let user: User
+    
+    
+    
     @State private var showEditProfile = false
     
     var body: some View {

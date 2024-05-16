@@ -13,6 +13,9 @@ import SwiftUI
 class EditProfileViewModel: ObservableObject {
     @Published var user: User
     
+
+
+
     @Published var selectedImage: PhotosPickerItem? {
         didSet { Task { await loadImage(fromItem: selectedImage) } }
     }
@@ -44,8 +47,10 @@ class EditProfileViewModel: ObservableObject {
     }
     
     func updateUserData() async throws {
-        // update profile image if changed
+            
         
+        // update profile image if changed
+        print("update data is refreshing...")
         var data = [String: Any]()
         
         if let uiImage = uiImage {

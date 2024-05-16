@@ -19,6 +19,7 @@ struct Post: Identifiable, Hashable, Codable {
     // post information
     let caption: String
     var rsvp: Int
+    let timestamp: Timestamp
     var user: User?
     let title: String
     let location: String
@@ -51,6 +52,7 @@ extension Post {
             imageUrl: "UCLA1",
             caption: "UCLA",
             rsvp: 0,
+            timestamp: Timestamp(),
             user: User.MOCK_USERS[0],
             title: "Bruin Walk",
             location: "ucla",
@@ -74,6 +76,7 @@ extension Post {
             imageUrl: "UCLA2",
             caption: "UCLA",
             rsvp: 0,
+            timestamp: Timestamp(),
             user: User.MOCK_USERS[1],
             title: "Royce",
             location: "ucla",
@@ -98,6 +101,7 @@ extension Post {
             imageUrl: "UCLA2",
             caption: "UCLA",
             rsvp: 0,
+            timestamp: Timestamp(),
             user: User.MOCK_USERS[1],
             title: "Royce",
             location: "ucla",
@@ -122,6 +126,7 @@ extension Post {
             imageUrl: "UCLA3",
             caption: "UCLA",
             rsvp: 0,
+            timestamp: Timestamp(),
             user: User.MOCK_USERS[2],
             title: "Wilson",
             location: "ucla",

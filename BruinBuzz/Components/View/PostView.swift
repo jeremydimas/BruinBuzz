@@ -13,6 +13,14 @@ struct PostView: View {
     }
 
     var body: some View {
+        
+        Text("My Events")
+            .font(Font.custom("NexaRustSans-Trial-Black2", size: 20))
+            .foregroundColor(.primary)
+            .padding(.top, 15)
+            .padding(.bottom, 1)
+            .padding(.leading, -180) // Adjust this value as needed
+        
         ScrollView(.horizontal, showsIndicators: false) {
             HStack { // Adjust spacing between posts as needed
                 ForEach(viewModel.posts) { post in

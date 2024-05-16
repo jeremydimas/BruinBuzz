@@ -41,6 +41,7 @@
 		36C049432BE8318A00E59C15 /* SearchPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36C049422BE8318A00E59C15 /* SearchPage.swift */; };
 		36C049472BE8331900E59C15 /* PostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36C049462BE8331900E59C15 /* PostViewModel.swift */; };
 		36C049492BE8338500E59C15 /* StoreImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36C049482BE8338500E59C15 /* StoreImage.swift */; };
+		36D2C5EF2BF58BBF00FE9D1C /* Timestamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D2C5EE2BF58BBF00FE9D1C /* Timestamp.swift */; };
 		36EEBBDA2BDCAACE00DEF6E0 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36EEBBD92BDCAACE00DEF6E0 /* ProfileView.swift */; };
 		36EEBBDC2BDCAB8200DEF6E0 /* CurrentUserProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36EEBBDB2BDCAB8200DEF6E0 /* CurrentUserProfileView.swift */; };
 		36FA17F62BD6082300586641 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 36FA17F52BD6082300586641 /* GoogleService-Info.plist */; };
@@ -120,6 +121,7 @@
 		36C049422BE8318A00E59C15 /* SearchPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPage.swift; sourceTree = "<group>"; };
 		36C049462BE8331900E59C15 /* PostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewModel.swift; sourceTree = "<group>"; };
 		36C049482BE8338500E59C15 /* StoreImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreImage.swift; sourceTree = "<group>"; };
+		36D2C5EE2BF58BBF00FE9D1C /* Timestamp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Timestamp.swift; sourceTree = "<group>"; };
 		36EEBBD92BDCAACE00DEF6E0 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		36EEBBDB2BDCAB8200DEF6E0 /* CurrentUserProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentUserProfileView.swift; sourceTree = "<group>"; };
 		36FA17F52BD6082300586641 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -386,6 +388,14 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		36D2C5ED2BF58B7F00FE9D1C /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				36D2C5EE2BF58BBF00FE9D1C /* Timestamp.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		36FA18162BD6150E00586641 /* App */ = {
 			isa = PBXGroup;
 			children = (
@@ -475,6 +485,7 @@
 				FB69A8C52BF29CCA00D26F74 /* BruinBuzz.entitlements */,
 				36FA18162BD6150E00586641 /* App */,
 				36FA18192BD6C70600586641 /* Core */,
+				36D2C5ED2BF58B7F00FE9D1C /* Extensions */,
 				FBA88E052BC9B7BE00F92A9A /* BruinBuzzUITests */,
 				FBA88DFB2BC9B7BE00F92A9A /* BruinBuzzTests */,
 				36B2C7762BD78962003E97B3 /* Model */,
@@ -692,6 +703,7 @@
 				36C049472BE8331900E59C15 /* PostViewModel.swift in Sources */,
 				362955372BD0A5BF00CA8D7B /* MainTabView.swift in Sources */,
 				36EEBBDA2BDCAACE00DEF6E0 /* ProfileView.swift in Sources */,
+				36D2C5EF2BF58BBF00FE9D1C /* Timestamp.swift in Sources */,
 				36B2C76E2BD75148003E97B3 /* RegistrationViewModel.swift in Sources */,
 				367FBD632BDA36C1007D1303 /* CreatePasswordView.swift in Sources */,
 				FB33AD762BE9B19F008CE113 /* CheckoutIntentResponse.swift in Sources */,
@@ -879,6 +891,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -913,6 +926,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

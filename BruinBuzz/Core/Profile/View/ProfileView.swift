@@ -2,6 +2,16 @@ import SwiftUI
 
 struct ProfileView: View {
     let user: User
+    
+    @StateObject private var viewModel: PostViewModel
+    
+    @State private var refreshedUser: User? = nil
+    
+    init(user: User) {
+        self.user = user
+        self._viewModel = StateObject(wrappedValue: PostViewModel(user: user))
+    }
+    
     @State var showingBottomSheet = false
     @State private var isImageTapped = false
     
@@ -10,19 +20,26 @@ struct ProfileView: View {
             // Header
             ProfileHeaderView(user: user)
             
-            // Post grid view
-            Text("My Events")
-                .font(Font.custom("NexaRustSans-Trial-Black2", size: 20))
-                .foregroundColor(.primary)
-                .padding(.top, 15)
-                .padding(.bottom, 1)
-                .padding(.leading, -180) // Adjust this value as needed
-            
             PostView(user: user)
         }
         .navigationTitle("Profile")
         .foregroundColor(.primary)
         .navigationBarTitleDisplayMode(.inline)
+        .refreshable {
+            print("refreshing..")
+            do {
+                try await viewModel.fetchUserPosts()
+                refreshedUser = user // Update refreshedUser after fetching user posts
+
+            } catch {
+                // Handle the error here, such as showing an alert to the user
+                print("Error fetching user posts: \(error)")
+            }
+            // Reset refreshedUser state after each refresh
+            DispatchQueue.main.asyncAfter(deadline: .now()) {
+                refreshedUser = nil
+            }
+        }
     }
 }
 

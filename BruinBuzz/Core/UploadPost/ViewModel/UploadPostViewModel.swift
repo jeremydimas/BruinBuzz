@@ -54,6 +54,7 @@ class UploadPostViewModel: ObservableObject {
             imageUrl: imageUrl,
             caption: caption,
             rsvp: 0,
+            timestamp: Timestamp(),
             title: title,
             location: location,
             organizer: organizer,

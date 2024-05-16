@@ -35,6 +35,7 @@ class PostViewModel: ObservableObject {
         self.posts = try await PostService.fetchUserPosts(uid: user.id)
         
         for i in 0 ..< posts.count {
+            print(i)
             posts[i].user = self.user
         }
     }

@@ -34,6 +34,8 @@ struct UploadPostView: View
     
     @State private var caption = ""
     @StateObject var viewModel = UploadPostViewModel()
+    @StateObject var refreshCall = HomeViewModel()
+
     @Binding var tabIndex: Int
     
     var body: some View

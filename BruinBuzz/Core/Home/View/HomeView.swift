@@ -13,7 +13,7 @@ struct HomeView: View {
     // Fetch Feed
     @StateObject var viewModel = HomeViewModel()
     @State private var isSearching: Bool = false
-    // Ends here
+        // Ends here
     
     @State private var searchText: String = ""
     
@@ -57,26 +57,41 @@ struct HomeView: View {
                 .padding(.bottom, 1)
                 .padding(.leading, -180) // Adjust this value as needed
             
-            ScrollView(.horizontal, showsIndicators: false) {
-                HStack {
-                    ForEach(viewModel.posts) { post in
-                        HomeCell(post: post)
-
-                            .frame(width: 430)
-                        
-                          
-                    }
+            ScrollView {
+                ScrollView(.horizontal, showsIndicators: false) {
+                        HStack {
+                            ForEach(viewModel.posts) { post in
+                                HomeCell(post: post)
+                                    .frame(width: 430)
+                            }
+                        }
                 }
-                
-                Spacer()
             }
-        
+            .refreshable {
+                do {
+                    try await viewModel.fetchPosts()
+                } catch {
+                    // Handle the error here, you can log it or display an alert to the user
+                    print("Error fetching posts: \(error)")
+                }
+            }
+
+            Spacer()
         }
         .fullScreenCover(isPresented: $isSearching)
         {
             SearchPage()
         }
     }
+    
+}
+
+struct Refresh {
+    var startOffset: CGFloat = 0
+    var offset: CGFloat = 0
+    var started: Bool
+    var released: Bool
+    var invalid: Bool = false
 }
 
 struct Home_Previews: PreviewProvider {
