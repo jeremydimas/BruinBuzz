@@ -10,7 +10,8 @@ import SwiftUI
 struct ProfileHeaderView: View {
     let user: User
     
-    
+    let twitterBlue = Color(UIColor(red: 0.016, green: 0.25, blue: 0.47, alpha: 1))
+
     
     @State private var showEditProfile = false
     
@@ -48,7 +49,7 @@ struct ProfileHeaderView: View {
                     .font(.subheadline)
                     .fontWeight(.semibold)
                     .frame(width:360, height: 32) //w:360
-                    .background(user.isCurrentUser ? .white : Color("DarkMode"))
+                    .background(user.isCurrentUser ? .white : Color.white.opacity(0.0))
                     .foregroundColor(user.isCurrentUser ? .black : .black)
                     .cornerRadius(6)
                     .overlay(
@@ -56,7 +57,6 @@ struct ProfileHeaderView: View {
                             .stroke(user.isCurrentUser ? .gray : .clear, lineWidth: 1)
                     )
             }
-            Divider()
         }
         .fullScreenCover(isPresented: $showEditProfile) {
             EditProfileView(user: user)

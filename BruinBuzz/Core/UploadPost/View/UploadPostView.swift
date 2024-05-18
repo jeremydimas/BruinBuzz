@@ -35,384 +35,391 @@ struct UploadPostView: View
     @State private var caption = ""
     @StateObject var viewModel = UploadPostViewModel()
     @StateObject var refreshCall = HomeViewModel()
+    let twitterBlue = Color(UIColor(red: 0.016, green: 0.25, blue: 0.47, alpha: 1))
+
 
     @Binding var tabIndex: Int
     
     var body: some View
     {
-        ScrollView
-        {
-            VStack
+        ZStack {
+            RadialGradient(gradient: Gradient(colors: [twitterBlue, .white]), center: .center, startRadius: 500, endRadius: -900)
+                .ignoresSafeArea()
+            
+            ScrollView
             {
-                HStack
-                {
-                    Button
-                    {
-                        clearPostDataAndReturnToFeed()
-                    } label:
-                    {
-                        Text("Cancel")
-                    }
-                    Spacer()
-                    Text("New Post")
-                        .fontWeight(.semibold)
-                    Spacer()
-                    Button {
-                        Task {
-                            try await viewModel.uploadPost(
-                                title: title,
-                                caption: caption,
-                                organizer: organizer,
-                                organization: organization,
-                                location: location,
-                                
-                                startMM: startMM,
-                                startDD: startDD,
-                                startYYYY: startYYYY,
-
-                                endMM: endMM,
-                                endDD: endDD,
-                                endYYYY: endYYYY,
-
-                                starttime: starttime,
-                                endtime: endtime
-                            )
-                            clearPostDataAndReturnToFeed()
-                        }
-                    } label:
-                    {
-                        Text("Upload")
-                            .fontWeight(.semibold)
-                    }
-                    
-                }
-                .padding(.horizontal)
-                
-                // Post image and caption
-                PhotosPicker(selection: $viewModel.selectedImage){
-                    HStack(spacing: 8)
-                    {
-                        
-                        if let image = viewModel.postImage
-                        {
-                            image
-                                .resizable()
-                                .scaledToFill()
-                                .frame(width: 350, height: 350)
-                                .clipShape(.rect(cornerRadius: 15))
-                                .shadow(color: Color.black.opacity(0.25), radius: 8, x: 5, y: 10)
-                                .padding(.top, 15)
-                        }
-                        else
-                        {
-                            ZStack
-                            {
-                                RoundedRectangle(cornerRadius: 10)
-                                    .stroke(Color.gray, lineWidth: 2)
-                                    .background(Color.gray.opacity(0.2))
-                                    .frame(width: 350, height: 350)
-                                
-                                
-                                Image(systemName: "photo.on.rectangle.angled")
-                                    .resizable()
-                                    .scaledToFill()
-                                    .frame(width: 100, height: 100)
-                                    .foregroundColor(Color(.gray))
-                            }
-                            .padding(.top, 15)
-                        }
-                    }
-                }
-                
                 VStack
                 {
-                    VStack(alignment: .leading) { // Align elements to the leading edge
-                        
-                        
-                        HStack
+                    HStack
+                    {
+                        Button
                         {
-                            Text("Event Name")
-                                .padding(.top, 10)
-                                .font(.title2)
-                                .bold()
-                                .padding(.top, 5)
-                            Text("*")
-                                .foregroundColor(.red)
-                                .padding(.top, 15)
-                                .font(.title2)
-                                .bold()
-                                .padding(.top, 5)
-                        }
-                        TextField("Name of Event", text: $title)
-                            .autocapitalization(.none)
-                            .padding()
-                            .background(Color.gray.opacity(0.2))
-                            .cornerRadius(10)
-                            .frame(width: 325, height: 50)
-                        
-                        HStack
+                            clearPostDataAndReturnToFeed()
+                        } label:
                         {
-                            Text("Description")
-                                .padding(.top, 10)
-                                .font(.title2)
-                                .bold()
-                                .padding(.top, 5)
-                            Text("*")
-                                .foregroundColor(.red)
-                                .padding(.top, 15)
-                                .font(.title2)
-                                .bold()
-                                .padding(.top, 5)
+                            Text("Cancel")
                         }
-                        TextField("Write your event's description here.", text: $caption)
-                            .autocapitalization(.none)
-                            .padding()
-                            .background(Color.gray.opacity(0.2))
-                            .cornerRadius(10)
-                            .frame(width: 325)
-//                          .multilineTextAlignment(.center)
-                        
-                        HStack
-                        {
-                            Text("Organization")
-                                .padding(.top, 10)
-                                .font(.title2)
-                                .bold()
-                                .padding(.top, 5)
-                            Text("*")
-                                .foregroundColor(.red)
-                                .padding(.top, 15)
-                                .font(.title2)
-                                .bold()
-                                .padding(.top, 5)
-                        }
-                        TextField("Club name or Organization", text: $organization)
-                            .autocapitalization(.none)
-                            .padding()
-                            .background(Color.gray.opacity(0.2))
-                            .cornerRadius(10)
-                            .frame(width: 325)
-                        
-                        Text("Organizer")
-                            .padding(.top, 10)
-                            .font(.title2)
-                            .bold()
-                        TextField("Organizer's Name", text: $organizer)
-                            .autocapitalization(.none)
-                            .padding()
-                            
-                            .background(Color.gray.opacity(0.2))
-                            .cornerRadius(10)
-                            .frame(width: 325)
-                        
-                        HStack
-                        {
-                            Text("Location")
-                                .padding(.top, 10)
-                                .font(.title2)
-                                .bold()
-                                .padding(.top, 5)
-                            Text("*")
-                                .foregroundColor(.red)
-                                .padding(.top, 15)
-                                .font(.title2)
-                                .bold()
-                                .padding(.top, 5)
-                        }
-
-                        TextField("Event's Location", text: $location)
-                            .autocapitalization(.none)
-                            .padding()
-                            
-                            .background(Color.gray.opacity(0.2))
-                            .cornerRadius(10)
-                            .frame(width: 325)
-                        
-                        
-                        HStack
-                        {
-                            Text("Start Date")
-                                .padding(.top, 10)
-                                .font(.title2)
-                                .bold()
-                                .padding(.top, 5)
-                            Text("*")
-                                .foregroundColor(.red)
-                                .padding(.top, 15)
-                                .font(.title2)
-                                .bold()
-                                .padding(.top, 5)
-                        }
-                        
-                        HStack
-                        {
-                            TextField("MM", text: $startMM)
-                                .autocapitalization(.none)
-                                .padding()
-                                
-                                .background(Color.gray.opacity(0.2))
-                                .cornerRadius(10)
-                                .frame(width: 100)
-                            TextField("DD", text: $startDD)
-                                .autocapitalization(.none)
-                                .padding()
-                                
-                                .background(Color.gray.opacity(0.2))
-                                .cornerRadius(10)
-                                .frame(width: 100)
-                            TextField("YY", text: $startYYYY)
-                                .autocapitalization(.none)
-                                .padding()
-                                
-                                .background(Color.gray.opacity(0.2))
-                                .cornerRadius(10)
-                                .frame(width: 110)
-                        }
-                        
-                        HStack
-                        {
-                            Text("End Date")
-                                .padding(.top, 10)
-                                .font(.title2)
-                                .bold()
-                                .padding(.top, 5)
-                            Text("*")
-                                .foregroundColor(.red)
-                                .padding(.top, 15)
-                                .font(.title2)
-                                .bold()
-                                .padding(.top, 5)
-                        }
-                        
-                        HStack
-                        {
-                            TextField("MM", text: $endMM)
-                                .autocapitalization(.none)
-                                .padding()
-                                
-                                .background(Color.gray.opacity(0.2))
-                                .cornerRadius(10)
-                                .frame(width: 100)
-                            TextField("DD", text: $endDD)
-                                .autocapitalization(.none)
-                                .padding()
-                                
-                                .background(Color.gray.opacity(0.2))
-                                .cornerRadius(10)
-                                .frame(width: 100)
-                            TextField("YY", text: $endYYYY)
-                                .autocapitalization(.none)
-                                .padding()
-                                
-                                .background(Color.gray.opacity(0.2))
-                                .cornerRadius(10)
-                                .frame(width: 110)
-                                
-                        }
-                        
-                        HStack
-                        {
-                            Text("Start Time")
-                                .padding(.top, 10)
-                                .font(.title2)
-                                .bold()
-                                .padding(.top, 5)
-                            Text("*")
-                                .foregroundColor(.red)
-                                .padding(.top, 15)
-                                .font(.title2)
-                                .bold()
-                                .padding(.top, 5)
-                        }
-                        
-                        HStack
-                        {
-                            TextField("12:00 AM", text: $starttime)
-                                .autocapitalization(.none)
-                                .padding()
-                                
-                                .background(Color.gray.opacity(0.2))
-                                .cornerRadius(10)
-                                .frame(width: 325)
-                            
-                            
-//                                Picker(selection: $starttimezone, label: Text("Select an option"))
-//                                {
-//                                    ForEach(0..<options.count)
-//                                    { index in
-//                                        Text(options[index]).tag(index)
-//                                    }
-//                                }
-//                                .pickerStyle(MenuPickerStyle())
-//                                .frame(height:22)
-//                                .padding()
-//                                .background(Color.gray.opacity(0.2))
-//                                .cornerRadius(10)
-//                                
-//                                .foregroundColor(.gray)
-                        }
-                        
-                        HStack
-                        {
-                            Text("End Time")
-                                .padding(.top, 10)
-                                .font(.title2)
-                                .bold()
-                                .padding(.top, 5)
-                            Text("*")
-                                .foregroundColor(.red)
-                                .padding(.top, 15)
-                                .font(.title2)
-                                .bold()
-                                .padding(.top, 5)
-                        }
-                        
-                        HStack
-                        {
-                            TextField("12:00 PM", text: $endtime)
-                                .autocapitalization(.none)
-                                .padding()
-                                
-                                .background(Color.gray.opacity(0.2))
-                                .cornerRadius(10)
-                                .frame(width: 325)
-                            
-                            
-//                                Picker(selection: $endtimezone, label: Text("Select an option"))
-//                                {
-//                                    ForEach(0..<options.count)
-//                                    { index in
-//                                        Text(options[index]).tag(index)
-//                                    }
-//                                }
-//                                .pickerStyle(MenuPickerStyle())
-//                                .frame(height:22)
-//                                .padding()
-//                                .background(Color.gray.opacity(0.2))
-//                                .cornerRadius(10)
-                                
-//                                .foregroundColor(.gray)
-                                 
-                        }
-                        
                         Spacer()
+                        Text("New Post")
+                            .fontWeight(.semibold)
+                        Spacer()
+                        Button {
+                            Task {
+                                try await viewModel.uploadPost(
+                                    title: title,
+                                    caption: caption,
+                                    organizer: organizer,
+                                    organization: organization,
+                                    location: location,
+                                    
+                                    startMM: startMM,
+                                    startDD: startDD,
+                                    startYYYY: startYYYY,
+
+                                    endMM: endMM,
+                                    endDD: endDD,
+                                    endYYYY: endYYYY,
+
+                                    starttime: starttime,
+                                    endtime: endtime
+                                )
+                                clearPostDataAndReturnToFeed()
+                            }
+                        } label:
+                        {
+                            Text("Upload")
+                                .fontWeight(.semibold)
+                        }
+                        
                     }
-                    .padding(.bottom,15)
-                    .padding(.horizontal, 20) // Add horizontal padding to keep elements away from the border line
+                    .padding(.horizontal)
                     
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 20)
-                            .stroke(Color.black, lineWidth: 1) // Add border line
-                    )
-                    .padding() // Add padding to the outer VStack to ensure border visibility and spacing
-                    .cornerRadius(20)
+                    // Post image and caption
+                    PhotosPicker(selection: $viewModel.selectedImage){
+                        HStack(spacing: 8)
+                        {
+                            
+                            if let image = viewModel.postImage
+                            {
+                                image
+                                    .resizable()
+                                    .scaledToFill()
+                                    .frame(width: 350, height: 350)
+                                    .clipShape(.rect(cornerRadius: 15))
+                                    .shadow(color: Color.black.opacity(0.25), radius: 8, x: 5, y: 10)
+                                    .padding(.top, 15)
+                            }
+                            else
+                            {
+                                ZStack
+                                {
+                                    RoundedRectangle(cornerRadius: 10)
+                                        .stroke(Color.gray, lineWidth: 2)
+                                        .background(Color.gray.opacity(0.2))
+                                        .frame(width: 350, height: 350)
+                                    
+                                    
+                                    Image(systemName: "photo.on.rectangle.angled")
+                                        .resizable()
+                                        .scaledToFill()
+                                        .frame(width: 100, height: 100)
+                                        .foregroundColor(Color(.gray))
+                                }
+                                .padding(.top, 15)
+                            }
+                        }
+                    }
+                    
+                    VStack
+                    {
+                        VStack(alignment: .leading) { // Align elements to the leading edge
+                            
+                            
+                            HStack
+                            {
+                                Text("Event Name")
+                                    .padding(.top, 10)
+                                    .font(.title2)
+                                    .bold()
+                                    .padding(.top, 5)
+                                Text("*")
+                                    .foregroundColor(.red)
+                                    .padding(.top, 15)
+                                    .font(.title2)
+                                    .bold()
+                                    .padding(.top, 5)
+                            }
+                            TextField("Name of Event", text: $title)
+                                .autocapitalization(.none)
+                                .padding()
+                                .background(Color.gray.opacity(0.2))
+                                .cornerRadius(10)
+                                .frame(width: 325, height: 50)
+                            
+                            HStack
+                            {
+                                Text("Description")
+                                    .padding(.top, 10)
+                                    .font(.title2)
+                                    .bold()
+                                    .padding(.top, 5)
+                                Text("*")
+                                    .foregroundColor(.red)
+                                    .padding(.top, 15)
+                                    .font(.title2)
+                                    .bold()
+                                    .padding(.top, 5)
+                            }
+                            TextField("Write your event's description here.", text: $caption)
+                                .autocapitalization(.none)
+                                .padding()
+                                .background(Color.gray.opacity(0.2))
+                                .cornerRadius(10)
+                                .frame(width: 325)
+    //                          .multilineTextAlignment(.center)
+                            
+                            HStack
+                            {
+                                Text("Organization")
+                                    .padding(.top, 10)
+                                    .font(.title2)
+                                    .bold()
+                                    .padding(.top, 5)
+                                Text("*")
+                                    .foregroundColor(.red)
+                                    .padding(.top, 15)
+                                    .font(.title2)
+                                    .bold()
+                                    .padding(.top, 5)
+                            }
+                            TextField("Club name or Organization", text: $organization)
+                                .autocapitalization(.none)
+                                .padding()
+                                .background(Color.gray.opacity(0.2))
+                                .cornerRadius(10)
+                                .frame(width: 325)
+                            
+                            Text("Organizer")
+                                .padding(.top, 10)
+                                .font(.title2)
+                                .bold()
+                            TextField("Organizer's Name", text: $organizer)
+                                .autocapitalization(.none)
+                                .padding()
+                                
+                                .background(Color.gray.opacity(0.2))
+                                .cornerRadius(10)
+                                .frame(width: 325)
+                            
+                            HStack
+                            {
+                                Text("Location")
+                                    .padding(.top, 10)
+                                    .font(.title2)
+                                    .bold()
+                                    .padding(.top, 5)
+                                Text("*")
+                                    .foregroundColor(.red)
+                                    .padding(.top, 15)
+                                    .font(.title2)
+                                    .bold()
+                                    .padding(.top, 5)
+                            }
+
+                            TextField("Event's Location", text: $location)
+                                .autocapitalization(.none)
+                                .padding()
+                                
+                                .background(Color.gray.opacity(0.2))
+                                .cornerRadius(10)
+                                .frame(width: 325)
+                            
+                            
+                            HStack
+                            {
+                                Text("Start Date")
+                                    .padding(.top, 10)
+                                    .font(.title2)
+                                    .bold()
+                                    .padding(.top, 5)
+                                Text("*")
+                                    .foregroundColor(.red)
+                                    .padding(.top, 15)
+                                    .font(.title2)
+                                    .bold()
+                                    .padding(.top, 5)
+                            }
+                            
+                            HStack
+                            {
+                                TextField("MM", text: $startMM)
+                                    .autocapitalization(.none)
+                                    .padding()
+                                    
+                                    .background(Color.gray.opacity(0.2))
+                                    .cornerRadius(10)
+                                    .frame(width: 100)
+                                TextField("DD", text: $startDD)
+                                    .autocapitalization(.none)
+                                    .padding()
+                                    
+                                    .background(Color.gray.opacity(0.2))
+                                    .cornerRadius(10)
+                                    .frame(width: 100)
+                                TextField("YY", text: $startYYYY)
+                                    .autocapitalization(.none)
+                                    .padding()
+                                    
+                                    .background(Color.gray.opacity(0.2))
+                                    .cornerRadius(10)
+                                    .frame(width: 110)
+                            }
+                            
+                            HStack
+                            {
+                                Text("End Date")
+                                    .padding(.top, 10)
+                                    .font(.title2)
+                                    .bold()
+                                    .padding(.top, 5)
+                                Text("*")
+                                    .foregroundColor(.red)
+                                    .padding(.top, 15)
+                                    .font(.title2)
+                                    .bold()
+                                    .padding(.top, 5)
+                            }
+                            
+                            HStack
+                            {
+                                TextField("MM", text: $endMM)
+                                    .autocapitalization(.none)
+                                    .padding()
+                                    
+                                    .background(Color.gray.opacity(0.2))
+                                    .cornerRadius(10)
+                                    .frame(width: 100)
+                                TextField("DD", text: $endDD)
+                                    .autocapitalization(.none)
+                                    .padding()
+                                    
+                                    .background(Color.gray.opacity(0.2))
+                                    .cornerRadius(10)
+                                    .frame(width: 100)
+                                TextField("YY", text: $endYYYY)
+                                    .autocapitalization(.none)
+                                    .padding()
+                                    
+                                    .background(Color.gray.opacity(0.2))
+                                    .cornerRadius(10)
+                                    .frame(width: 110)
+                                    
+                            }
+                            
+                            HStack
+                            {
+                                Text("Start Time")
+                                    .padding(.top, 10)
+                                    .font(.title2)
+                                    .bold()
+                                    .padding(.top, 5)
+                                Text("*")
+                                    .foregroundColor(.red)
+                                    .padding(.top, 15)
+                                    .font(.title2)
+                                    .bold()
+                                    .padding(.top, 5)
+                            }
+                            
+                            HStack
+                            {
+                                TextField("12:00 AM", text: $starttime)
+                                    .autocapitalization(.none)
+                                    .padding()
+                                    
+                                    .background(Color.gray.opacity(0.2))
+                                    .cornerRadius(10)
+                                    .frame(width: 325)
+                                
+                                
+    //                                Picker(selection: $starttimezone, label: Text("Select an option"))
+    //                                {
+    //                                    ForEach(0..<options.count)
+    //                                    { index in
+    //                                        Text(options[index]).tag(index)
+    //                                    }
+    //                                }
+    //                                .pickerStyle(MenuPickerStyle())
+    //                                .frame(height:22)
+    //                                .padding()
+    //                                .background(Color.gray.opacity(0.2))
+    //                                .cornerRadius(10)
+    //
+    //                                .foregroundColor(.gray)
+                            }
+                            
+                            HStack
+                            {
+                                Text("End Time")
+                                    .padding(.top, 10)
+                                    .font(.title2)
+                                    .bold()
+                                    .padding(.top, 5)
+                                Text("*")
+                                    .foregroundColor(.red)
+                                    .padding(.top, 15)
+                                    .font(.title2)
+                                    .bold()
+                                    .padding(.top, 5)
+                            }
+                            
+                            HStack
+                            {
+                                TextField("12:00 PM", text: $endtime)
+                                    .autocapitalization(.none)
+                                    .padding()
+                                    
+                                    .background(Color.gray.opacity(0.2))
+                                    .cornerRadius(10)
+                                    .frame(width: 325)
+                                
+                                
+    //                                Picker(selection: $endtimezone, label: Text("Select an option"))
+    //                                {
+    //                                    ForEach(0..<options.count)
+    //                                    { index in
+    //                                        Text(options[index]).tag(index)
+    //                                    }
+    //                                }
+    //                                .pickerStyle(MenuPickerStyle())
+    //                                .frame(height:22)
+    //                                .padding()
+    //                                .background(Color.gray.opacity(0.2))
+    //                                .cornerRadius(10)
+                                    
+    //                                .foregroundColor(.gray)
+                                     
+                            }
+                            
+                            Spacer()
+                        }
+                        .padding(.bottom,15)
+                        .padding(.horizontal, 20) // Add horizontal padding to keep elements away from the border line
+                        
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 20)
+                                .stroke(Color.black, lineWidth: 1) // Add border line
+                        )
+                        .padding() // Add padding to the outer VStack to ensure border visibility and spacing
+                        .cornerRadius(20)
+                    }
                 }
+                .onAppear
+                {
+                    imagePickerPresented.toggle()
+                }
+                .photosPicker(isPresented: $imagePickerPresented, selection: $viewModel.selectedImage)
             }
-            .onAppear
-            {
-                imagePickerPresented.toggle()
-            }
-            .photosPicker(isPresented: $imagePickerPresented, selection: $viewModel.selectedImage)
         }
         
     }
@@ -423,6 +430,16 @@ struct UploadPostView: View
         location = ""
         organizer = ""
         organization = ""
+        startMM = ""
+        startDD = ""
+        startYYYY = ""
+
+        endMM = ""
+        endDD = ""
+        endYYYY = ""
+
+        starttime = ""
+        endtime = ""
         viewModel.selectedImage = nil
         viewModel.postImage = nil
         tabIndex = 0

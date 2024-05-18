@@ -10,76 +10,88 @@ import Foundation
 
 struct HomeView: View {
     
+    
     // Fetch Feed
     @StateObject var viewModel = HomeViewModel()
     @State private var isSearching: Bool = false
         // Ends here
     
     @State private var searchText: String = ""
+    let twitterBlue = Color(UIColor(red: 0.016, green: 0.25, blue: 0.47, alpha: 1))
     
     var body: some View {
         NavigationStack {
             // Search Bar
-            Text("BRUINBUZZ")
-                .font(Font.custom("NexaRustSans-Trial-Black2", size: 20))
-                .foregroundColor(.primary)
-                .padding(.bottom, 5)
-                .padding(.top, 20)
-                .padding(.leading, -180) // Adjust this value as needed
-            
-            ZStack(alignment: .leading) {
-                Capsule()
-                    .fill(Color.gray.opacity(0.2))
-                    .frame(height: 40)
+            ZStack {
+                RadialGradient(gradient: Gradient(colors: [twitterBlue, .white]), center: .center, startRadius: 500, endRadius: -900)
+                    .ignoresSafeArea()
                 
-                HStack(spacing: 12)
-                {
-                    Image(systemName: "magnifyingglass")
-                        .foregroundColor(.gray)
-                        .padding(.horizontal, 10)
+                VStack {
+                    Text("BRUINBUZZ")
+                        .font(Font.custom("NexaRustSans-Trial-Black2", size: 20))
+                        .foregroundColor(.primary)
+                        .padding(.bottom, 5)
+                        .padding(.top, 20)
+                    .padding(.leading, -180)
                     
-                    TextField("Search", text: $searchText)
-                        .padding(.horizontal, -10)
-                        .onTapGesture
-                        {
-                            isSearching = true // Set searching state to true when tapped
+                    ZStack(alignment: .leading) {
+                        Capsule()
+                            .fill(Color.gray.opacity(0.2))
+                            .frame(height: 40)
+                        
+                        HStack(spacing: 12) {
+                            Image(systemName: "magnifyingglass")
+                                .foregroundColor(.gray)
+                                .padding(.horizontal, 10)
+                            
+                            TextField("Search", text: $searchText)
+                                .padding(.horizontal, -10)
+                                .onTapGesture {
+                                    isSearching = true // Set searching state to true when tapped
+                                }
                         }
-                }
-                .padding(.horizontal, 10)
-            }
-            .padding(.horizontal, 30)
-//            .padding(.bottom)
-            
-            Text("All Events")
-                .font(Font.custom("NexaRustSans-Trial-Black2", size: 20))
-                .foregroundColor(.primary)
-                .padding(.top, 10)
-                .padding(.bottom, 1)
-                .padding(.leading, -180) // Adjust this value as needed
-            
-            ScrollView {
-                ScrollView(.horizontal, showsIndicators: false) {
-                        HStack {
-                            ForEach(viewModel.posts) { post in
-                                HomeCell(post: post)
-                                    .frame(width: 430)
+                        .padding(.horizontal, 10)
+                    }
+                    .padding(.horizontal, 30)
+        //            .padding(.bottom)
+                    
+                    Text("All Events")
+                        .font(Font.custom("NexaRustSans-Trial-Black2", size: 20))
+                        .foregroundColor(.primary)
+                        .padding(.top, 10)
+                        .padding(.bottom, 1)
+                        .padding(.leading, -180) // Adjust this value as needed
+                    
+                    ScrollView {
+                        ScrollView(.horizontal, showsIndicators: false) {
+                                HStack {
+                                    ForEach(viewModel.posts) { post in
+                                        HomeCell(post: post)
+                                            .frame(width: 430)
+                                    }
+                                }
+                        }
+                    }
+                    .refreshable {
+                        do {
+                            try await viewModel.fetchPosts()
+                        }   catch {
+                            // Handle the error here, you can log it or display an alert to the user
+                                print("Error fetching posts: \(error)")
                             }
-                        }
-                }
-            }
-            .refreshable {
-                do {
-                    try await viewModel.fetchPosts()
-                } catch {
-                    // Handle the error here, you can log it or display an alert to the user
-                    print("Error fetching posts: \(error)")
-                }
-            }
+                    }
 
-            Spacer()
+                    Spacer()
+                }
+                
+                
+                
+                
+            } // Adjust this value as needed
+            
+            
         }
-        .fullScreenCover(isPresented: $isSearching)
-        {
+        .fullScreenCover(isPresented: $isSearching) {
             SearchPage()
         }
     }

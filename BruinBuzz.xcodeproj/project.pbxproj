@@ -288,11 +288,11 @@
 		36B2C7612BD7500D003E97B3 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				36B2C76B2BD75105003E97B3 /* SplashScreen.swift */,
 				36B2C7672BD750BA003E97B3 /* LoginView.swift */,
+				367FBD5C2BDA27F7007D1303 /* AddEmailView.swift */,
 				367FBD602BDA30A0007D1303 /* CreateUsernameView.swift */,
 				367FBD622BDA36C1007D1303 /* CreatePasswordView.swift */,
-				36B2C76B2BD75105003E97B3 /* SplashScreen.swift */,
-				367FBD5C2BDA27F7007D1303 /* AddEmailView.swift */,
 				367FBD642BDA3809007D1303 /* CompleteSignUpView.swift */,
 			);
 			path = View;

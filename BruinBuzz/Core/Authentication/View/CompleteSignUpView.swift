@@ -9,13 +9,14 @@ import SwiftUI
 
 struct CompleteSignUpView: View {
     @EnvironmentObject var viewModel: RegistrationViewModel
+    let twitterBlue = Color(UIColor(red: 0.494, green: 0.752, blue: 0.898, alpha: 1))
+    let navy = Color(UIColor(red: 0.1, green: 0.25, blue: 0.4, alpha: 1))
+
     
     var body: some View {
         ZStack {
-            Image("LoginBackground")
-                .resizable()
-                .aspectRatio(contentMode: .fill)
-                .edgesIgnoringSafeArea(.all)
+            RadialGradient(gradient: Gradient(colors: [twitterBlue, .white]), center: .center, startRadius: 500, endRadius: -900)
+                .ignoresSafeArea()
             
             VStack(spacing: 12) {
                 
@@ -41,7 +42,7 @@ struct CompleteSignUpView: View {
                         .font(.subheadline)
                         .foregroundStyle(Color(.white))
                         .frame(width:300, height:50)
-                        .background(Color(.systemBlue))
+                        .background(navy)
                         .cornerRadius(10)
                 }
                 

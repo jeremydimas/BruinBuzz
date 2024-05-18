@@ -12,7 +12,7 @@ struct CurrentUserProfileView: View {
         
     @StateObject private var viewModel: PostViewModel
     
-    
+    let twitterBlue = Color(UIColor(red: 0.016, green: 0.25, blue: 0.47, alpha: 1))
     
     @State private var refreshedUser: User? = nil
     
@@ -23,40 +23,47 @@ struct CurrentUserProfileView: View {
     
     var body: some View {
         NavigationStack {
-            ScrollView {
-                // Header
-                ProfileHeaderView(user: user)
+            
+            ZStack {
+                RadialGradient(gradient: Gradient(colors: [twitterBlue, .white]), center: .center, startRadius: 500, endRadius: -900)
+                    .ignoresSafeArea()
                 
-                PostView(user: refreshedUser ?? user)
-                    .id(refreshedUser) // Ensure recreation of PostView when refreshedUser changes
-            }
-            .navigationTitle("Profile")
-            .foregroundColor(.primary)
-            .navigationBarTitleDisplayMode(.inline)
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button {
-                        AuthService.shared.signout()
-                    } label: {
-                        Image(systemName: "arrowshape.forward.fill")
-                            .foregroundColor(.primary)
+                ScrollView {
+                    // Header
+                    ProfileHeaderView(user: user)
+                    
+                    PostView(user: refreshedUser ?? user)
+                        .id(refreshedUser) // Ensure recreation of PostView when refreshedUser changes
+                }
+                .navigationTitle("Profile")
+                .foregroundColor(.primary)
+                .navigationBarTitleDisplayMode(.inline)
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        Button {
+                            AuthService.shared.signout()
+                        } label: {
+                            Image(systemName: "arrowshape.forward.fill")
+                                .foregroundColor(.primary)
+                        }
+                    }
+                }
+                .refreshable {
+                    print("refreshing..")
+                    do {
+                        try await viewModel.fetchUserPosts()
+                        refreshedUser = user // Update refreshedUser after fetching user posts
+                    } catch {
+                        // Handle the error here, such as showing an alert to the user
+                        print("Error fetching user posts: \(error)")
+                    }
+                    // Reset refreshedUser state after each refresh
+                    DispatchQueue.main.asyncAfter(deadline: .now() /*+ 1*/) {
+                        refreshedUser = nil
                     }
                 }
             }
-            .refreshable {
-                print("refreshing..")
-                do {
-                    try await viewModel.fetchUserPosts()
-                    refreshedUser = user // Update refreshedUser after fetching user posts
-                } catch {
-                    // Handle the error here, such as showing an alert to the user
-                    print("Error fetching user posts: \(error)")
-                }
-                // Reset refreshedUser state after each refresh
-                DispatchQueue.main.asyncAfter(deadline: .now() /*+ 1*/) {
-                    refreshedUser = nil
-                }
-            }
+
         }
     }
 }

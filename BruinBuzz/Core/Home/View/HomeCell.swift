@@ -7,6 +7,8 @@ struct HomeCell: View {
     // like implementation changes
     let post: Post
     let darkerRed = Color(UIColor(red: 0.7, green: 0, blue: 0, alpha: 1.0))
+    let twitterBlue = Color(UIColor(red: 0.016, green: 0.25, blue: 0.47, alpha: 1))
+
     @ObservedObject var RsvpViewModel: HomeCellViewModel
     
     init(post: Post) {
@@ -39,86 +41,92 @@ struct HomeCell: View {
                     showingBottomSheet.toggle()
                 }
                 .sheet(isPresented: $showingBottomSheet) {
-                    ScrollView 
-                    {
-                        VStack {
-                            HStack {
-                                KFImage(URL(string: post.imageUrl))
-                                    .resizable()
-                                    .frame(width: 350, height: 350)
-                                    .clipShape(CurvedShape())
-                                    .overlay(
-                                        OverlayView(post)
-                                            .frame(width: 350, height: 350)
-                                            .clipShape(.rect(cornerRadius: 15))
-                                    )
-                                    .padding(.bottom, 5)
-                                    .padding(.top, 40)
-                            }
-                            
-                            HStack {
-                                Text("Organizer:")
-                                    .fontWeight(.bold)
-                                Text(post.organizer)
-                                Spacer()
-                            }
-                            .padding(.leading, 40)
-                            .padding(.bottom, 10)
-
-                            HStack {
-                                Text("Description: ")
-                                    .fontWeight(.bold) +
-                                Text(post.caption)
-
-                                Spacer()
-                            }
-                            .padding(.leading, 40)
-                            .padding(.trailing, 40)
-                            .padding(.bottom, 10)
-
-                            HStack {
-                                Text("Start Date: ")
-                                    .fontWeight(.bold) +
-                                Text("\(post.startMM)/\(post.startDD)/\(post.startYYYY)") +
-                                Text(" - ")
-                                    .fontWeight(.bold) +
-                                Text(post.starttime)
-                                    .fontWeight(.regular)
-                                Spacer()
-                            }
-                            .padding(.leading, 40)
-                            .padding(.trailing, 40)
-                            .padding(.bottom, 10)
-                            
-                            HStack {
-                                Text("End Date: ")
-                                    .fontWeight(.bold) +
-                                Text("\(post.endMM)/\(post.endDD)/\(post.endYYYY)") +
-                                Text(" - ")
-                                    .fontWeight(.bold) +
-                                Text(post.endtime)
-                                    .fontWeight(.regular)
-                                Spacer()
-                            }
-                            .padding(.leading, 40)
-                            .padding(.trailing, 40)
-                            .padding(.bottom, 10)
-                            
+                    ZStack {
+                        
+                        RadialGradient(gradient: Gradient(colors: [twitterBlue, .white]), center: .center, startRadius: 500, endRadius: -900)
+                            .ignoresSafeArea()
+                        
+                        ScrollView
+                        {
                             VStack {
                                 HStack {
-                                    Text("Location:")
+                                    KFImage(URL(string: post.imageUrl))
+                                        .resizable()
+                                        .frame(width: 350, height: 350)
+                                        .clipShape(CurvedShape())
+                                        .overlay(
+                                            OverlayView(post)
+                                                .frame(width: 350, height: 350)
+                                                .clipShape(.rect(cornerRadius: 15))
+                                        )
+                                        .padding(.bottom, 5)
+                                        .padding(.top, 40)
+                                }
+                                
+                                HStack {
+                                    Text("Organizer:")
                                         .fontWeight(.bold)
-                                    Text(post.location)
+                                    Text(post.organizer)
                                     Spacer()
                                 }
                                 .padding(.leading, 40)
-//                                MapView()
-//                                    .frame(width: 350, height: 200)
-//                                    .clipShape(CurvedShape())
-//                                    .padding(.top, -1)
+                                .padding(.bottom, 10)
+
+                                HStack {
+                                    Text("Description: ")
+                                        .fontWeight(.bold) +
+                                    Text(post.caption)
+
+                                    Spacer()
+                                }
+                                .padding(.leading, 40)
+                                .padding(.trailing, 40)
+                                .padding(.bottom, 10)
+
+                                HStack {
+                                    Text("Start Date: ")
+                                        .fontWeight(.bold) +
+                                    Text("\(post.startMM)/\(post.startDD)/\(post.startYYYY)") +
+                                    Text(" - ")
+                                        .fontWeight(.bold) +
+                                    Text(post.starttime)
+                                        .fontWeight(.regular)
+                                    Spacer()
+                                }
+                                .padding(.leading, 40)
+                                .padding(.trailing, 40)
+                                .padding(.bottom, 10)
+                                
+                                HStack {
+                                    Text("End Date: ")
+                                        .fontWeight(.bold) +
+                                    Text("\(post.endMM)/\(post.endDD)/\(post.endYYYY)") +
+                                    Text(" - ")
+                                        .fontWeight(.bold) +
+                                    Text(post.endtime)
+                                        .fontWeight(.regular)
+                                    Spacer()
+                                }
+                                .padding(.leading, 40)
+                                .padding(.trailing, 40)
+                                .padding(.bottom, 10)
+                                
+                                VStack {
+                                    HStack {
+                                        Text("Location:")
+                                            .fontWeight(.bold)
+                                        Text(post.location)
+                                        Spacer()
+                                    }
+                                    .padding(.leading, 40)
+    //                                MapView()
+    //                                    .frame(width: 350, height: 200)
+    //                                    .clipShape(CurvedShape())
+    //                                    .padding(.top, -1)
+                                }
+                                .presentationDragIndicator(.visible)
                             }
-                            .presentationDragIndicator(.visible)
-                        }
+                    }
                     }
                 }
                 .clipShape(.rect(cornerRadius: 15))

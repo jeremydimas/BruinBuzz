@@ -12,96 +12,106 @@ struct EditProfileView: View {
     @Environment(\.dismiss) var dismiss
     @StateObject var viewModel: EditProfileViewModel
     
+    let twitterBlue = Color(UIColor(red: 0.016, green: 0.25, blue: 0.47, alpha: 1))
+
+    
     init(user: User) {
         self._viewModel = StateObject(wrappedValue: EditProfileViewModel(user: user))
     }
     
     var body: some View {
-        VStack {
-            HStack {
-                Button("Cancel") {
-                    dismiss()
-                }
-                
-                Spacer()
-                
-                Text("Edit Profile")
-                    .font(.subheadline)
-                    .fontWeight(.semibold)
-                
-                Spacer()
-                
-                Button {
-                    Task { 
-                        try await viewModel.updateUserData()
+
+        ZStack {
+            RadialGradient(gradient: Gradient(colors: [twitterBlue, .white]), center: .center, startRadius: 500, endRadius: -900)
+                .ignoresSafeArea()
+            
+            VStack {
+                HStack {
+                    Button("Cancel") {
                         dismiss()
                     }
-                } label: {
-                    Text("Done")
-                        .font(.subheadline)
-                        .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
-                }
-            }
-            .padding(.horizontal)
-            
-            Divider()
-            
-            // edit profile pic
-            
-            PhotosPicker(selection: $viewModel.selectedImage) {
-                VStack {
-                    if let image = viewModel.profileImage {
-                        image
-                            .resizable()
-                            .clipShape(Circle())
-                            .frame(width: 80, height: 80)
-                    } else {
-                        CircularProfileImageView(user: viewModel.user, size: .large)
-                    }
                     
-                    Text("Edit profile picture")
-                        .font(.footnote)
+                    Spacer()
+                    
+                    Text("Edit Profile")
+                        .font(.subheadline)
                         .fontWeight(.semibold)
                     
-                    Divider()
-                }
-            }
-            .padding(.vertical, 8)
-            
-            // edit profile info
-
-            VStack
-            {
-                VStack (alignment: .leading)
-                {
-                    EditProfileRowView(
-                        title: "Name",
-                        placeholder: "Enter your name..",
-                        text: $viewModel.fullname)
-                    .padding(.top, 10)
+                    Spacer()
                     
-                    EditProfileRowView(
-                        title: "Bio",
-                        placeholder: "Enter your bio..",
-                        text: $viewModel.bio)
-                    .padding(.bottom, 10)
-                    
+                    Button {
+                        Task {
+                            try await viewModel.updateUserData()
+                            dismiss()
+                        }
+                    } label: {
+                        Text("Done")
+                            .font(.subheadline)
+                            .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+                    }
                 }
-                .padding(.horizontal, 20) // Add horizontal padding to keep elements away from the border line
-                .padding(.bottom,15)
+                .padding(.horizontal)
                 
-                .overlay(
-                    RoundedRectangle(cornerRadius: 20)
-                        .stroke(Color.black, lineWidth: 1) // Add border line
+                Divider()
+                
+                // edit profile pic
+                
+                PhotosPicker(selection: $viewModel.selectedImage) {
+                    VStack {
+                        if let image = viewModel.profileImage {
+                            image
+                                .resizable()
+                                .clipShape(Circle())
+                                .frame(width: 80, height: 80)
+                        } else {
+                            CircularProfileImageView(user: viewModel.user, size: .large)
+                        }
                         
-                )
-                .padding() // Add padding to the outer VStack to ensure border visibility and spacing
-                .cornerRadius(20)
-                .frame(width: 350)
+                        Text("Edit profile picture")
+                            .font(.footnote)
+                            .fontWeight(.semibold)
+                        
+                        Divider()
+                    }
+                }
+                .padding(.vertical, 8)
+                
+                // edit profile info
+
+                VStack
+                {
+                    VStack (alignment: .leading)
+                    {
+                        EditProfileRowView(
+                            title: "Name",
+                            placeholder: "Enter your name..",
+                            text: $viewModel.fullname)
+                        .padding(.top, 10)
+                        
+                        EditProfileRowView(
+                            title: "Bio",
+                            placeholder: "Enter your bio..",
+                            text: $viewModel.bio)
+                        .padding(.bottom, 10)
+                        
+                    }
+                    .padding(.horizontal, 20) // Add horizontal padding to keep elements away from the border line
+                    .padding(.bottom,15)
+                    
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 20)
+                            .stroke(Color.black, lineWidth: 1) // Add border line
+                            
+                    )
+                    .padding() // Add padding to the outer VStack to ensure border visibility and spacing
+                    .cornerRadius(20)
+                    .frame(width: 350)
+                }
+                
+                Spacer()
             }
-            
-            Spacer()
         }
+        
     }
 }
 

@@ -9,14 +9,15 @@ import SwiftUI
 
 struct AddEmailView: View {
     @EnvironmentObject var viewModel: RegistrationViewModel
+    let twitterBlue = Color(UIColor(red: 0.494, green: 0.752, blue: 0.898, alpha: 1))
+    let navy = Color(UIColor(red: 0.1, green: 0.25, blue: 0.4, alpha: 1))
+
     
     var body: some View {
         
         ZStack {
-            Image("LoginBackground")
-                .resizable()
-                .aspectRatio(contentMode: .fill)
-                .edgesIgnoringSafeArea(.all)
+            RadialGradient(gradient: Gradient(colors: [twitterBlue, .white]), center: .center, startRadius: 500, endRadius: -900)
+                .ignoresSafeArea()
             
             VStack(spacing: 12) {
                 Text("Add Your Email")
@@ -32,23 +33,16 @@ struct AddEmailView: View {
                     .multilineTextAlignment(.center)
                     .padding(.bottom, 8)
                 
-
-                TextField("", text: $viewModel.email)
-                    .autocapitalization(.none)
-                    .font(.subheadline)
-                    .modifier(TextFieldModifier())
-                    .foregroundColor(.black) // Set the color of the entered text
-                    .accentColor(.black) // Set the color of the cursor and selection
-                    .colorScheme(.dark) // Ensure that the dark mode color scheme is used
-                    .overlay(
-                        Group {
-                            if viewModel.email.isEmpty {
-                                Text("Email")
-                                    .foregroundColor(Color(.lightGray)) // Set the color of the placeholder text
-                                .padding(.leading, -138)
-                            }
-                        }
-                    )
+                ZStack(alignment: .leading) {
+                    if viewModel.email.isEmpty {
+                        Text("Email")
+                            .foregroundColor(Color(.lightGray)) // Set the color of the placeholder text
+                    }
+                    TextField("", text: $viewModel.email)
+                        .foregroundStyle(Color(.black))
+                        .accentColor(.black)
+                }
+                .modifier(TextFieldModifier())
 
                 NavigationLink {
                     CreateUsernameView()
@@ -56,7 +50,7 @@ struct AddEmailView: View {
                     Text("Next")
                         .foregroundColor(.white)
                         .frame(width:300, height:50)
-                        .background(Color(.systemBlue))
+                        .background(navy)
                         .cornerRadius(10)
                 }
                 
