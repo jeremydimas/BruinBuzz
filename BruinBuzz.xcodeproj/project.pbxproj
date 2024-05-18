@@ -92,6 +92,7 @@
 		362955362BD0A5BF00CA8D7B /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		36359D902BE1FE350060C464 /* PostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostView.swift; sourceTree = "<group>"; };
 		363D17D62BCFA825009EDA4D /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		365F4AEC2BF91A8500BE2BC7 /* BruinBuzzDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BruinBuzzDebug.entitlements; sourceTree = "<group>"; };
 		3677E9022BE0CECB00C79A15 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		367FBD5A2BD83029007D1303 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		367FBD5C2BDA27F7007D1303 /* AddEmailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEmailView.swift; sourceTree = "<group>"; };
@@ -482,6 +483,7 @@
 		FBA88DEA2BC9B7BC00F92A9A /* BruinBuzz */ = {
 			isa = PBXGroup;
 			children = (
+				365F4AEC2BF91A8500BE2BC7 /* BruinBuzzDebug.entitlements */,
 				FB69A8C52BF29CCA00D26F74 /* BruinBuzz.entitlements */,
 				36FA18162BD6150E00586641 /* App */,
 				36FA18192BD6C70600586641 /* Core */,
@@ -875,7 +877,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = BruinBuzz/BruinBuzz.entitlements;
+				CODE_SIGN_ENTITLEMENTS = BruinBuzz/BruinBuzzDebug.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"BruinBuzz/Preview Content\"";
