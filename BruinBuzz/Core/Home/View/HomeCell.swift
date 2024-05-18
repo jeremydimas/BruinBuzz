@@ -4,7 +4,7 @@ import Kingfisher
 
 struct HomeCell: View {
     
-    // like implementation changes
+    // Like implementation changes
     let post: Post
     let darkerRed = Color(UIColor(red: 0.7, green: 0, blue: 0, alpha: 1.0))
     let twitterBlue = Color(UIColor(red: 0.016, green: 0.25, blue: 0.47, alpha: 1))
@@ -13,12 +13,12 @@ struct HomeCell: View {
     @ObservedObject var RsvpViewModel: HomeCellViewModel
     
     init(post: Post) {
-        self.post = post // i need this
+        self.post = post // I need this
         self.RsvpViewModel = HomeCellViewModel(post: post)
     }
-    // ends here
+    // Ends here
     
-    //bio changes
+    // Bio changes
     @StateObject var viewModel = UploadPostViewModel()
     @State private var searchText: String = ""
     @State var showingBottomSheet = false
@@ -157,7 +157,8 @@ struct HomeCell: View {
             }
         }
     }
-
+    
+    // Padding for the Bottom Sheet Images
     func horizontalPaddingForBSSizeClass() -> EdgeInsets {
         let deviceType = DeviceType.current()
         
@@ -184,13 +185,13 @@ struct HomeCell: View {
         VStack(spacing: 15) {
             KFImage(URL(string: post.imageUrl))
                 .resizable()
-            // orginal - w: 360, h: 535
-//                .frame(width: 360, height: 535)
+                // orginal - w: 360, h: 535
+                //.frame(width: 360, height: 535)
                 .frame(maxWidth: maxWidthForImage(), maxHeight: maxHeightForImage())
                 .aspectRatio(contentMode: .fill)
                 .overlay(
                     OverlayView(post)
-//                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+                        //.frame(maxWidth: .infinity, maxHeight: .infinity)
                         .frame(maxWidth: maxWidthForImage(),
                                                maxHeight: maxHeightForImage())
                         .clipShape(.rect(cornerRadius: 15))
@@ -211,7 +212,7 @@ struct HomeCell: View {
                                 HStack {
                                     KFImage(URL(string: post.imageUrl))
                                         .resizable()
-                                        // image in bottom sheet
+                                        // Image in bottom sheet
                                         .frame(width: maxWidthForBSImage(), height: maxHeightForBSImage())
                                         .clipShape(CurvedShape())
                                         .overlay(

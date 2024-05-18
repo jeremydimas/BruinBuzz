@@ -15,7 +15,6 @@ struct PostView: View {
     
     enum DeviceType {
         case iPhone8Plus
-//        case iPhone11ProMax
         case iPadPro129
         case other
         
@@ -25,8 +24,6 @@ struct PostView: View {
             
             if (screenWidth == 414 && screenHeight == 736) || (screenWidth == 736 && screenHeight == 414) {
                 return .iPhone8Plus
-//            } else if (screenWidth == 414 && screenHeight == 896) || (screenWidth == 896 && screenHeight == 414) {
-//                return .iPhone11ProMax
             } else if (screenWidth == 1024 && screenHeight == 1366) || (screenWidth == 1366 && screenHeight == 1024) {
                 return .iPadPro129
             } else {
@@ -40,19 +37,17 @@ struct PostView: View {
         
         switch deviceType {
         case .iPhone8Plus:
-            return 290 // Adjust as needed for iPhone 8 Plus
-//        case .iPhone11ProMax:
-//            return 370 // Adjust as needed for iPhone 11 Pro Max
+            return 290
         case .iPadPro129:
-            return 950 // Adjust as needed for iPad Pro 12.9-inch
+            return 950
         case .other:
             switch (horizontalSizeClass, verticalSizeClass) {
             case (.compact, .regular):
-                return 372 // Adjust as needed for compact regular size class (e.g., iPhones in landscape)
+                return 372
             case (.regular, .regular):
-                return 740 // Adjust as needed for regular compact size class (e.g., iPads in portrait)
+                return 740
             default:
-                return 360 // Adjust as needed for regular regular size class (e.g., iPads in landscape)
+                return 360
             }
         }
     }
@@ -62,21 +57,19 @@ struct PostView: View {
         
         switch deviceType {
         case .iPhone8Plus:
-            return 400 // Adjust as needed for iPhone 8 Plus
-//        case .iPhone11ProMax:
-//            return 535 // Adjust as needed for iPhone 11 Pro Max
+            return 400
         case .iPadPro129:
-            return 840 // Adjust as needed for iPad Pro 12.9-inch
+            return 840
         case .other:
             switch (horizontalSizeClass, verticalSizeClass) {
-            case (.compact, .compact):
-                return 2000 // Adjust as needed for compact compact size class (e.g., iPhones in portrait)
+            // iPhone
             case (.compact, .regular):
-                return 535 // Adjust as needed for compact regular size class (e.g., iPhones in landscape)
+                return 535
+            // iPad
             case (.regular, .regular):
-                return 840 // Adjust as needed for regular compact size class (e.g., iPads in portrait)
+                return 840
             default:
-                return 535 // Adjust as needed for regular regular size class (e.g., iPads in landscape)
+                return 535
             }
         }
     }
@@ -86,17 +79,17 @@ struct PostView: View {
         
         switch deviceType {
         case .iPhone8Plus:
-            return EdgeInsets(top: 1, leading: 60, bottom: 0, trailing: 60) // Adjust as needed for iPhone 8 Plus
-//        case .iPhone11ProMax:
-//            return EdgeInsets(top: 1, leading: 37, bottom: 0, trailing: 37) // Adjust as needed for iPhone 11 Pro Max
+            return EdgeInsets(top: 1, leading: 60, bottom: 0, trailing: 60)
         case .iPadPro129:
-            return EdgeInsets(top: 1, leading: 35, bottom: 0, trailing: 35) // Adjust as needed for iPad Pro 12.9-inch
+            return EdgeInsets(top: 1, leading: 35, bottom: 0, trailing: 35)
         case .other:
             switch (horizontalSizeClass, verticalSizeClass) {
+            // iPhone
             case (.compact, .regular):
-                return EdgeInsets(top: 1, leading: 28, bottom: 0, trailing: 28) // iPhone in landscape
+                return EdgeInsets(top: 1, leading: 28, bottom: 0, trailing: 28)
+            // iPad
             case (.regular, .regular):
-                return EdgeInsets(top: 1, leading: 45, bottom: 0, trailing: 45) // iPad
+                return EdgeInsets(top: 1, leading: 45, bottom: 0, trailing: 45)
             default:
                 return EdgeInsets(top: 1, leading: 37, bottom: 0, trailing: 37)
             }
@@ -109,17 +102,17 @@ struct PostView: View {
         
         switch deviceType {
         case .iPhone8Plus:
-            return EdgeInsets(top: 20, leading: -140, bottom: 5, trailing: 0) // Adjust as needed for iPhone 8 Plus
-//        case .iPhone11ProMax:
-//            return EdgeInsets(top: 1, leading: 37, bottom: 0, trailing: 37) // Adjust as needed for iPhone 11 Pro Max
+            return EdgeInsets(top: 20, leading: -140, bottom: 5, trailing: 0)
         case .iPadPro129:
-            return EdgeInsets(top: 20, leading: -475, bottom: 5, trailing: 0) // Adjust as needed for iPad Pro 12.9-inch
+            return EdgeInsets(top: 20, leading: -475, bottom: 5, trailing: 0)
         case .other:
             switch (horizontalSizeClass, verticalSizeClass) {
+            // iPhone
             case (.compact, .regular):
-                return EdgeInsets(top: 20, leading: -180, bottom: 5, trailing: 0) // iPhone in landscape
+                return EdgeInsets(top: 20, leading: -180, bottom: 5, trailing: 0)
+            // iPad
             case (.regular, .regular):
-                return EdgeInsets(top: 20, leading: -365, bottom: 5, trailing: 0) // iPad
+                return EdgeInsets(top: 20, leading: -365, bottom: 5, trailing: 0)
             default:
                 return EdgeInsets(top: 20, leading: 37, bottom: 5, trailing: 0)
             }
@@ -131,17 +124,17 @@ struct PostView: View {
         
         switch deviceType {
         case .iPhone8Plus:
-            return EdgeInsets(top: 10, leading: -140, bottom: 1, trailing: 0) // Adjust as needed for iPhone 8 Plus
-//        case .iPhone11ProMax:
-//            return EdgeInsets(top: 1, leading: 37, bottom: 0, trailing: 37) // Adjust as needed for iPhone 11 Pro Max
+            return EdgeInsets(top: 10, leading: -140, bottom: 1, trailing: 0)
         case .iPadPro129:
-            return EdgeInsets(top: 10, leading: -475, bottom: 1, trailing: 0) // Adjust as needed for iPad Pro 12.9-inch
+            return EdgeInsets(top: 10, leading: -475, bottom: 1, trailing: 0)
         case .other:
             switch (horizontalSizeClass, verticalSizeClass) {
+            // iPhone
             case (.compact, .regular):
-                return EdgeInsets(top: 10, leading: -180, bottom: 1, trailing: 0) // iPhone in landscape
+                return EdgeInsets(top: 10, leading: -180, bottom: 1, trailing: 0)
+            // iPad
             case (.regular, .regular):
-                return EdgeInsets(top: 10, leading: -365, bottom: 1, trailing: 0) // iPad
+                return EdgeInsets(top: 10, leading: -365, bottom: 1, trailing: 0)
             default:
                 return EdgeInsets(top: 10, leading: 37, bottom: 1, trailing: 0)
             }
@@ -151,22 +144,23 @@ struct PostView: View {
     //            .padding(.top, -15)
     //            .padding(.bottom, 1)
     
+    // Upcoming Events Text Padding
     func horizontalPaddingForText3() -> EdgeInsets {
         let deviceType = DeviceType.current()
         
         switch deviceType {
         case .iPhone8Plus:
-            return EdgeInsets(top: 10, leading: -110, bottom: 1, trailing: 0) // Adjust as needed for iPhone 8 Plus
-//        case .iPhone11ProMax:
-//            return EdgeInsets(top: 1, leading: 37, bottom: 0, trailing: 37) // Adjust as needed for iPhone 11 Pro Max
+            return EdgeInsets(top: 10, leading: -65, bottom: 1, trailing: 0)
         case .iPadPro129:
-            return EdgeInsets(top: 10, leading: -475, bottom: 1, trailing: 0) // Adjust as needed for iPad Pro 12.9-inch
+            return EdgeInsets(top: 10, leading: -475, bottom: 1, trailing: 0)
         case .other:
             switch (horizontalSizeClass, verticalSizeClass) {
+            // iPhone
             case (.compact, .regular):
-                return EdgeInsets(top: 10, leading: -155, bottom: 1, trailing: 0) // iPhone in landscape
+                return EdgeInsets(top: 10, leading: -145, bottom: 1, trailing: 0)
+            // iPad
             case (.regular, .regular):
-                return EdgeInsets(top: 10, leading: -365, bottom: 1, trailing: 0) // iPad
+                return EdgeInsets(top: 10, leading: -365, bottom: 1, trailing: 0)
             default:
                 return EdgeInsets(top: 10, leading: 37, bottom: 1, trailing: 0)
             }
