@@ -29,7 +29,7 @@ struct ProfileHeaderView: View {
             VStack {
                 if let fullname = user.fullname {
                     Text(fullname)
-                        .font(.footnote)
+                        .font(.subheadline)
                         .fontWeight(.semibold)
                         .foregroundStyle(Color(.black))
                 }

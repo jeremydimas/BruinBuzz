@@ -10,6 +10,7 @@ import PhotosUI
 
 struct UploadPostView: View
 {
+    @State private var showAlert = false
     @State private var title = ""
     @State private var description = ""
     @State private var organizer = ""
@@ -28,9 +29,9 @@ struct UploadPostView: View
     // Start Time
     @State private var starttime = ""
     @State private var endtime = ""
-    @State private var starttimezone = 0
-    @State private var endtimezone = 0
-    let options = ["AM PST", "PM PST"]
+//    @State private var starttimezone = 0
+//    @State private var endtimezone = 0
+//    let options = ["AM PST", "PM PST"]
     
     @State private var caption = ""
     @StateObject var viewModel = UploadPostViewModel()
@@ -69,31 +70,50 @@ struct UploadPostView: View
                         Spacer()
                         Button {
                             Task {
-                                try await viewModel.uploadPost(
-                                    title: title,
-                                    caption: caption,
-                                    organizer: organizer,
-                                    organization: organization,
-                                    location: location,
+                                // Check if any field is empty
+                                if title.isEmpty || caption.isEmpty || organizer.isEmpty || organization.isEmpty || location.isEmpty ||
+                                    startMM.isEmpty || startDD.isEmpty || startYYYY.isEmpty ||
+                                    endMM.isEmpty || endDD.isEmpty || endYYYY.isEmpty ||
+                                    starttime.isEmpty || endtime.isEmpty {
                                     
-                                    startMM: startMM,
-                                    startDD: startDD,
-                                    startYYYY: startYYYY,
-
-                                    endMM: endMM,
-                                    endDD: endDD,
-                                    endYYYY: endYYYY,
-
-                                    starttime: starttime,
-                                    endtime: endtime
-                                )
-                                clearPostDataAndReturnToFeed()
+                                    // Handle the case where one or more fields are empty
+                                    // For example, you can show an alert to the user
+                                    showAlert = true
+                                } else {
+                                    do {
+                                        try await viewModel.uploadPost(
+                                            title: title,
+                                            caption: caption,
+                                            organizer: organizer,
+                                            organization: organization,
+                                            location: location,
+                                            startMM: startMM,
+                                            startDD: startDD,
+                                            startYYYY: startYYYY,
+                                            endMM: endMM,
+                                            endDD: endDD,
+                                            endYYYY: endYYYY,
+                                            starttime: starttime,
+                                            endtime: endtime
+                                        )
+                                        clearPostDataAndReturnToFeed()
+                                    } catch {
+                                        // Handle the error
+                                        print("Failed to upload post: \(error)")
+                                    }
+                                }
                             }
-                        } label:
-                        {
+                        } label: {
                             Text("Upload")
                                 .fontWeight(.semibold)
                                 .foregroundColor(.black)
+                        }
+                        .alert(isPresented: $showAlert) {
+                            Alert(
+                                title: Text("Error"),
+                                message: Text("All fields must be filled in."),
+                                dismissButton: .default(Text("OK"))
+                            )
                         }
                         
                     }
@@ -155,13 +175,22 @@ struct UploadPostView: View
                                     .bold()
                                     .padding(.top, 5)
                             }
-                            TextField("Name of Event", text: $title)
-                                .autocapitalization(.none)
-                                .padding()
-                                .background(Color.gray.opacity(0.2))
-                                .cornerRadius(10)
-                                .frame(width: 325, height: 50)
-                            
+
+                            ZStack(alignment: .leading) {
+                                if title.isEmpty {
+                                    Text("Name of Event")
+                                        .padding()
+                                        .foregroundColor(Color(.lightGray))
+                                }
+                                TextField("", text: $title)
+                                    .foregroundColor(.black)
+                                    .accentColor(.black)
+                                    .padding()
+                            }
+                            .frame(width: 325, height: 50)
+                            .background(Color.gray.opacity(0.2))
+                            .autocapitalization(.none)
+                            .cornerRadius(10)
                             
                             HStack
                             {
@@ -178,13 +207,22 @@ struct UploadPostView: View
                                     .bold()
                                     .padding(.top, 5)
                             }
-                            TextField("Write your event's description here.", text: $caption)
-                                .autocapitalization(.none)
-                                .padding()
-                                .background(Color.gray.opacity(0.2))
-                                .cornerRadius(10)
-                                .frame(width: 325)
-    //                          .multilineTextAlignment(.center)
+                            
+                            ZStack(alignment: .leading) {
+                                if caption.isEmpty {
+                                    Text("Write your event's description here.")
+                                        .padding()
+                                        .foregroundColor(Color(.lightGray))
+                                }
+                                TextField("", text: $caption)
+                                    .foregroundColor(.black)
+                                    .accentColor(.black)
+                                    .padding()
+                            }
+                            .frame(width: 325, height: 50)
+                            .background(Color.gray.opacity(0.2))
+                            .autocapitalization(.none)
+                            .cornerRadius(10)
                             
                             HStack
                             {
@@ -201,26 +239,55 @@ struct UploadPostView: View
                                     .bold()
                                     .padding(.top, 5)
                             }
-                            TextField("Club name or Organization", text: $organization)
-                                .autocapitalization(.none)
-                                .padding()
-                                .background(Color.gray.opacity(0.2))
-                                .cornerRadius(10)
-                                .frame(width: 325)
-                                .foregroundColor(.black)
                             
-                            Text("Organizer")
-                                .padding(.top, 10)
-                                .font(.title2)
-                                .bold()
-                                .foregroundColor(.black)
-                            TextField("Organizer's Name", text: $organizer)
-                                .autocapitalization(.none)
-                                .padding()
-                                .foregroundColor(Color(.lightGray))
-                                .background(Color.gray.opacity(0.2))
-                                .cornerRadius(10)
-                                .frame(width: 325)
+                            ZStack(alignment: .leading) {
+                                if organization.isEmpty {
+                                    Text("Club name or Organization")
+                                        .padding()
+                                        .foregroundColor(Color(.lightGray))
+                                }
+                                TextField("", text: $organization)
+                                    .foregroundColor(.black)
+                                    .accentColor(.black)
+                                    .padding()
+                            }
+                            .frame(width: 325, height: 50)
+                            .background(Color.gray.opacity(0.2))
+                            .autocapitalization(.none)
+                            .cornerRadius(10)
+
+                            HStack
+                            {
+                                Text("Organizer")
+                                    .padding(.top, 10)
+                                    .font(.title2)
+                                    .bold()
+                                    .padding(.top, 5)
+                                    .foregroundColor(.black)
+                                Text("*")
+                                    .foregroundColor(.red)
+                                    .padding(.top, 15)
+                                    .font(.title2)
+                                    .bold()
+                                    .padding(.top, 5)
+                            }
+                            
+                            ZStack(alignment: .leading) {
+                                if organizer.isEmpty {
+                                    Text("Organizer's Name")
+                                        .padding()
+                                        .foregroundColor(Color(.lightGray))
+                                }
+                                TextField("", text: $organizer)
+                                    .foregroundColor(.black)
+                                    .accentColor(.black)
+                                    .padding()
+                            }
+                            .frame(width: 325, height: 50)
+                            .background(Color.gray.opacity(0.2))
+                            .autocapitalization(.none)
+                            .cornerRadius(10)
+                            
                             
                             HStack
                             {
@@ -237,15 +304,22 @@ struct UploadPostView: View
                                     .bold()
                                     .padding(.top, 5)
                             }
-
-                            TextField("Event's Location", text: $location)
-                                .autocapitalization(.none)
-                                .padding()
-                                .foregroundColor(Color(.lightGray))
-                                .background(Color.gray.opacity(0.2))
-                                .cornerRadius(10)
-                                .frame(width: 325)
                             
+                            ZStack(alignment: .leading) {
+                                if location.isEmpty {
+                                    Text("Event's Location")
+                                        .padding()
+                                        .foregroundColor(Color(.lightGray))
+                                }
+                                TextField("", text: $location)
+                                    .foregroundColor(.black)
+                                    .accentColor(.black)
+                                    .padding()
+                            }
+                            .frame(width: 325, height: 50)
+                            .background(Color.gray.opacity(0.2))
+                            .autocapitalization(.none)
+                            .cornerRadius(10)
                             
                             HStack
                             {
@@ -265,27 +339,53 @@ struct UploadPostView: View
                             
                             HStack
                             {
-                                TextField("MM", text: $startMM)
-                                    .autocapitalization(.none)
-                                    .padding()
-                                    
-                                    .background(Color.gray.opacity(0.2))
-                                    .cornerRadius(10)
-                                    .frame(width: 100)
-                                TextField("DD", text: $startDD)
-                                    .autocapitalization(.none)
-                                    .padding()
-                                    
-                                    .background(Color.gray.opacity(0.2))
-                                    .cornerRadius(10)
-                                    .frame(width: 100)
-                                TextField("YY", text: $startYYYY)
-                                    .autocapitalization(.none)
-                                    .padding()
-                                    
-                                    .background(Color.gray.opacity(0.2))
-                                    .cornerRadius(10)
-                                    .frame(width: 110)
+                                ZStack(alignment: .leading) {
+                                    if startMM.isEmpty {
+                                        Text("MM")
+                                            .padding()
+                                            .foregroundColor(Color(.lightGray))
+                                    }
+                                    TextField("", text: $startMM)
+                                        .foregroundColor(.black)
+                                        .accentColor(.black)
+                                        .padding()
+                                }
+                                .frame(width: 100)
+                                .background(Color.gray.opacity(0.2))
+                                .autocapitalization(.none)
+                                .cornerRadius(10)
+                                
+                                ZStack(alignment: .leading) {
+                                    if startDD.isEmpty {
+                                        Text("DD")
+                                            .padding()
+                                            .foregroundColor(Color(.lightGray))
+                                    }
+                                    TextField("", text: $startDD)
+                                        .foregroundColor(.black)
+                                        .accentColor(.black)
+                                        .padding()
+                                }
+                                .frame(width: 100)
+                                .background(Color.gray.opacity(0.2))
+                                .autocapitalization(.none)
+                                .cornerRadius(10)
+                                
+                                ZStack(alignment: .leading) {
+                                    if startYYYY.isEmpty {
+                                        Text("YYYY")
+                                            .padding()
+                                            .foregroundColor(Color(.lightGray))
+                                    }
+                                    TextField("", text: $startYYYY)
+                                        .foregroundColor(.black)
+                                        .accentColor(.black)
+                                        .padding()
+                                }
+                                .frame(width: 100)
+                                .background(Color.gray.opacity(0.2))
+                                .autocapitalization(.none)
+                                .cornerRadius(10)
                             }
                             
                             HStack
@@ -306,28 +406,53 @@ struct UploadPostView: View
                             
                             HStack
                             {
-                                TextField("MM", text: $endMM)
-                                    .autocapitalization(.none)
-                                    .padding()
-                                    
-                                    .background(Color.gray.opacity(0.2))
-                                    .cornerRadius(10)
-                                    .frame(width: 100)
-                                TextField("DD", text: $endDD)
-                                    .autocapitalization(.none)
-                                    .padding()
-                                    
-                                    .background(Color.gray.opacity(0.2))
-                                    .cornerRadius(10)
-                                    .frame(width: 100)
-                                TextField("YY", text: $endYYYY)
-                                    .autocapitalization(.none)
-                                    .padding()
-                                    
-                                    .background(Color.gray.opacity(0.2))
-                                    .cornerRadius(10)
-                                    .frame(width: 110)
-                                    
+                                ZStack(alignment: .leading) {
+                                    if endMM.isEmpty {
+                                        Text("MM")
+                                            .padding()
+                                            .foregroundColor(Color(.lightGray))
+                                    }
+                                    TextField("", text: $endMM)
+                                        .foregroundColor(.black)
+                                        .accentColor(.black)
+                                        .padding()
+                                }
+                                .frame(width: 100)
+                                .background(Color.gray.opacity(0.2))
+                                .autocapitalization(.none)
+                                .cornerRadius(10)
+                                
+                                ZStack(alignment: .leading) {
+                                    if endDD.isEmpty {
+                                        Text("DD")
+                                            .padding()
+                                            .foregroundColor(Color(.lightGray))
+                                    }
+                                    TextField("", text: $endDD)
+                                        .foregroundColor(.black)
+                                        .accentColor(.black)
+                                        .padding()
+                                }
+                                .frame(width: 100)
+                                .background(Color.gray.opacity(0.2))
+                                .autocapitalization(.none)
+                                .cornerRadius(10)
+                                
+                                ZStack(alignment: .leading) {
+                                    if endYYYY.isEmpty {
+                                        Text("YYYY")
+                                            .padding()
+                                            .foregroundColor(Color(.lightGray))
+                                    }
+                                    TextField("", text: $endYYYY)
+                                        .foregroundColor(.black)
+                                        .accentColor(.black)
+                                        .padding()
+                                }
+                                .frame(width: 100)
+                                .background(Color.gray.opacity(0.2))
+                                .autocapitalization(.none)
+                                .cornerRadius(10)
                             }
                             
                             HStack
@@ -348,13 +473,21 @@ struct UploadPostView: View
                             
                             HStack
                             {
-                                TextField("12:00 AM", text: $starttime)
-                                    .autocapitalization(.none)
-                                    .padding()
-                                    
-                                    .background(Color.gray.opacity(0.2))
-                                    .cornerRadius(10)
-                                    .frame(width: 325)
+                                ZStack(alignment: .leading) {
+                                    if starttime.isEmpty {
+                                        Text("12:00 AM")
+                                            .padding()
+                                            .foregroundColor(Color(.lightGray))
+                                    }
+                                    TextField("", text: $starttime)
+                                        .foregroundColor(.black)
+                                        .accentColor(.black)
+                                        .padding()
+                                }
+                                .frame(width: 325, height: 50)
+                                .background(Color.gray.opacity(0.2))
+                                .autocapitalization(.none)
+                                .cornerRadius(10)
                                 
                                 
     //                                Picker(selection: $starttimezone, label: Text("Select an option"))
@@ -391,13 +524,21 @@ struct UploadPostView: View
                             
                             HStack
                             {
-                                TextField("12:00 PM", text: $endtime)
-                                    .autocapitalization(.none)
-                                    .padding()
-                                    
-                                    .background(Color.gray.opacity(0.2))
-                                    .cornerRadius(10)
-                                    .frame(width: 325)
+                                ZStack(alignment: .leading) {
+                                    if endtime.isEmpty {
+                                        Text("12:00 PM")
+                                            .padding()
+                                            .foregroundColor(Color(.lightGray))
+                                    }
+                                    TextField("", text: $endtime)
+                                        .foregroundColor(.black)
+                                        .accentColor(.black)
+                                        .padding()
+                                }
+                                .frame(width: 325, height: 50)
+                                .background(Color.gray.opacity(0.2))
+                                .autocapitalization(.none)
+                                .cornerRadius(10)
                                 
                                 
     //                                Picker(selection: $endtimezone, label: Text("Select an option"))

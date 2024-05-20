@@ -9,6 +9,7 @@ import SwiftUI
 
 struct SideMenuView: View {
     @Binding var showSideMenu: Bool
+    @State private var showAlert = false
 //    let twitterBlue = Color(UIColor(red: 0.016, green: 0.25, blue: 0.47, alpha: 1))
     let twitterBlue = Color(UIColor(red: 0.494, green: 0.752, blue: 0.898, alpha: 1))
     let navy = Color(UIColor(red: 0.494, green: 0.752, blue: 0.898, alpha: 1))
@@ -70,23 +71,9 @@ struct SideMenuView: View {
                     .padding(.top, 16)
                     
                     
-                    Menu {
-                        
-                        Text("Are you sure? Your data will be erased.")
-
-                        Button {
-                            Task {
-                                 AuthService.shared.deleteUserData()
-                                 try await AuthService.shared.deleteAccount()
-                            }
-                        } label: {
-                            Text("Delete Account")
-                            
-                        }
-                        Button("Cancel", role: .destructive) {
-                            
-                        }
-                            
+                    
+                    Button {
+                        showAlert = true
                     } label: {
                         HStack(spacing: 16) {
                             Image(systemName: "person.crop.circle.fill.badge.xmark")
@@ -100,11 +87,61 @@ struct SideMenuView: View {
                             Spacer()
                         }
                         .padding(.leading, 20)
-                        
                     }
-                
-
                     .padding(.top, 24)
+                    .alert(isPresented: $showAlert) {
+                        Alert(
+                            title: Text("Warning"),
+                            message: Text("Are you sure you want to delete your account? Your data will be erased."),
+                            primaryButton:  .default(Text("Delete Account")) {
+                                Task {
+                                    do {
+                                        AuthService.shared.deleteUserData()
+                                        try await AuthService.shared.deleteAccount()
+                                    } catch {
+                                        // Handle the error appropriately
+                                        print("Failed to delete account: \(error)")
+                                    }
+                                }
+                            },
+                            secondaryButton: .cancel(Text("Cancel"))
+                        )
+                    }
+                    
+                    
+//                    Menu {
+//                        
+//                        Text("Are you sure? Your data will be erased.")
+//
+//                        Button {
+//                            Task {
+//                                 AuthService.shared.deleteUserData()
+//                                 try await AuthService.shared.deleteAccount()
+//                            }
+//                        } label: {
+//                            Text("Delete Account")
+//                            
+//                        }
+//                        Button("Cancel", role: .destructive) {
+//                            
+//                        }
+//                            
+//                    } label: {
+//                        HStack(spacing: 16) {
+//                            Image(systemName: "person.crop.circle.fill.badge.xmark")
+//                                .font(.title2)
+//                                .imageScale(.medium)
+//                                .foregroundColor(.black)
+//                            Text("Delete Account")
+//                                .font(.system(size: 16, weight: .semibold))
+//                                .foregroundColor(.black)
+//                            
+//                            Spacer()
+//                        }
+//                        .padding(.leading, 20)
+//                        
+//                    }
+//                    .padding(.top, 24)
                 }
                 .padding(.leading, 16)
                 

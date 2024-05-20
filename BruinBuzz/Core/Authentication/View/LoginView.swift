@@ -83,18 +83,18 @@ struct LoginView: View {
                     }
                     .padding()
                     
-                    HStack {
-                        Rectangle()
-                            .frame(width: (UIScreen.main.bounds.width / 2) - 40, height: 0.5)
-                        
-                        Text("OR")
-                            .font(.footnote)
-                            .fontWeight(.semibold)
-                        
-                        Rectangle()
-                            .frame(width: (UIScreen.main.bounds.width / 2) - 40, height: 0.5)
-                    }
-                    .foregroundColor(.white)
+//                    HStack {
+//                        Rectangle()
+//                            .frame(width: (UIScreen.main.bounds.width / 2) - 40, height: 0.5)
+//                        
+//                        Text("OR")
+//                            .font(.footnote)
+//                            .fontWeight(.semibold)
+//                        
+//                        Rectangle()
+//                            .frame(width: (UIScreen.main.bounds.width / 2) - 40, height: 0.5)
+//                    }
+//                    .foregroundColor(.white)
                     
                     
                     

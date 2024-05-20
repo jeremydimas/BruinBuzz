@@ -69,7 +69,7 @@ struct EditProfileView: View {
                         }
                         
                         Text("Edit profile picture")
-                            .font(.footnote)
+                            .font(.subheadline)
                             .fontWeight(.semibold)
                         
                         Divider()

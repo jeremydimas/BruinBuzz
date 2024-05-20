@@ -37,7 +37,8 @@ struct CurrentUserProfileView: View {
                         
                         Image(systemName: "gearshape.fill")
                             .foregroundColor(.clear)
-                        
+                            .font(.system(size: 24, weight: .bold))
+
                         Text("Profile")
                             .foregroundColor(.black)
                             .fontWeight(.semibold)
@@ -49,6 +50,8 @@ struct CurrentUserProfileView: View {
                         } label: {
                             Image(systemName: "gearshape.fill")
                                 .foregroundColor(.black)
+                                .font(.system(size: 20, weight: .bold))
+
                         }
                     }
                     .padding(16)
