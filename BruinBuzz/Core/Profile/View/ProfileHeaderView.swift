@@ -23,20 +23,25 @@ struct ProfileHeaderView: View {
                 CircularProfileImageView(user: user, size: .large)
 //                UserStatView(value: 3, title: "Upcoming\nEvents")
             }
+//
             // Name and biography
             VStack {
                 if let fullname = user.fullname {
                     Text(fullname)
                         .font(.footnote)
                         .fontWeight(.semibold)
+                        .foregroundStyle(Color(.white))
                 }
                 
                 if let bio = user.bio {
                     Text(bio)
-                        .font(.footnote)
+                        .font(.subheadline)
+                        .foregroundStyle(Color(.white))
+
                 }
             }
-            Text(user.username)
+//            Text(user.username)
+//                .foregroundStyle(Color(.white))
             
             Button{
                 if user.isCurrentUser {

@@ -163,7 +163,7 @@ struct HomeView: View {
                     // Search Bar
                     Text("BRUINBUZZ")
                         .font(Font.custom("NexaRustSans-Trial-Black2", size: 20))
-                        .foregroundColor(.primary)
+                        .foregroundColor(.white)
                         .padding(horizontalPaddingForText())
                     
                     ZStack(alignment: .leading)
@@ -179,14 +179,16 @@ struct HomeView: View {
                                 .foregroundColor(.gray)
                                 .padding(.horizontal, 10)
                             
-                            TextField("Search", text: $searchText)
+                            Text("Search")
                                 .padding(.horizontal, -10)
-                                .onTapGesture
-                                {
-                                    isSearching = true // Set searching state to true when tapped
-                                }
+                                .foregroundColor(.gray)
+
                         }
                         .padding(.horizontal, 10)
+                    }
+                    .onTapGesture
+                    {
+                        isSearching = true // Set searching state to true when tapped
                     }
         //          .padding(.horizontal, 30)
                     .padding(horizontalPaddingForSizeClass())
@@ -194,7 +196,7 @@ struct HomeView: View {
                     
                     Text("All Events")
                         .font(Font.custom("NexaRustSans-Trial-Black2", size: 20))
-                        .foregroundColor(.primary)
+                        .foregroundColor(.white)
                         .padding(horizontalPaddingForText2())
                     
                     ScrollView {

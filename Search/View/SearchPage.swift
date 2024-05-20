@@ -33,14 +33,24 @@ struct SearchPage: View
                             Capsule()
                                 .fill(Color.gray.opacity(0.2))
                                 .frame(height: 40)
-                                
-                            HStack(spacing: 12)
-                            {
+                            
+                            HStack {
                                 Image(systemName: "magnifyingglass")
                                     .foregroundColor(.gray)
                                     .padding(.horizontal, 10)
-                                TextField("Search", text: $searchText)
-                                    .padding(.horizontal, -10)
+                                
+                                ZStack(alignment: .leading) {
+                                    if searchText.isEmpty {
+                                        Text("Search")
+                                            .foregroundColor(Color(.lightGray)) // Set the color of the placeholder text
+                                            .autocapitalization(.none)
+                                        
+                                    }
+                                    TextField("", text: $searchText)
+                                        .foregroundStyle(Color(.white))
+                                        .accentColor(.white)
+                                        .autocapitalization(.none)
+                                }
                             }
                             .padding(.horizontal, 10)
                         }
@@ -49,17 +59,19 @@ struct SearchPage: View
                         .padding(.bottom)
                         .offset(x:-10)
                         
-                        Button(action: {
+                        Button {
                             isMainTabViewActive = true
                             presentationMode.wrappedValue.dismiss()
-                        })
-                        {Text("Done")
-                        .foregroundColor(.blue)}
-                        .offset(x:-10)
-                        .padding(.top, 10)
-                        .padding(.bottom)
-                }
-                .padding(.horizontal)
+                        } label : {
+                            Text("Done")
+                                .foregroundColor(.white)
+                                .fontWeight(.semibold)
+                                .offset(x:-10)
+                                .padding(.top, 10)
+                                .padding(.bottom)
+                        }
+                    }
+                    .padding(.horizontal)
                     
                     LazyVStack(spacing:12) {
                         ForEach(viewModel.users) {
@@ -77,8 +89,10 @@ struct SearchPage: View
                                     VStack(alignment: .leading) {
                                         Text(user.username)
                                             .fontWeight(.semibold)
+                                            .foregroundStyle(Color(.white))
                                         if let fullname = user.fullname {
                                             Text(fullname)
+                                                .foregroundStyle(Color(.white))
                                         }
                                     }
                                     .font(.footnote)

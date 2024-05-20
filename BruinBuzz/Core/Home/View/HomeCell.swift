@@ -6,7 +6,7 @@ struct HomeCell: View {
     
     // Like implementation changes
     let post: Post
-    let darkerRed = Color(UIColor(red: 0.7, green: 0, blue: 0, alpha: 1.0))
+    let gold = Color(UIColor(red: 0.972, green: 0.788, blue: 0.133, alpha: 1.0))
     let twitterBlue = Color(UIColor(red: 0.016, green: 0.25, blue: 0.47, alpha: 1))
 
     
@@ -299,10 +299,10 @@ struct HomeCell: View {
                 RsvpViewModel.likePost()
             } label: {
                 Text("RSVP")
-                    .foregroundColor(Color("DarkMode"))
+                    .foregroundColor(RsvpViewModel.post.didRsvp ?? false ? Color(.white) : Color(.black))
                     .padding()
                     .frame(width: 110, height: 50)
-                    .background(RsvpViewModel.post.didRsvp ?? false ? darkerRed : Color("LightMode"))
+                    .background(RsvpViewModel.post.didRsvp ?? false ? gold : Color(.white))
                     .cornerRadius(8)
             }
 //            Payment()

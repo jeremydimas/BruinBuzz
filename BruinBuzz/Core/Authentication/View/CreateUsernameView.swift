@@ -37,10 +37,14 @@ struct CreateUsernameView: View {
                     if viewModel.username.isEmpty {
                         Text("Username")
                             .foregroundColor(Color(.lightGray)) // Set the color of the placeholder text
+                            .autocapitalization(.none)
+
                     }
                     TextField("", text: $viewModel.username)
                         .foregroundStyle(Color(.black))
                         .accentColor(.black)
+                        .autocapitalization(.none)
+
                 }
                 .modifier(TextFieldModifier())
                 

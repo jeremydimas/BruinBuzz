@@ -37,10 +37,14 @@ struct AddEmailView: View {
                     if viewModel.email.isEmpty {
                         Text("Email")
                             .foregroundColor(Color(.lightGray)) // Set the color of the placeholder text
+                            .autocapitalization(.none)
+
                     }
                     TextField("", text: $viewModel.email)
                         .foregroundStyle(Color(.black))
                         .accentColor(.black)
+                        .autocapitalization(.none)
+
                 }
                 .modifier(TextFieldModifier())
 

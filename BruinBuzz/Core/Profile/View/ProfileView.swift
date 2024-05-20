@@ -25,12 +25,26 @@ struct ProfileView: View {
             
             ScrollView {
                 // Header
+                
+                HStack {
+                    Spacer()
+
+                    
+                    Text("Profile")
+                        .foregroundColor(.white)
+                        .fontWeight(.semibold)
+                    
+                    Spacer()
+                                            
+
+                }
+                .padding(.top, -32)
+                
                 ProfileHeaderView(user: user)
                 
                 PostView(user: user)
             }
-            .navigationTitle("Profile")
-            .foregroundColor(.primary)
+            .foregroundColor(.white)
             .navigationBarTitleDisplayMode(.inline)
             .refreshable {
                 print("refreshing..")

@@ -8,6 +8,7 @@
 import SwiftUI
 import FirebaseCore
 import Stripe
+import FirebaseAuth
 
 class AppDelegate: NSObject, UIApplicationDelegate {
   func application(_ application: UIApplication,

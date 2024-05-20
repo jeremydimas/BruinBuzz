@@ -36,6 +36,8 @@
 		36B2C7782BD78971003E97B3 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B2C7772BD78971003E97B3 /* User.swift */; };
 		36B655FC2BEBDEEE00A53104 /* HomeCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B655FB2BEBDEEE00A53104 /* HomeCellViewModel.swift */; };
 		36B655FE2BED126700A53104 /* PostFilterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B655FD2BED126700A53104 /* PostFilterViewModel.swift */; };
+		36BC316B2BFA7555004E92CE /* SideMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BC316A2BFA7555004E92CE /* SideMenuView.swift */; };
+		36BC31702BFA8F54004E92CE /* ProfileViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BC316F2BFA8F54004E92CE /* ProfileViewState.swift */; };
 		36C0493C2BE82F7D00E59C15 /* PostService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36C0493B2BE82F7D00E59C15 /* PostService.swift */; };
 		36C049412BE8315B00E59C15 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36C049402BE8315B00E59C15 /* SearchViewModel.swift */; };
 		36C049432BE8318A00E59C15 /* SearchPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36C049422BE8318A00E59C15 /* SearchPage.swift */; };
@@ -117,6 +119,8 @@
 		36B2C7772BD78971003E97B3 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		36B655FB2BEBDEEE00A53104 /* HomeCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCellViewModel.swift; sourceTree = "<group>"; };
 		36B655FD2BED126700A53104 /* PostFilterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostFilterViewModel.swift; sourceTree = "<group>"; };
+		36BC316A2BFA7555004E92CE /* SideMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuView.swift; sourceTree = "<group>"; };
+		36BC316F2BFA8F54004E92CE /* ProfileViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewState.swift; sourceTree = "<group>"; };
 		36C0493B2BE82F7D00E59C15 /* PostService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostService.swift; sourceTree = "<group>"; };
 		36C049402BE8315B00E59C15 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		36C049422BE8318A00E59C15 /* SearchPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPage.swift; sourceTree = "<group>"; };
@@ -338,8 +342,33 @@
 			children = (
 				363D17D62BCFA825009EDA4D /* Post.swift */,
 				36B2C7772BD78971003E97B3 /* User.swift */,
+				36BC316F2BFA8F54004E92CE /* ProfileViewState.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		36BC31632BFA7026004E92CE /* SideMenu */ = {
+			isa = PBXGroup;
+			children = (
+				36BC31652BFA7097004E92CE /* View */,
+				36BC31642BFA708B004E92CE /* ViewModel */,
+			);
+			path = SideMenu;
+			sourceTree = "<group>";
+		};
+		36BC31642BFA708B004E92CE /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		36BC31652BFA7097004E92CE /* View */ = {
+			isa = PBXGroup;
+			children = (
+				36BC316A2BFA7555004E92CE /* SideMenuView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		36C0493D2BE8300F00E59C15 /* Search */ = {
@@ -414,8 +443,8 @@
 				36C0493D2BE8300F00E59C15 /* Search */,
 				FB33AD752BE9B19F008CE113 /* Payment */,
 				367FBD6A2BDCAA2E007D1303 /* Profile */,
+				36BC31632BFA7026004E92CE /* SideMenu */,
 				3695282E2BD0E0CB001D2AAB /* UploadPost */,
-				36FA9E9A2BE9603500F03E25 /* NexaRustSans-Trial-Black2.ttf */,
 				36B2C76F2BD752C2003E97B3 /* Root */,
 				36FA181E2BD73D9F00586641 /* TabBar */,
 			);
@@ -494,6 +523,7 @@
 				36FA181A2BD736C900586641 /* Services */,
 				36FA17F52BD6082300586641 /* GoogleService-Info.plist */,
 				FBA88DEF2BC9B7BE00F92A9A /* Assets.xcassets */,
+				36FA9E9A2BE9603500F03E25 /* NexaRustSans-Trial-Black2.ttf */,
 				FBA88DF12BC9B7BE00F92A9A /* Preview Content */,
 			);
 			path = BruinBuzz;
@@ -688,11 +718,13 @@
 				360A4BAD2BDF5D8900E0544A /* EditProfileView.swift in Sources */,
 				36C049432BE8318A00E59C15 /* SearchPage.swift in Sources */,
 				FB33AD792BE9B19F008CE113 /* PaymentGatewayController.swift in Sources */,
+				36BC31702BFA8F54004E92CE /* ProfileViewState.swift in Sources */,
 				36359D912BE1FE350060C464 /* PostView.swift in Sources */,
 				367FBD612BDA30A0007D1303 /* CreateUsernameView.swift in Sources */,
 				368549DD2BE091DD000D9A6B /* EditProfileViewModel.swift in Sources */,
 				FB33AD772BE9B19F008CE113 /* Payment.swift in Sources */,
 				36B655FE2BED126700A53104 /* PostFilterViewModel.swift in Sources */,
+				36BC316B2BFA7555004E92CE /* SideMenuView.swift in Sources */,
 				36B2C7662BD75089003E97B3 /* AuthService.swift in Sources */,
 				369528322BD0E82F001D2AAB /* UploadPostViewModel.swift in Sources */,
 				36B655FC2BEBDEEE00A53104 /* HomeCellViewModel.swift in Sources */,

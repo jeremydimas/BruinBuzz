@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import FirebaseAuth
 
 struct LoginView: View {
     
@@ -35,10 +36,13 @@ struct LoginView: View {
                         if viewModel.email.isEmpty {
                             Text("Email")
                                 .foregroundColor(Color(.lightGray)) // Set the color of the placeholder text
+                                .autocapitalization(.none)
+
                         }
                         TextField("", text: $viewModel.email)
                             .foregroundStyle(Color(.black))
                             .accentColor(.black)
+                            .autocapitalization(.none)
                     }
                     .modifier(TextFieldModifier())
 
@@ -91,6 +95,8 @@ struct LoginView: View {
                             .frame(width: (UIScreen.main.bounds.width / 2) - 40, height: 0.5)
                     }
                     .foregroundColor(.white)
+                    
+                    
                     
                     Spacer()
                 }

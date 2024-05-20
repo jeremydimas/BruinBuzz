@@ -36,10 +36,14 @@ struct CreatePasswordView: View {
                     if viewModel.password.isEmpty {
                         Text("Password")
                             .foregroundColor(Color(.lightGray)) // Set the color of the placeholder text
+                            .autocapitalization(.none)
+
                     }
                     TextField("", text: $viewModel.password)
                         .foregroundStyle(Color(.black))
                         .accentColor(.black)
+                        .autocapitalization(.none)
+
                 }
                 .modifier(TextFieldModifier())
                 
