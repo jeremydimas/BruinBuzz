@@ -15,7 +15,8 @@ struct SearchPage: View
     @StateObject var viewModel = SearchViewModel()
     @Environment(\.presentationMode) var presentationMode
     @State private var isMainTabViewActive = false
-    let twitterBlue = Color(UIColor(red: 0.016, green: 0.25, blue: 0.47, alpha: 1))
+//    let twitterBlue = Color(UIColor(red: 0.016, green: 0.25, blue: 0.47, alpha: 1))
+    let twitterBlue = Color(UIColor(red: 0.494, green: 0.752, blue: 0.898, alpha: 1))
 
     
     var body: some View
@@ -23,7 +24,7 @@ struct SearchPage: View
         NavigationStack
         {
             ZStack {
-                RadialGradient(gradient: Gradient(colors: [twitterBlue, .white]), center: .center, startRadius: 500, endRadius: -900)
+                RadialGradient(gradient: Gradient(colors: [ .white]), center: .center, startRadius: 500, endRadius: -900)
                     .ignoresSafeArea()
                 
                 ScrollView {
@@ -47,8 +48,8 @@ struct SearchPage: View
                                         
                                     }
                                     TextField("", text: $searchText)
-                                        .foregroundStyle(Color(.white))
-                                        .accentColor(.white)
+                                        .foregroundStyle(Color(.gray))
+                                        .accentColor(.black)
                                         .autocapitalization(.none)
                                 }
                             }
@@ -64,7 +65,7 @@ struct SearchPage: View
                             presentationMode.wrappedValue.dismiss()
                         } label : {
                             Text("Done")
-                                .foregroundColor(.white)
+                                .foregroundColor(.black)
                                 .fontWeight(.semibold)
                                 .offset(x:-10)
                                 .padding(.top, 10)
@@ -82,24 +83,24 @@ struct SearchPage: View
                                     Image(user.profileImageUrl ?? "")
                                         .resizable()
                                         .scaledToFill()
-                                        .foregroundColor(.gray)
+                                        .foregroundColor(.black)
                                         .frame(width:40, height:40)
                                         .clipShape(Circle())
 
                                     VStack(alignment: .leading) {
                                         Text(user.username)
                                             .fontWeight(.semibold)
-                                            .foregroundStyle(Color(.white))
+                                            .foregroundStyle(Color(.black))
                                         if let fullname = user.fullname {
                                             Text(fullname)
-                                                .foregroundStyle(Color(.white))
+                                                .foregroundStyle(Color(.black))
                                         }
                                     }
                                     .font(.footnote)
                                     .offset(x:-40)
                                     Spacer()
                                 }
-                                .foregroundColor(.primary)
+                                .foregroundColor(.black)
                                 .padding(.horizontal)
                             }
                         }

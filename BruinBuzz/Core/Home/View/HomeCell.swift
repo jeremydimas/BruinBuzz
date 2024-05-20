@@ -7,7 +7,9 @@ struct HomeCell: View {
     // Like implementation changes
     let post: Post
     let gold = Color(UIColor(red: 0.972, green: 0.788, blue: 0.133, alpha: 1.0))
-    let twitterBlue = Color(UIColor(red: 0.016, green: 0.25, blue: 0.47, alpha: 1))
+//    let twitterBlue = Color(UIColor(red: 0.016, green: 0.25, blue: 0.47, alpha: 1))
+    let twitterBlue = Color(UIColor(red: 0.494, green: 0.752, blue: 0.898, alpha: 1))
+    let uclaBlue = Color(UIColor(red: 0.152, green: 0.454, blue: 0.682, alpha: 1))
 
     
     @ObservedObject var RsvpViewModel: HomeCellViewModel
@@ -203,7 +205,7 @@ struct HomeCell: View {
                 
                 .sheet(isPresented: $showingBottomSheet) {
                     ZStack {
-                        RadialGradient(gradient: Gradient(colors: [twitterBlue, .white]), center: .center, startRadius: 500, endRadius: -900)
+                        RadialGradient(gradient: Gradient(colors: [ .white]), center: .center, startRadius: 500, endRadius: -900)
                             .ignoresSafeArea()
                         
                         ScrollView {
@@ -232,6 +234,7 @@ struct HomeCell: View {
                                 }
                                 .padding(.leading, 40)
                                 .padding(.bottom, 10)
+                                .foregroundColor(.black)
 
                                 HStack {
                                     Text("Description: ")
@@ -243,6 +246,7 @@ struct HomeCell: View {
                                 .padding(.leading, 40)
                                 .padding(.trailing, 40)
                                 .padding(.bottom, 10)
+                                .foregroundColor(.black)
 
                                 HStack {
                                     Text("Start Date: ")
@@ -257,6 +261,7 @@ struct HomeCell: View {
                                 .padding(.leading, 40)
                                 .padding(.trailing, 40)
                                 .padding(.bottom, 10)
+                                .foregroundColor(.black)
                                 
                                 HStack {
                                     Text("End Date: ")
@@ -271,6 +276,7 @@ struct HomeCell: View {
                                 .padding(.leading, 40)
                                 .padding(.trailing, 40)
                                 .padding(.bottom, 10)
+                                .foregroundColor(.black)
                                 
                                 VStack {
                                     HStack {
@@ -280,6 +286,7 @@ struct HomeCell: View {
                                         Spacer()
                                     }
                                     .padding(.leading, 40)
+                                    .foregroundColor(.black)
     //                                MapView()
     //                                    .frame(width: 350, height: 200)
     //                                    .clipShape(CurvedShape())
@@ -299,10 +306,10 @@ struct HomeCell: View {
                 RsvpViewModel.likePost()
             } label: {
                 Text("RSVP")
-                    .foregroundColor(RsvpViewModel.post.didRsvp ?? false ? Color(.white) : Color(.black))
+                    .foregroundColor(RsvpViewModel.post.didRsvp ?? false ? Color(.black) : Color(.white))
                     .padding()
                     .frame(width: 110, height: 50)
-                    .background(RsvpViewModel.post.didRsvp ?? false ? gold : Color(.white))
+                    .background(RsvpViewModel.post.didRsvp ?? false ? gold : Color(.black))
                     .cornerRadius(8)
             }
 //            Payment()

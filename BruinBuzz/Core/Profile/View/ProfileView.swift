@@ -3,7 +3,8 @@ import SwiftUI
 struct ProfileView: View {
     let user: User
     
-    let twitterBlue = Color(UIColor(red: 0.016, green: 0.25, blue: 0.47, alpha: 1))
+//    let twitterBlue = Color(UIColor(red: 0.016, green: 0.25, blue: 0.47, alpha: 1))
+    let twitterBlue = Color(UIColor(red: 0.494, green: 0.752, blue: 0.898, alpha: 1))
     
     @StateObject private var viewModel: PostViewModel
     
@@ -20,7 +21,7 @@ struct ProfileView: View {
     var body: some View {
         
         ZStack {
-            RadialGradient(gradient: Gradient(colors: [twitterBlue, .white]), center: .center, startRadius: 500, endRadius: -900)
+            RadialGradient(gradient: Gradient(colors: [ .white]), center: .center, startRadius: 500, endRadius: -900)
                 .ignoresSafeArea()
             
             ScrollView {
@@ -31,7 +32,7 @@ struct ProfileView: View {
 
                     
                     Text("Profile")
-                        .foregroundColor(.white)
+                        .foregroundColor(.black)
                         .fontWeight(.semibold)
                     
                     Spacer()

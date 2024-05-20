@@ -11,6 +11,8 @@ struct CreateUsernameView: View {
     @EnvironmentObject var viewModel: RegistrationViewModel
     let twitterBlue = Color(UIColor(red: 0.494, green: 0.752, blue: 0.898, alpha: 1))
     let navy = Color(UIColor(red: 0.1, green: 0.25, blue: 0.4, alpha: 1))
+    let uclaBlue = Color(UIColor(red: 0.3, green: 0.42, blue: 0.65, alpha: 1))
+
     
 
     

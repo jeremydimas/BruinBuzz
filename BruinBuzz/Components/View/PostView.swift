@@ -175,7 +175,7 @@ struct PostView: View {
         
         Text("My Events")
             .font(Font.custom("NexaRustSans-Trial-Black2", size: 20))
-            .foregroundColor(.white)
+            .foregroundColor(.black)
 //            .padding(.top, 15)
 //            .padding(.bottom, 1)
 //            .padding(.leading, -180) // Adjust this value as needed
@@ -195,7 +195,7 @@ struct PostView: View {
         
         Text("Upcoming Events")
             .font(Font.custom("NexaRustSans-Trial-Black2", size: 20))
-            .foregroundColor(.white)
+            .foregroundColor(.black)
 //            .padding(.leading, -145) // Adjust this value as needed
 //            .padding(.top, -15)
 //            .padding(.bottom, 1)

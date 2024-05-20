@@ -9,7 +9,8 @@ import SwiftUI
 
 struct CurrentUserProfileView: View {
     let user: User
-    let twitterBlue = Color(UIColor(red: 0.016, green: 0.25, blue: 0.47, alpha: 1))
+//    let twitterBlue = Color(UIColor(red: 0.016, green: 0.25, blue: 0.47, alpha: 1))
+    let twitterBlue = Color(UIColor(red: 0.494, green: 0.752, blue: 0.898, alpha: 1))
     @State private var showSideMenu = false
     @State private var profileState = ProfileViewState.sideMenu
     
@@ -24,7 +25,7 @@ struct CurrentUserProfileView: View {
     var body: some View {
         NavigationStack {
             ZStack {
-                RadialGradient(gradient: Gradient(colors: [twitterBlue, .white]), center: .center, startRadius: 500, endRadius: -900)
+                RadialGradient(gradient: Gradient(colors: [ .white]), center: .center, startRadius: 500, endRadius: -900)
                     .ignoresSafeArea()
                 
 
@@ -38,7 +39,7 @@ struct CurrentUserProfileView: View {
                             .foregroundColor(.clear)
                         
                         Text("Profile")
-                            .foregroundColor(.white)
+                            .foregroundColor(.black)
                             .fontWeight(.semibold)
                                                 
                         Button {
@@ -47,7 +48,7 @@ struct CurrentUserProfileView: View {
                             }
                         } label: {
                             Image(systemName: "gearshape.fill")
-                                .foregroundColor(.white)
+                                .foregroundColor(.black)
                         }
                     }
                     .padding(16)

@@ -20,7 +20,6 @@ struct CompleteSignUpView: View {
             
             VStack(spacing: 12) {
                 
-                Spacer()
                 
                 Text("Welcome to BruinBuzz!")
                     .font(.title2)

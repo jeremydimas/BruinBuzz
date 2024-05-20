@@ -15,7 +15,8 @@ struct HomeView: View {
     @State private var isSearching: Bool = false
     // Ends here
     
-    let twitterBlue = Color(UIColor(red: 0.016, green: 0.25, blue: 0.47, alpha: 1))
+//    let twitterBlue = Color(UIColor(red: 0.016, green: 0.25, blue: 0.47, alpha: 1))
+    let twitterBlue = Color(UIColor(red: 0.494, green: 0.752, blue: 0.898, alpha: 1))
 
     @State private var searchText: String = ""
     
@@ -156,14 +157,14 @@ struct HomeView: View {
         NavigationStack {
             
             ZStack {
-                RadialGradient(gradient: Gradient(colors: [twitterBlue, .white]), center: .center, startRadius: 500, endRadius: -900)
+                RadialGradient(gradient: Gradient(colors: [ .white]), center: .center, startRadius: 500, endRadius: -900)
                     .ignoresSafeArea()
 
                 VStack {
                     // Search Bar
                     Text("BRUINBUZZ")
                         .font(Font.custom("NexaRustSans-Trial-Black2", size: 20))
-                        .foregroundColor(.white)
+                        .foregroundColor(.black)
                         .padding(horizontalPaddingForText())
                     
                     ZStack(alignment: .leading)
@@ -196,7 +197,7 @@ struct HomeView: View {
                     
                     Text("All Events")
                         .font(Font.custom("NexaRustSans-Trial-Black2", size: 20))
-                        .foregroundColor(.white)
+                        .foregroundColor(.black)
                         .padding(horizontalPaddingForText2())
                     
                     ScrollView {

@@ -9,14 +9,15 @@ import SwiftUI
 
 struct SideMenuView: View {
     @Binding var showSideMenu: Bool
-    let twitterBlue = Color(UIColor(red: 0.016, green: 0.25, blue: 0.47, alpha: 1))
+//    let twitterBlue = Color(UIColor(red: 0.016, green: 0.25, blue: 0.47, alpha: 1))
+    let twitterBlue = Color(UIColor(red: 0.494, green: 0.752, blue: 0.898, alpha: 1))
     let navy = Color(UIColor(red: 0.494, green: 0.752, blue: 0.898, alpha: 1))
 
     
     var body: some View {
         ZStack {
             
-            RadialGradient(gradient: Gradient(colors: [twitterBlue, .white]), center: .center, startRadius: 500, endRadius: -900)
+            RadialGradient(gradient: Gradient(colors: [ .white]), center: .center, startRadius: 500, endRadius: -900)
                 .ignoresSafeArea()
             VStack {
                 VStack {
@@ -30,14 +31,14 @@ struct SideMenuView: View {
                             Image(systemName: "chevron.left")
                                 .imageScale(.large)
                                 .padding(.bottom, 16)
-                                .foregroundColor(.white)
+                                .foregroundColor(.black)
                                 .padding(.top, 16)
                             
                             
                         }
                         
                         Text("Settings")
-                            .foregroundColor(.white)
+                            .foregroundColor(.black)
                             .fontWeight(.semibold)
                         
                         
@@ -56,11 +57,11 @@ struct SideMenuView: View {
                             Image(systemName: "door.left.hand.open")
                                 .font(.title2)
                                 .imageScale(.medium)
-                                .foregroundColor(navy)
+                                .foregroundColor(.black)
                             
                             Text(" Logout")
                                 .font(.system(size: 16, weight: .semibold))
-                                .foregroundColor(navy)
+                                .foregroundColor(.black)
                             
                             Spacer()
                         }
@@ -91,10 +92,10 @@ struct SideMenuView: View {
                             Image(systemName: "person.crop.circle.fill.badge.xmark")
                                 .font(.title2)
                                 .imageScale(.medium)
-                                .foregroundColor(navy)
+                                .foregroundColor(.black)
                             Text("Delete Account")
                                 .font(.system(size: 16, weight: .semibold))
-                                .foregroundColor(navy)
+                                .foregroundColor(.black)
                             
                             Spacer()
                         }

@@ -35,7 +35,9 @@ struct UploadPostView: View
     @State private var caption = ""
     @StateObject var viewModel = UploadPostViewModel()
     @StateObject var refreshCall = HomeViewModel()
-    let twitterBlue = Color(UIColor(red: 0.016, green: 0.25, blue: 0.47, alpha: 1))
+//    let twitterBlue = Color(UIColor(red: 0.016, green: 0.25, blue: 0.47, alpha: 1))
+//    let twitterBlue = Color(UIColor(red: 0.494, green: 0.752, blue: 0.898, alpha: 1))
+    let twitterBlue = Color(UIColor(red: 0.494, green: 0.752, blue: 0.898, alpha: 1))
 
 
     @Binding var tabIndex: Int
@@ -43,7 +45,7 @@ struct UploadPostView: View
     var body: some View
     {
         ZStack {
-            RadialGradient(gradient: Gradient(colors: [twitterBlue, .white]), center: .center, startRadius: 500, endRadius: -900)
+            RadialGradient(gradient: Gradient(colors: [ .white]), center: .center, startRadius: 500, endRadius: -900)
                 .ignoresSafeArea()
             
             ScrollView
@@ -58,10 +60,12 @@ struct UploadPostView: View
                         } label:
                         {
                             Text("Cancel")
+                                .foregroundColor(.black)
                         }
                         Spacer()
                         Text("New Post")
                             .fontWeight(.semibold)
+                            .foregroundColor(.black)
                         Spacer()
                         Button {
                             Task {
@@ -89,6 +93,7 @@ struct UploadPostView: View
                         {
                             Text("Upload")
                                 .fontWeight(.semibold)
+                                .foregroundColor(.black)
                         }
                         
                     }
@@ -142,6 +147,7 @@ struct UploadPostView: View
                                     .font(.title2)
                                     .bold()
                                     .padding(.top, 5)
+                                    .foregroundColor(.black)
                                 Text("*")
                                     .foregroundColor(.red)
                                     .padding(.top, 15)
@@ -156,6 +162,7 @@ struct UploadPostView: View
                                 .cornerRadius(10)
                                 .frame(width: 325, height: 50)
                             
+                            
                             HStack
                             {
                                 Text("Description")
@@ -163,6 +170,7 @@ struct UploadPostView: View
                                     .font(.title2)
                                     .bold()
                                     .padding(.top, 5)
+                                    .foregroundColor(.black)
                                 Text("*")
                                     .foregroundColor(.red)
                                     .padding(.top, 15)
@@ -185,6 +193,7 @@ struct UploadPostView: View
                                     .font(.title2)
                                     .bold()
                                     .padding(.top, 5)
+                                    .foregroundColor(.black)
                                 Text("*")
                                     .foregroundColor(.red)
                                     .padding(.top, 15)
@@ -198,15 +207,17 @@ struct UploadPostView: View
                                 .background(Color.gray.opacity(0.2))
                                 .cornerRadius(10)
                                 .frame(width: 325)
+                                .foregroundColor(.black)
                             
                             Text("Organizer")
                                 .padding(.top, 10)
                                 .font(.title2)
                                 .bold()
+                                .foregroundColor(.black)
                             TextField("Organizer's Name", text: $organizer)
                                 .autocapitalization(.none)
                                 .padding()
-                                
+                                .foregroundColor(Color(.lightGray))
                                 .background(Color.gray.opacity(0.2))
                                 .cornerRadius(10)
                                 .frame(width: 325)
@@ -218,6 +229,7 @@ struct UploadPostView: View
                                     .font(.title2)
                                     .bold()
                                     .padding(.top, 5)
+                                    .foregroundColor(.black)
                                 Text("*")
                                     .foregroundColor(.red)
                                     .padding(.top, 15)
@@ -229,7 +241,7 @@ struct UploadPostView: View
                             TextField("Event's Location", text: $location)
                                 .autocapitalization(.none)
                                 .padding()
-                                
+                                .foregroundColor(Color(.lightGray))
                                 .background(Color.gray.opacity(0.2))
                                 .cornerRadius(10)
                                 .frame(width: 325)
@@ -242,6 +254,7 @@ struct UploadPostView: View
                                     .font(.title2)
                                     .bold()
                                     .padding(.top, 5)
+                                    .foregroundColor(.black)
                                 Text("*")
                                     .foregroundColor(.red)
                                     .padding(.top, 15)
@@ -282,6 +295,7 @@ struct UploadPostView: View
                                     .font(.title2)
                                     .bold()
                                     .padding(.top, 5)
+                                    .foregroundColor(.black)
                                 Text("*")
                                     .foregroundColor(.red)
                                     .padding(.top, 15)
@@ -323,6 +337,7 @@ struct UploadPostView: View
                                     .font(.title2)
                                     .bold()
                                     .padding(.top, 5)
+                                    .foregroundColor(.black)
                                 Text("*")
                                     .foregroundColor(.red)
                                     .padding(.top, 15)
@@ -365,6 +380,7 @@ struct UploadPostView: View
                                     .font(.title2)
                                     .bold()
                                     .padding(.top, 5)
+                                    .foregroundColor(.black)
                                 Text("*")
                                     .foregroundColor(.red)
                                     .padding(.top, 15)

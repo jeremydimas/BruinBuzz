@@ -12,7 +12,8 @@ struct EditProfileView: View {
     @Environment(\.dismiss) var dismiss
     @StateObject var viewModel: EditProfileViewModel
     
-    let twitterBlue = Color(UIColor(red: 0.016, green: 0.25, blue: 0.47, alpha: 1))
+//    let twitterBlue = Color(UIColor(red: 0.016, green: 0.25, blue: 0.47, alpha: 1))
+    let twitterBlue = Color(UIColor(red: 0.494, green: 0.752, blue: 0.898, alpha: 1))
 
     
     init(user: User) {
@@ -22,7 +23,7 @@ struct EditProfileView: View {
     var body: some View {
 
         ZStack {
-            RadialGradient(gradient: Gradient(colors: [twitterBlue, .white]), center: .center, startRadius: 500, endRadius: -900)
+            RadialGradient(gradient: Gradient(colors: [ .white]), center: .center, startRadius: 500, endRadius: -900)
                 .ignoresSafeArea()
             
             VStack {
@@ -36,7 +37,7 @@ struct EditProfileView: View {
                     Text("Edit Profile")
                         .font(.subheadline)
                         .fontWeight(.semibold)
-                    
+                        .foregroundStyle(Color(.black))
                     Spacer()
                     
                     Button {
@@ -87,12 +88,14 @@ struct EditProfileView: View {
                             placeholder: "Enter your name..",
                             text: $viewModel.fullname)
                         .padding(.top, 10)
+                        .foregroundStyle(Color(.black))
                         
                         EditProfileRowView(
                             title: "Bio",
                             placeholder: "Enter your bio..",
                             text: $viewModel.bio)
                         .padding(.bottom, 10)
+                        .foregroundStyle(Color(.black))
                         
                     }
                     .padding(.horizontal, 20) // Add horizontal padding to keep elements away from the border line
