@@ -15,7 +15,7 @@ struct CompleteSignUpView: View {
     
     var body: some View {
         ZStack {
-            RadialGradient(gradient: Gradient(colors: [twitterBlue, .white]), center: .center, startRadius: 500, endRadius: -900)
+            RadialGradient(gradient: Gradient(colors: [.white]), center: .center, startRadius: 500, endRadius: -900)
                 .ignoresSafeArea()
             
             VStack(spacing: 12) {
@@ -25,12 +25,12 @@ struct CompleteSignUpView: View {
                     .font(.title2)
                     .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
                     .padding(.top)
-                    .foregroundColor(.white)
+                    .foregroundColor(.black)
                 
                 Text("Click below to complete registration.")
                     .font(.footnote)
                     .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
-                    .foregroundColor(.white)
+                    .foregroundColor(.black)
                     .multilineTextAlignment(.center)
                     .padding(.bottom, 8)
                 
@@ -41,7 +41,7 @@ struct CompleteSignUpView: View {
                         .font(.subheadline)
                         .foregroundStyle(Color(.white))
                         .frame(width:300, height:50)
-                        .background(navy)
+                        .background(.black)
                         .cornerRadius(10)
                 }
                 

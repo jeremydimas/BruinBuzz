@@ -16,7 +16,7 @@ struct AddEmailView: View {
     var body: some View {
         
         ZStack {
-            RadialGradient(gradient: Gradient(colors: [twitterBlue, .white]), center: .center, startRadius: 500, endRadius: -900)
+            RadialGradient(gradient: Gradient(colors: [ .white]), center: .center, startRadius: 500, endRadius: -900)
                 .ignoresSafeArea()
             
             VStack(spacing: 12) {
@@ -24,12 +24,12 @@ struct AddEmailView: View {
                     .font(.title2)
                     .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
                     .padding(.top)
-                    .foregroundColor(.white)
+                    .foregroundColor(.black)
                 
                 Text("You will use this email to sign into your account.")
                     .font(.subheadline)
                     .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
-                    .foregroundColor(.white)
+                    .foregroundColor(.black)
                     .multilineTextAlignment(.center)
                     .padding(.bottom, 8)
                 
@@ -54,7 +54,7 @@ struct AddEmailView: View {
                     Text("Next")
                         .foregroundColor(.white)
                         .frame(width:300, height:50)
-                        .background(navy)
+                        .background(.black)
                         .cornerRadius(10)
                 }
                 

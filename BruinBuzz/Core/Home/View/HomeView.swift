@@ -160,67 +160,79 @@ struct HomeView: View {
                 RadialGradient(gradient: Gradient(colors: [ .white]), center: .center, startRadius: 500, endRadius: -900)
                     .ignoresSafeArea()
 
-                VStack {
-                    // Search Bar
-                    Text("BRUINBUZZ")
-                        .font(Font.custom("NexaRustSans-Trial-Black2", size: 20))
-                        .foregroundColor(.black)
-                        .padding(horizontalPaddingForText())
-                    
-                    ZStack(alignment: .leading)
-                    {
-                        Capsule()
-                            .fill(Color.gray.opacity(0.2))
-                            .frame(height: 40)
-                            .frame(maxWidth: maxWidthForHVImage())
-                            
-                        HStack(spacing: 12)
+                ScrollView {
+                    VStack {
+                        // Search Bar
+                        Text("BRUINBUZZ")
+                            .font(Font.custom("NexaRustSans-Trial-Black2", size: 20))
+                            .foregroundColor(.black)
+                            .padding(horizontalPaddingForText())
+                        
+                        ZStack(alignment: .leading)
                         {
-                            Image(systemName: "magnifyingglass")
-                                .foregroundColor(.gray)
-                                .padding(.horizontal, 10)
-                            
-                            Text("Search")
-                                .padding(.horizontal, -10)
-                                .foregroundColor(.gray)
-
-                        }
-                        .padding(.horizontal, 10)
-                    }
-                    .onTapGesture
-                    {
-                        isSearching = true // Set searching state to true when tapped
-                    }
-        //          .padding(.horizontal, 30)
-                    .padding(horizontalPaddingForSizeClass())
-        //          .padding(.bottom)
-                    
-                    Text("All Events")
-                        .font(Font.custom("NexaRustSans-Trial-Black2", size: 20))
-                        .foregroundColor(.black)
-                        .padding(horizontalPaddingForText2())
-                    
-                    ScrollView {
-                        ScrollView(.horizontal, showsIndicators: false) {
-                                HStack {
-                                    ForEach(viewModel.posts) { post in
-                                        HomeCell(post: post)
-                                            .frame(width: maxWidthForHVImage())
-                                            .padding(horizontalPaddingForSizeClass())
-                                    }
+                            Capsule()
+                                .fill(Color.gray.opacity(0.2))
+                                .frame(height: 40)
+                                .frame(maxWidth: maxWidthForHVImage())
+                                
+                            HStack {
+                                Image(systemName: "magnifyingglass")
+                                    .foregroundColor(.gray)
+                                    .padding(.horizontal, 10)
+                                
+                                ZStack(alignment: .leading) {
+                                    Text("Search")
+                                        .foregroundColor(Color(.lightGray)) // Set the color of the placeholder text
+                                        .autocapitalization(.none)
                                 }
+                            }
+                            .padding(.horizontal, 10)
                         }
+                        .onTapGesture
+                        {
+                            isSearching = true // Set searching state to true when tapped
+                        }
+            //          .padding(.horizontal, 30)
+                        .padding(horizontalPaddingForSizeClass())
+            //          .padding(.bottom)
+                        
+                        Text("All Events")
+                            .font(Font.custom("NexaRustSans-Trial-Black2", size: 20))
+                            .foregroundColor(.black)
+                            .padding(horizontalPaddingForText2())
+                        
+    //                    ScrollView {
+                            ScrollView(.horizontal, showsIndicators: false) {
+                                    HStack {
+                                        ForEach(viewModel.posts) { post in
+                                            HomeCell(post: post)
+                                                .frame(width: maxWidthForHVImage())
+                                                .padding(horizontalPaddingForSizeClass())
+                                        }
+                                    }
+                            }
+    //                    }
+    //                    .refreshable {
+    //                        do {
+    //                            try await viewModel.fetchPosts()
+    //                        } catch {
+    //                            // Handle the error here, you can log it or display an alert to the user
+    //                            print("Error fetching posts: \(error)")
+    //                        }
+    //                    }
                     }
-                    .refreshable {
-                        do {
-                            try await viewModel.fetchPosts()
-                        } catch {
-                            // Handle the error here, you can log it or display an alert to the user
-                            print("Error fetching posts: \(error)")
-                        }
+                }
+                .refreshable {
+                    print("fetching")
+                    do {
+                        try await viewModel.fetchPosts()
+                    } catch {
+                        // Handle the error here, you can log it or display an alert to the user
+                        print("Error fetching posts: \(error)")
                     }
                 }
                 Spacer()
+
 
             }
         }
@@ -240,7 +252,7 @@ struct Refresh {
     var invalid: Bool = false
 }
 
-struct Home_Previews: PreviewProvider {
+struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
         HomeView()
     }

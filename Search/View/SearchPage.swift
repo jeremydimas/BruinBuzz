@@ -12,12 +12,12 @@ struct SearchPage: View
 
     @State private var searchText = ""
 
+    
     @StateObject var viewModel = SearchViewModel()
     @Environment(\.presentationMode) var presentationMode
     @State private var isMainTabViewActive = false
 //    let twitterBlue = Color(UIColor(red: 0.016, green: 0.25, blue: 0.47, alpha: 1))
     let twitterBlue = Color(UIColor(red: 0.494, green: 0.752, blue: 0.898, alpha: 1))
-
     
     var body: some View
     {
@@ -107,8 +107,20 @@ struct SearchPage: View
                     }
                     .padding(.top,8)
                 }
-                .navigationDestination(for: User.self, destination: {user in ProfileView(user:user)
-                })
+                .navigationDestination (
+                    for: User.self,
+                    destination: {
+                        user in ProfileView(user:user)
+                    }
+                )
+                .onAppear() {
+                    let navBarAppearance = UINavigationBarAppearance()
+                    
+                    navBarAppearance.backgroundColor = UIColor(.white)
+                    
+                    UINavigationBar.appearance().standardAppearance = navBarAppearance
+                }
+
             }
             
 

@@ -17,6 +17,7 @@ class HomeViewModel: ObservableObject {
     // Fetch Feed
     @MainActor
     func fetchPosts() async throws {
+        print("the promblem is here")
         self.posts = try await PostService.fetchFeedPosts()
 
     }

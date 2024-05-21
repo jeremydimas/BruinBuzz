@@ -12,7 +12,7 @@ import MapKit
 struct StoreImage: View {
     @State private var showingBottomSheet = false
     @State private var isImageTapped = false
-    let twitterBlue = Color(UIColor(red: 0.016, green: 0.25, blue: 0.47, alpha: 1))
+//    let twitterBlue = Color(UIColor(red: 0.016, green: 0.25, blue: 0.47, alpha: 1))
 
     @Environment(\.horizontalSizeClass) var horizontalSizeClass
     @Environment(\.verticalSizeClass) var verticalSizeClass
@@ -192,7 +192,7 @@ struct StoreImage: View {
             .sheet(isPresented: $showingBottomSheet) {
                 ZStack {
                     
-                    RadialGradient(gradient: Gradient(colors: [twitterBlue, .white]), center: .center, startRadius: 500, endRadius: -900)
+                    RadialGradient(gradient: Gradient(colors: [ .white]), center: .center, startRadius: 500, endRadius: -900)
                         .ignoresSafeArea()
                     
                     ScrollView{
@@ -223,6 +223,8 @@ struct StoreImage: View {
                             }
                             .padding(.leading, 40)
                             .padding(.bottom, 10)
+                            .foregroundColor(.black)
+
                             
                             HStack {
                                 Text("Description: ")
@@ -234,6 +236,8 @@ struct StoreImage: View {
                             .padding(.leading, 40)
                             .padding(.trailing, 40)
                             .padding(.bottom, 10)
+                            .foregroundColor(.black)
+
                             
                             HStack {
                                 Text("Start Date: ")
@@ -248,6 +252,8 @@ struct StoreImage: View {
                             .padding(.leading, 40)
                             .padding(.trailing, 40)
                             .padding(.bottom, 10)
+                            .foregroundColor(.black)
+
                             
                             HStack {
                                 Text("End Date: ")
@@ -262,6 +268,8 @@ struct StoreImage: View {
                             .padding(.leading, 40)
                             .padding(.trailing, 40)
                             .padding(.bottom, 10)
+                            .foregroundColor(.black)
+
                             
                             VStack {
                                 HStack {
@@ -271,6 +279,9 @@ struct StoreImage: View {
                                     Spacer()
                                 }
                                 .padding(.leading, 40)
+                                .foregroundColor(.black)
+
+
     //                            MapView()
     //                                .frame(width: 350, height: 200)
     //                                .clipShape(CurvedShape())

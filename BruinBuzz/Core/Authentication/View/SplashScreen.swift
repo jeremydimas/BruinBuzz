@@ -15,16 +15,19 @@ struct SplashScreen: View {
         
         ZStack {
             if isActive {
+                RadialGradient(gradient: Gradient(colors: [.white]), center: .center, startRadius: 500, endRadius: -900)
+                    .ignoresSafeArea()
                 Group {
                     // xcode suggested $
                     if viewModel.userSession == nil {
-                        LoginView()
+                        GuestTabView()
                             .environmentObject(registrationViewModel)
-                    } else if let currentUser = viewModel.currentUser {
+                    } 
+                    else if let currentUser = viewModel.currentUser {
                         MainTabView(user: currentUser)
+                            .transition(.slide)
                     }
                 }
-                
             } else {
                 // Background gradient
                 RadialGradient(gradient: Gradient(colors: [twitterBlue, .white]), center: .center, startRadius: 500, endRadius: -900)

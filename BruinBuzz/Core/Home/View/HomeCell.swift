@@ -10,8 +10,9 @@ struct HomeCell: View {
 //    let twitterBlue = Color(UIColor(red: 0.016, green: 0.25, blue: 0.47, alpha: 1))
     let twitterBlue = Color(UIColor(red: 0.494, green: 0.752, blue: 0.898, alpha: 1))
     let uclaBlue = Color(UIColor(red: 0.152, green: 0.454, blue: 0.682, alpha: 1))
-
     
+    @StateObject var signInToRsvp = ContentViewModel()
+    @State private var showRequest = false
     @ObservedObject var RsvpViewModel: HomeCellViewModel
     
     init(post: Post) {
@@ -299,11 +300,18 @@ struct HomeCell: View {
                 }
                 .clipShape(.rect(cornerRadius: 15))
                 .shadow(color: Color.black.opacity(0.25), radius: 8, x: 5, y: 10)
+            
+
   
             Button {
-                RsvpViewModel.post.didRsvp ?? false ?
-                RsvpViewModel.unRsvpPost() :
-                RsvpViewModel.likePost()
+                if signInToRsvp.userSession == nil {
+                    showRequest.toggle() // Toggle showRequest to true if it's currently false
+                } else if signInToRsvp.userSession != nil {
+                    showRequest = false
+                    RsvpViewModel.post.didRsvp ?? false ?
+                    RsvpViewModel.unRsvpPost() :
+                    RsvpViewModel.likePost()
+                }
             } label: {
                 Text("RSVP")
                     .foregroundColor(RsvpViewModel.post.didRsvp ?? false ? Color(.black) : Color(.white))
@@ -311,6 +319,9 @@ struct HomeCell: View {
                     .frame(width: 110, height: 50)
                     .background(RsvpViewModel.post.didRsvp ?? false ? gold : Color(.black))
                     .cornerRadius(8)
+            }
+            .fullScreenCover(isPresented: $showRequest) {
+                RequestRsvp(showRequest: $showRequest)
             }
 //            Payment()
 //                .padding(.top)

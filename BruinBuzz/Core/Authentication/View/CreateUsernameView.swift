@@ -18,7 +18,7 @@ struct CreateUsernameView: View {
     
     var body: some View {
         ZStack {
-            RadialGradient(gradient: Gradient(colors: [twitterBlue, .white]), center: .center, startRadius: 500, endRadius: -900)
+            RadialGradient(gradient: Gradient(colors: [ .white]), center: .center, startRadius: 500, endRadius: -900)
                 .ignoresSafeArea()
             
             VStack(spacing: 12) {
@@ -26,12 +26,12 @@ struct CreateUsernameView: View {
                     .font(.title2)
                     .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
                     .padding(.top)
-                    .foregroundColor(.white)
+                    .foregroundColor(.black)
                 
                 Text("Pick a usename for your account.")
                     .font(.subheadline)
                     .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
-                    .foregroundColor(.white)
+                    .foregroundColor(.black)
                     .multilineTextAlignment(.center)
                     .padding(.bottom, 8)
                 
@@ -56,7 +56,7 @@ struct CreateUsernameView: View {
                     Text("Next")
                         .foregroundColor(.white)
                         .frame(width:300, height:50)
-                        .background(navy)
+                        .background(.black)
                         .cornerRadius(10)
                 }
                 

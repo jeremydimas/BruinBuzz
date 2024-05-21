@@ -9,7 +9,7 @@ import SwiftUI
 import FirebaseAuth
 
 struct LoginView: View {
-    
+    @State private var isLoading = false
     let twitterBlue = Color(UIColor(red: 0.494, green: 0.752, blue: 0.898, alpha: 1))
     let navy = Color(UIColor(red: 0.1, green: 0.25, blue: 0.4, alpha: 1))
 
@@ -20,14 +20,14 @@ struct LoginView: View {
         NavigationStack{
             
             ZStack {
-                RadialGradient(gradient: Gradient(colors: [twitterBlue, .white]), center: .center, startRadius: 500, endRadius: -900)
+                RadialGradient(gradient: Gradient(colors: [.white]), center: .center, startRadius: 500, endRadius: -900)
                     .ignoresSafeArea()
                 
 
                 VStack {
                     
                     Text("Login")
-                        .foregroundColor(.white)
+                        .foregroundColor(.black)
                         .font(.largeTitle)
                         .bold()
                         .padding()
@@ -63,20 +63,20 @@ struct LoginView: View {
                         Text("Login")
                             .foregroundColor(.white)
                             .frame(width:300, height:50)
-                            .background(navy)
+                            .background(.black)
                             .cornerRadius(10)
                     }
                     
                     HStack {
                         Text("Don't have an account?")
-                            .foregroundColor(.white)
+                            .foregroundColor(.black)
                             .font(.subheadline)
                         
                         NavigationLink {
                             AddEmailView()
                         } label: {
                             Text("Sign Up")
-                                .foregroundColor(navy)
+                                .foregroundColor(.black)
                                 .font(.subheadline)
                                 .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
                         }

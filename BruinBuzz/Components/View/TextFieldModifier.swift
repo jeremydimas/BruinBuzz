@@ -13,7 +13,7 @@ struct TextFieldModifier: ViewModifier {
         content
             .padding(12)
             .frame(width:300, height:50)
-            .background(Color(.white))
+            .background(Color.gray.opacity(0.1))
             .cornerRadius(10)
     }
 }

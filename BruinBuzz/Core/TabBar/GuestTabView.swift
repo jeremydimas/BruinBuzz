@@ -1,13 +1,15 @@
 //
-//  MainTabView.swift
+//  GuestTabView.swift
 //  BruinBuzz
 //
-//  Created by Yahir Dimas on 4/17/24.
+//  Created by Yahir Dimas on 5/20/24.
 //
+
 import SwiftUI
-struct MainTabView: View {
-    let user: User
+
+struct GuestTabView: View {
 //    let twitterBlue = Color(UIColor(red: 0.016, green: 0.25, blue: 0.47, alpha: 1))
+    @StateObject var registrationViewModel = RegistrationViewModel()
     let twitterBlue = Color(UIColor(red: 0.494, green: 0.752, blue: 0.898, alpha: 1))
 
     
@@ -21,14 +23,16 @@ struct MainTabView: View {
                 .tabItem {
                     Image(systemName: "house")
                 }.tag(0)
-            UploadPostView(tabIndex: $selectedIndex)
+            RequestUser()
+                .environmentObject(registrationViewModel)
                 .onAppear() {
                     selectedIndex = 1
                 }
                 .tabItem {
                     Image(systemName: "plus.square")
                 }.tag(1)
-            CurrentUserProfileView(user: user)
+            RequestUser()
+                .environmentObject(registrationViewModel)
                 .onAppear() {
                     selectedIndex = 2
                 }
@@ -48,8 +52,8 @@ struct MainTabView: View {
     }
 }
 
-struct MainTabView_Previews: PreviewProvider {
+struct GuestTabView_Previews: PreviewProvider {
     static var previews: some View {
-        MainTabView(user: User.MOCK_USERS[0])
+        GuestTabView()
     }
 }

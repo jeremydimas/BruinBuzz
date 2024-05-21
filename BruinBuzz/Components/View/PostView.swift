@@ -190,8 +190,11 @@ struct PostView: View {
 //                .padding(.bottom, 30)
                 .frame(width: maxWidthForHVImage()/*, height: maxHeightForHVImage()*/) // 430
                 .padding(horizontalPaddingForSizeClass())
+                .padding(.bottom, 30)
             }
         }
+        
+        
         
         Text("Upcoming Events")
             .font(Font.custom("NexaRustSans-Trial-Black2", size: 20))
@@ -200,6 +203,7 @@ struct PostView: View {
 //            .padding(.top, -15)
 //            .padding(.bottom, 1)
             .padding(horizontalPaddingForText3())
+            .padding(.top, -25)
         
         ScrollView(.horizontal, showsIndicators: false) {
             HStack {
@@ -210,6 +214,8 @@ struct PostView: View {
 //                .padding(.bottom, 30)
                 .frame(width: maxWidthForHVImage()/*, height: maxHeightForHVImage()*/) // 430
                 .padding(horizontalPaddingForSizeClass())
+                .padding(.bottom, 30)
+
             }
         }
     }

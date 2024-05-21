@@ -11,6 +11,9 @@
 		362955372BD0A5BF00CA8D7B /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 362955362BD0A5BF00CA8D7B /* MainTabView.swift */; };
 		36359D912BE1FE350060C464 /* PostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36359D902BE1FE350060C464 /* PostView.swift */; };
 		363D17D72BCFA825009EDA4D /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 363D17D62BCFA825009EDA4D /* Post.swift */; };
+		364A0BAC2BFC03C20075CB7B /* GuestTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 364A0BAB2BFC03C20075CB7B /* GuestTabView.swift */; };
+		364A0BAE2BFC052D0075CB7B /* RequestUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 364A0BAD2BFC052D0075CB7B /* RequestUser.swift */; };
+		364A0BB02BFC13C20075CB7B /* RequestRsvp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 364A0BAF2BFC13C20075CB7B /* RequestRsvp.swift */; };
 		3677E9032BE0CECB00C79A15 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3677E9022BE0CECB00C79A15 /* HomeViewModel.swift */; };
 		367FBD5B2BD83029007D1303 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 367FBD5A2BD83029007D1303 /* LoginViewModel.swift */; };
 		367FBD5D2BDA27F7007D1303 /* AddEmailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 367FBD5C2BDA27F7007D1303 /* AddEmailView.swift */; };
@@ -94,6 +97,9 @@
 		362955362BD0A5BF00CA8D7B /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		36359D902BE1FE350060C464 /* PostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostView.swift; sourceTree = "<group>"; };
 		363D17D62BCFA825009EDA4D /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		364A0BAB2BFC03C20075CB7B /* GuestTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestTabView.swift; sourceTree = "<group>"; };
+		364A0BAD2BFC052D0075CB7B /* RequestUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestUser.swift; sourceTree = "<group>"; };
+		364A0BAF2BFC13C20075CB7B /* RequestRsvp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestRsvp.swift; sourceTree = "<group>"; };
 		365F4AEC2BF91A8500BE2BC7 /* BruinBuzzDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BruinBuzzDebug.entitlements; sourceTree = "<group>"; };
 		3677E9022BE0CECB00C79A15 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		367FBD5A2BD83029007D1303 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
@@ -216,6 +222,7 @@
 			isa = PBXGroup;
 			children = (
 				3694869F2BDD5DD900010592 /* HomeCell.swift */,
+				364A0BAF2BFC13C20075CB7B /* RequestRsvp.swift */,
 				369486A12BDD5DF900010592 /* HomeView.swift */,
 			);
 			path = View;
@@ -457,6 +464,8 @@
 			isa = PBXGroup;
 			children = (
 				362955362BD0A5BF00CA8D7B /* MainTabView.swift */,
+				364A0BAB2BFC03C20075CB7B /* GuestTabView.swift */,
+				364A0BAD2BFC052D0075CB7B /* RequestUser.swift */,
 			);
 			path = TabBar;
 			sourceTree = "<group>";
@@ -719,6 +728,7 @@
 				36BC316B2BFA7555004E92CE /* SideMenuView.swift in Sources */,
 				36B2C7662BD75089003E97B3 /* AuthService.swift in Sources */,
 				369528322BD0E82F001D2AAB /* UploadPostViewModel.swift in Sources */,
+				364A0BAC2BFC03C20075CB7B /* GuestTabView.swift in Sources */,
 				36B655FC2BEBDEEE00A53104 /* HomeCellViewModel.swift in Sources */,
 				367FBD5F2BDA2EB1007D1303 /* TextFieldModifier.swift in Sources */,
 				369486A22BDD5DF900010592 /* HomeView.swift in Sources */,
@@ -727,6 +737,7 @@
 				367FBD5B2BD83029007D1303 /* LoginViewModel.swift in Sources */,
 				368549D92BE0600F000D9A6B /* CircularProfileImageView.swift in Sources */,
 				36C049472BE8331900E59C15 /* PostViewModel.swift in Sources */,
+				364A0BB02BFC13C20075CB7B /* RequestRsvp.swift in Sources */,
 				362955372BD0A5BF00CA8D7B /* MainTabView.swift in Sources */,
 				36EEBBDA2BDCAACE00DEF6E0 /* ProfileView.swift in Sources */,
 				36D2C5EF2BF58BBF00FE9D1C /* Timestamp.swift in Sources */,
@@ -734,6 +745,7 @@
 				367FBD632BDA36C1007D1303 /* CreatePasswordView.swift in Sources */,
 				FB33AD762BE9B19F008CE113 /* CheckoutIntentResponse.swift in Sources */,
 				FB33AD782BE9B19F008CE113 /* PaymentConfig.swift in Sources */,
+				364A0BAE2BFC052D0075CB7B /* RequestUser.swift in Sources */,
 				369486A42BDD6A3B00010592 /* ProfileHeaderView.swift in Sources */,
 				369528302BD0E105001D2AAB /* UploadPostView.swift in Sources */,
 				36B2C7682BD750BA003E97B3 /* LoginView.swift in Sources */,
