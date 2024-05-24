@@ -19,18 +19,15 @@ struct SearchPage: View
 //    let twitterBlue = Color(UIColor(red: 0.016, green: 0.25, blue: 0.47, alpha: 1))
     let twitterBlue = Color(UIColor(red: 0.494, green: 0.752, blue: 0.898, alpha: 1))
     
-    var body: some View
-    {
-        NavigationStack
-        {
+    var body: some View {
+        NavigationStack {
             ZStack {
                 RadialGradient(gradient: Gradient(colors: [ .white]), center: .center, startRadius: 500, endRadius: -900)
                     .ignoresSafeArea()
                 
                 ScrollView {
                     HStack {
-                        ZStack(alignment: .leading)
-                        {
+                        ZStack(alignment: .leading) {
                             Capsule()
                                 .fill(Color.gray.opacity(0.2))
                                 .frame(height: 40)
@@ -45,7 +42,6 @@ struct SearchPage: View
                                         Text("Search")
                                             .foregroundColor(Color(.lightGray)) // Set the color of the placeholder text
                                             .autocapitalization(.none)
-                                        
                                     }
                                     TextField("", text: $searchText)
                                         .foregroundStyle(Color(.gray))
@@ -78,8 +74,7 @@ struct SearchPage: View
                         ForEach(viewModel.users) {
                             user in NavigationLink(value:user) {
                                 HStack {
-                                    CircularProfileImageView(user:user, size: .small)
-                                        
+                                    CircularProfileImageView(imageUrl: user.profileImageUrl, size: .small)
                                     Image(user.profileImageUrl ?? "")
                                         .resizable()
                                         .scaledToFill()
@@ -115,23 +110,17 @@ struct SearchPage: View
                 )
                 .onAppear() {
                     let navBarAppearance = UINavigationBarAppearance()
-                    
                     navBarAppearance.backgroundColor = UIColor(.white)
-                    
                     UINavigationBar.appearance().standardAppearance = navBarAppearance
+                    
                 }
-
             }
-            
-
         }
     }
 }
     
-struct SearchPage_Previews: PreviewProvider
-{
-    static var previews: some View
-    {
+struct SearchPage_Previews: PreviewProvider {
+    static var previews: some View {
         SearchPage()
     }
 }

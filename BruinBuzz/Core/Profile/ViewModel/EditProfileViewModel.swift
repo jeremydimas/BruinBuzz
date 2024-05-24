@@ -8,21 +8,21 @@
 import PhotosUI
 import Firebase
 import SwiftUI
+import Combine
 
 @MainActor
 class EditProfileViewModel: ObservableObject {
     @Published var user: User
-    
-
-
-
     @Published var selectedImage: PhotosPickerItem? {
         didSet { Task { await loadImage(fromItem: selectedImage) } }
     }
     @Published var profileImage: Image?
+    @Published var fullname: String = ""
+    @Published var bio: String = ""
     
-    @Published var fullname = ""
-    @Published var bio = ""
+    //  my changes
+    @Published var profileImageUrl: String?
+
 
     private var uiImage: UIImage?
     
@@ -31,6 +31,7 @@ class EditProfileViewModel: ObservableObject {
         
         if let fullname = user.fullname {
             self.fullname = fullname
+            print(self.fullname)
         }
         
         if let bio = user.bio {
@@ -44,18 +45,23 @@ class EditProfileViewModel: ObservableObject {
         guard let uiImage = UIImage(data: data) else {return}
         self.uiImage = uiImage
         self.profileImage = Image(uiImage: uiImage)
+        print("Image selected - load image function")
     }
     
     func updateUserData() async throws {
-            
-        
-        // update profile image if changed
         print("update data is refreshing...")
         var data = [String: Any]()
         
         if let uiImage = uiImage {
+            print("Photo is heading to Firebase")
+            // generates an image url
             let imageUrl = try? await ImageUploader.uploadImage(image: uiImage)
             data["profileImageUrl"] = imageUrl
+            
+            // changes
+            profileImageUrl = imageUrl
+            print("Photo has updated")
+            
         }
         
         // update name if changed
@@ -70,6 +76,9 @@ class EditProfileViewModel: ObservableObject {
         
         if !data.isEmpty {
             try await Firestore.firestore().collection("users").document(user.id).updateData(data)
+            
+            // more changes
+            user.profileImageUrl = profileImageUrl
         }
     }
 }

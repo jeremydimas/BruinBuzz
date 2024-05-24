@@ -9,37 +9,35 @@ import SwiftUI
 
 struct ProfileHeaderView: View {
     let user: User
-    
-//    let twitterBlue = Color(UIColor(red: 0.016, green: 0.25, blue: 0.47, alpha: 1))
-    let twitterBlue = Color(UIColor(red: 0.494, green: 0.752, blue: 0.898, alpha: 1))
-
-    
     @State private var showEditProfile = false
+    @StateObject var viewModel: EditProfileViewModel
+    init(user: User) {
+        self.user = user
+        self._viewModel = StateObject(wrappedValue: EditProfileViewModel(user: user))
+    }
     
     var body: some View {
         VStack(spacing: 10) {
             // Profile Image and Events
+
             HStack {
 //                UserStatView(value: 3, title: "My\nEvents")
-                CircularProfileImageView(user: user, size: .large)
+                CircularProfileImageView(imageUrl: viewModel.user.profileImageUrl, size: .large)
+                .onAppear {
+                        print("Circular profile view has been called in the current user profile")
+                    }
 //                UserStatView(value: 3, title: "Upcoming\nEvents")
             }
-//
             // Name and biography
             VStack {
-                if let fullname = user.fullname {
-                    Text(fullname)
-                        .font(.subheadline)
-                        .fontWeight(.semibold)
-                        .foregroundStyle(Color(.black))
-                }
+                Text(viewModel.fullname)
+                    .font(.subheadline)
+                    .fontWeight(.semibold)
+                    .foregroundStyle(Color(.black))
+                Text(viewModel.bio)
+                    .font(.subheadline)
+                    .foregroundStyle(Color(.black))
                 
-                if let bio = user.bio {
-                    Text(bio)
-                        .font(.subheadline)
-                        .foregroundStyle(Color(.black))
-
-                }
             }
 //            Text(user.username)
 //                .foregroundStyle(Color(.white))
@@ -65,7 +63,7 @@ struct ProfileHeaderView: View {
             }
         }
         .fullScreenCover(isPresented: $showEditProfile) {
-            EditProfileView(user: user)
+            EditProfileView(viewModel: viewModel)
         }
         
     }

@@ -11,21 +11,14 @@ import PhotosUI
 struct EditProfileView: View {
     @Environment(\.dismiss) var dismiss
     @StateObject var viewModel: EditProfileViewModel
-    
-//    let twitterBlue = Color(UIColor(red: 0.016, green: 0.25, blue: 0.47, alpha: 1))
-    let twitterBlue = Color(UIColor(red: 0.494, green: 0.752, blue: 0.898, alpha: 1))
-
-    
-    init(user: User) {
-        self._viewModel = StateObject(wrappedValue: EditProfileViewModel(user: user))
+    init(viewModel: EditProfileViewModel) {
+        self._viewModel = StateObject(wrappedValue: viewModel)
     }
     
     var body: some View {
-
         ZStack {
             RadialGradient(gradient: Gradient(colors: [ .white]), center: .center, startRadius: 500, endRadius: -900)
                 .ignoresSafeArea()
-            
             VStack {
                 HStack {
                     Button("Cancel") {
@@ -39,7 +32,7 @@ struct EditProfileView: View {
                         .fontWeight(.semibold)
                         .foregroundStyle(Color(.black))
                     Spacer()
-                    
+
                     Button {
                         Task {
                             try await viewModel.updateUserData()
@@ -54,23 +47,30 @@ struct EditProfileView: View {
                 .padding(.horizontal)
                 
                 Divider()
-                
-                // edit profile pic
-                
+                                
                 PhotosPicker(selection: $viewModel.selectedImage) {
                     VStack {
+                        // new image selected for profile image
                         if let image = viewModel.profileImage {
                             image
                                 .resizable()
                                 .clipShape(Circle())
                                 .frame(width: 80, height: 80)
+                                .onAppear {
+                                    print("The new image has appeared in EditProfileView")
+                                }
                         } else {
-                            CircularProfileImageView(user: viewModel.user, size: .large)
+                            // when no new image has been selected CircularProfileImageView is called
+                            CircularProfileImageView(imageUrl: viewModel.user.profileImageUrl, size: .large)
+                                .onAppear {
+                                    print("Circular profile view has been called initially in edit profile view")
+                                }
                         }
                         
                         Text("Edit profile picture")
                             .font(.subheadline)
                             .fontWeight(.semibold)
+                        
                         
                         Divider()
                     }
@@ -127,8 +127,6 @@ struct EditProfileRowView: View {
     var body: some View {
         HStack {
             Text(title)
-//                .padding(.leading, 8)
-//                .frame(width: 100, alignment: .leading)
                 .font(.title2)
                 .bold()
                 .padding(.top, 10)
@@ -152,6 +150,7 @@ struct EditProfileRowView: View {
 
 struct EditProfileView_Previews: PreviewProvider {
     static var previews: some View {
-        EditProfileView(user: User.MOCK_USERS[0])
+//        EditProfileView(user: User.MOCK_USERS[0])
+        EditProfileView(viewModel: EditProfileViewModel(user: User.MOCK_USERS[0]))
     }
 }

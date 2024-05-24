@@ -304,23 +304,30 @@ struct HomeCell: View {
 
   
             Button {
+                // if the user is not signed in and tries to rsvp..
                 if signInToRsvp.userSession == nil {
-                    showRequest.toggle() // Toggle showRequest to true if it's currently false
+                    // Toggle prompt sign in
+                    showRequest.toggle()
+                    // else if the user is signed to an account let them rsvp
                 } else if signInToRsvp.userSession != nil {
                     showRequest = false
+                    // checks if the user has been rsvp using a boolean
                     RsvpViewModel.post.didRsvp ?? false ?
-                    RsvpViewModel.unRsvpPost() :
-                    RsvpViewModel.likePost()
+                    // allows you to unrsvp an event or rsvp for an event
+                    RsvpViewModel.unRsvpPost() : RsvpViewModel.likePost()
                 }
             } label: {
                 Text("RSVP")
+                    // if the user did rsvp change the text color from white to black - unrsvp vice versa
                     .foregroundColor(RsvpViewModel.post.didRsvp ?? false ? Color(.black) : Color(.white))
                     .padding()
                     .frame(width: 110, height: 50)
+                    // if the user did rsvp change the button color from black to gold - unrsvp vice versa
                     .background(RsvpViewModel.post.didRsvp ?? false ? gold : Color(.black))
                     .cornerRadius(8)
             }
             .fullScreenCover(isPresented: $showRequest) {
+                // tells user that they must have an account to rsvp
                 RequestRsvp(showRequest: $showRequest)
             }
 //            Payment()

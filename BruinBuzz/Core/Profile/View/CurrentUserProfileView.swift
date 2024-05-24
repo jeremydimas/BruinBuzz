@@ -9,11 +9,9 @@ import SwiftUI
 
 struct CurrentUserProfileView: View {
     let user: User
-//    let twitterBlue = Color(UIColor(red: 0.016, green: 0.25, blue: 0.47, alpha: 1))
-    let twitterBlue = Color(UIColor(red: 0.494, green: 0.752, blue: 0.898, alpha: 1))
+    
     @State private var showSideMenu = false
     @State private var profileState = ProfileViewState.sideMenu
-    
     @StateObject private var viewModel: PostViewModel
     @State private var refreshedUser: User? = nil
     
@@ -27,9 +25,6 @@ struct CurrentUserProfileView: View {
             ZStack {
                 RadialGradient(gradient: Gradient(colors: [ .white]), center: .center, startRadius: 500, endRadius: -900)
                     .ignoresSafeArea()
-                
-
-                
                 ScrollView {
                     // Header
                     
@@ -56,23 +51,17 @@ struct CurrentUserProfileView: View {
                     }
                     .padding(16)
 
-
-                    
                     ProfileHeaderView(user: user)
 
                     
                     PostView(user: refreshedUser ?? user)
                         .id(refreshedUser) // Ensure recreation of PostView when refreshedUser changes
                 }
-//                .navigationTitle("Profile")
-    //            .foregroundColor(.primary)
-    //            .navigationBarTitleDisplayMode(.inline)
                 .offset(x: showSideMenu ? -316 : 0) // Adjust the offset value as needed
                 .shadow(color: showSideMenu ? .black : .clear, radius: 10)
                 
                 if showSideMenu {
                     SideMenuView(showSideMenu: $showSideMenu)
-                        /*.background(Color.white)*/ // Ensure SideMenuView has a background
                         .transition(.move(edge: .trailing))
                         .zIndex(1)
                 }
@@ -97,30 +86,6 @@ struct CurrentUserProfileView: View {
         }
     }
 }
-
-
-//                .toolbar {
-//                    ToolbarItem(placement: .navigationBarTrailing) {
-//                        Button {
-//                            AuthService.shared.signout()
-//                        } label: {
-//                            Image(systemName: "arrowshape.forward.fill")
-//                                .foregroundColor(.primary)
-//                        }
-//                    }
-//
-//                    ToolbarItem(placement: .navigationBarTrailing) {
-//                        Button {
-//                            Task {
-//                                 AuthService.shared.deleteUserData()
-//                                 try await AuthService.shared.deleteAccount()
-//                            }
-//                        } label: {
-//                            Image(systemName: "xmark.app.fill")
-//                                .foregroundColor(.primary)
-//                        }
-//                    }
-//                }
 
 struct CurrentUserProfileView_Previews: PreviewProvider {
     static var previews: some View {
