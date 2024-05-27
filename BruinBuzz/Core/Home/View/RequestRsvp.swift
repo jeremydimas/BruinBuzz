@@ -11,18 +11,16 @@ struct RequestRsvp: View {
     let twitterBlue = Color(UIColor(red: 0.494, green: 0.752, blue: 0.898, alpha: 1))
     let navy = Color(UIColor(red: 0.1, green: 0.25, blue: 0.4, alpha: 1))
     @StateObject var registrationViewModel = RegistrationViewModel()
+    @Environment(\.colorScheme) var colorScheme
     @Binding var showRequest: Bool
     
     var body: some View {
         NavigationStack {
             ZStack {
-                RadialGradient(gradient: Gradient(colors: [.white]), center: .center, startRadius: 500, endRadius: -900)
+                Color(colorScheme == .dark ? .black : .white)
                     .ignoresSafeArea()
-                    
-                    
+
                 VStack(spacing: 12) {
-                    
-                    
                     HStack {
                         
                         Button {
@@ -33,7 +31,7 @@ struct RequestRsvp: View {
                             Image(systemName: "chevron.down")
                                 .imageScale(.large)
                                 .padding(.bottom, 16)
-                                .foregroundColor(.black)
+                                .foregroundColor(.primary)
                                 .padding(.top, 16)
                                 .padding(.leading, 40)
                         }
@@ -46,13 +44,13 @@ struct RequestRsvp: View {
                         .padding(.top)
                         .padding(.leading, 32)
                         .padding(.trailing, 32)
-                        .foregroundColor(.black)
+                        .foregroundColor(.primary)
                         .multilineTextAlignment(.center)
                     
                     Text("Click below to login or sign-up")
                         .font(.subheadline)
                         .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
-                        .foregroundColor(.black)
+                        .foregroundColor(.primary)
                         .multilineTextAlignment(.center)
                         .padding(.bottom, 8)
                     
@@ -62,16 +60,14 @@ struct RequestRsvp: View {
 
                     } label: {
                         Text("Next")
-                            .foregroundColor(.white)
+                            .foregroundColor(Color("WB"))
                             .frame(width:300, height:50)
-                            .background(.black)
+                            .background(Color("BW"))
                             .cornerRadius(10)
                     }
                     
                     Spacer()
                 }
-                .padding(.top, 20)
-
             }
         }
     }

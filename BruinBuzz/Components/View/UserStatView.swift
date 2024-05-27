@@ -11,8 +11,7 @@ struct UserStatView: View {
     
     let value: Int
     let title: String
-    
-    
+
     var body: some View {
         VStack{
             Text("\(value)")

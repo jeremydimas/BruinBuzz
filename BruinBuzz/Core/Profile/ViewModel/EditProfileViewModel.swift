@@ -26,6 +26,10 @@ class EditProfileViewModel: ObservableObject {
 
     private var uiImage: UIImage?
     
+    
+//    private var initialFullname: String
+//    private var initialBio: String
+    
     init(user: User) {
         self.user = user
         
@@ -38,6 +42,18 @@ class EditProfileViewModel: ObservableObject {
             self.bio = bio
         }
     }
+    
+//    init(user: User) {
+//        self.user = user
+//        
+//        self.initialFullname = user.fullname ?? ""
+//        
+//        self.initialBio = user.bio ?? ""
+//        
+//        self.fullname = initialFullname
+//        self.bio = initialBio
+//
+//    }
     
     func loadImage(fromItem item: PhotosPickerItem?) async {
         guard let item = item else {return}
@@ -64,6 +80,7 @@ class EditProfileViewModel: ObservableObject {
             
         }
         
+        
         // update name if changed
         if !fullname.isEmpty && user.fullname != fullname {
             data["fullname"] = fullname
@@ -81,4 +98,18 @@ class EditProfileViewModel: ObservableObject {
             user.profileImageUrl = profileImageUrl
         }
     }
+    
+//    func resetImageSelection() {
+//        selectedImage = nil
+//        profileImage = nil
+//        uiImage = nil
+//        print("Image selection reset")
+//    }
+    
+//    func resetChanges() {
+//        resetImageSelection()
+//        fullname = initialFullname
+//        bio = initialBio
+//        print("Changes have been reset")
+//    }
 }

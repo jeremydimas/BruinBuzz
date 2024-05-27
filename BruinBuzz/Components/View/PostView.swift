@@ -3,15 +3,9 @@ import SwiftUI
 //import Kingfisher
 
 struct PostView: View {
-//    @State private var showingBottomSheet = false
-//    @State private var isImageTapped = false
-    
     @StateObject var viewModel: PostViewModel
-    
     @Environment(\.horizontalSizeClass) var horizontalSizeClass
     @Environment(\.verticalSizeClass) var verticalSizeClass
-
-    
     
     enum DeviceType {
         case iPhone8Plus
@@ -140,9 +134,6 @@ struct PostView: View {
             }
         }
     }
-    //            .padding(.leading, -145) // Adjust this value as needed
-    //            .padding(.top, -15)
-    //            .padding(.bottom, 1)
     
     // Upcoming Events Text Padding
     func horizontalPaddingForText3() -> EdgeInsets {
@@ -175,10 +166,7 @@ struct PostView: View {
         
         Text("My Events")
             .font(Font.custom("NexaRustSans-Trial-Black2", size: 20))
-            .foregroundColor(.black)
-//            .padding(.top, 15)
-//            .padding(.bottom, 1)
-//            .padding(.leading, -180) // Adjust this value as needed
+            .foregroundColor(.primary)
             .padding(horizontalPaddingForText())
         
         ScrollView(.horizontal, showsIndicators: false) {
@@ -186,22 +174,15 @@ struct PostView: View {
                 ForEach(viewModel.posts) { post in
                     StoreImage(post: post)
                 }
-//                .frame(width: 430)
-//                .padding(.bottom, 30)
-                .frame(width: maxWidthForHVImage()/*, height: maxHeightForHVImage()*/) // 430
+                .frame(width: maxWidthForHVImage())
                 .padding(horizontalPaddingForSizeClass())
                 .padding(.bottom, 30)
             }
         }
-        
-        
-        
+
         Text("Upcoming Events")
             .font(Font.custom("NexaRustSans-Trial-Black2", size: 20))
-            .foregroundColor(.black)
-//            .padding(.leading, -145) // Adjust this value as needed
-//            .padding(.top, -15)
-//            .padding(.bottom, 1)
+            .foregroundColor(.primary)
             .padding(horizontalPaddingForText3())
             .padding(.top, -25)
         
@@ -210,9 +191,7 @@ struct PostView: View {
                 ForEach(viewModel.posts(forFilter: .rsvp)) { post in
                     HomeCell(post: post)
                 }
-//                .frame(width: 430)
-//                .padding(.bottom, 30)
-                .frame(width: maxWidthForHVImage()/*, height: maxHeightForHVImage()*/) // 430
+                .frame(width: maxWidthForHVImage())
                 .padding(horizontalPaddingForSizeClass())
                 .padding(.bottom, 30)
 

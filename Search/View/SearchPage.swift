@@ -16,13 +16,14 @@ struct SearchPage: View
     @StateObject var viewModel = SearchViewModel()
     @Environment(\.presentationMode) var presentationMode
     @State private var isMainTabViewActive = false
-//    let twitterBlue = Color(UIColor(red: 0.016, green: 0.25, blue: 0.47, alpha: 1))
+    @Environment(\.colorScheme) var colorScheme
     let twitterBlue = Color(UIColor(red: 0.494, green: 0.752, blue: 0.898, alpha: 1))
+    
     
     var body: some View {
         NavigationStack {
             ZStack {
-                RadialGradient(gradient: Gradient(colors: [ .white]), center: .center, startRadius: 500, endRadius: -900)
+                Color(colorScheme == .dark ? .black : .white)
                     .ignoresSafeArea()
                 
                 ScrollView {
@@ -61,7 +62,7 @@ struct SearchPage: View
                             presentationMode.wrappedValue.dismiss()
                         } label : {
                             Text("Done")
-                                .foregroundColor(.black)
+                                .foregroundColor(.primary)
                                 .fontWeight(.semibold)
                                 .offset(x:-10)
                                 .padding(.top, 10)
@@ -85,10 +86,10 @@ struct SearchPage: View
                                     VStack(alignment: .leading) {
                                         Text(user.username)
                                             .fontWeight(.semibold)
-                                            .foregroundStyle(Color(.black))
+                                            .foregroundColor(.primary)
                                         if let fullname = user.fullname {
                                             Text(fullname)
-                                                .foregroundStyle(Color(.black))
+                                                .foregroundColor(.primary)
                                         }
                                     }
                                     .font(.footnote)
@@ -110,7 +111,7 @@ struct SearchPage: View
                 )
                 .onAppear() {
                     let navBarAppearance = UINavigationBarAppearance()
-                    navBarAppearance.backgroundColor = UIColor(.white)
+                    navBarAppearance.backgroundColor = UIColor(Color("WB"))
                     UINavigationBar.appearance().standardAppearance = navBarAppearance
                     
                 }

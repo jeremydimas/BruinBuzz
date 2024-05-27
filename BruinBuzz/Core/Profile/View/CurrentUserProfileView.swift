@@ -14,6 +14,7 @@ struct CurrentUserProfileView: View {
     @State private var profileState = ProfileViewState.sideMenu
     @StateObject private var viewModel: PostViewModel
     @State private var refreshedUser: User? = nil
+    @Environment(\.colorScheme) var colorScheme
     
     init(user: User) {
         self.user = user
@@ -22,8 +23,10 @@ struct CurrentUserProfileView: View {
     
     var body: some View {
         NavigationStack {
+            
+            
             ZStack {
-                RadialGradient(gradient: Gradient(colors: [ .white]), center: .center, startRadius: 500, endRadius: -900)
+                Color(colorScheme == .dark ? .black : .white)
                     .ignoresSafeArea()
                 ScrollView {
                     // Header
@@ -35,7 +38,7 @@ struct CurrentUserProfileView: View {
                             .font(.system(size: 24, weight: .bold))
 
                         Text("Profile")
-                            .foregroundColor(.black)
+                            .foregroundColor(.primary)
                             .fontWeight(.semibold)
                                                 
                         Button {
@@ -44,7 +47,7 @@ struct CurrentUserProfileView: View {
                             }
                         } label: {
                             Image(systemName: "gearshape.fill")
-                                .foregroundColor(.black)
+                                .foregroundColor(.primary)
                                 .font(.system(size: 20, weight: .bold))
 
                         }
@@ -67,6 +70,7 @@ struct CurrentUserProfileView: View {
                 }
                     
             }
+
             .refreshable {
                 print("refreshing..")
                 do {
@@ -81,8 +85,6 @@ struct CurrentUserProfileView: View {
                     refreshedUser = nil
                 }
             }
-            
-
         }
     }
 }

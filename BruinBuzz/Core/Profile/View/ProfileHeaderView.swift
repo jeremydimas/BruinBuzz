@@ -33,10 +33,16 @@ struct ProfileHeaderView: View {
                 Text(viewModel.fullname)
                     .font(.subheadline)
                     .fontWeight(.semibold)
-                    .foregroundStyle(Color(.black))
+                    .foregroundColor(.primary)
+                    .padding(.leading,40)
+                    .padding(.trailing,40)
+                    .multilineTextAlignment(.center)
                 Text(viewModel.bio)
                     .font(.subheadline)
-                    .foregroundStyle(Color(.black))
+                    .foregroundColor(.primary)
+                    .padding(.leading,40)
+                    .padding(.trailing,40)
+                    .multilineTextAlignment(.center)
                 
             }
 //            Text(user.username)
@@ -49,12 +55,17 @@ struct ProfileHeaderView: View {
                     print("Follow user")
                 }
             } label: {
-                Text(user.isCurrentUser ? "Edit Profile" : "")
+                Text(user.isCurrentUser ? "Edit Profile" : "Follow")
                     .font(.subheadline)
                     .fontWeight(.semibold)
                     .frame(width:360, height: 32) //w:360
-                    .background(user.isCurrentUser ? .black : Color.black.opacity(0.0))
-                    .foregroundColor(user.isCurrentUser ? .white : .white)
+                    // when the Follow feature has been implemented, use this one
+//                    .background(user.isCurrentUser ? Color("LightMode") : Color("LightMode"))
+                    // For now, use this one
+                    .background(user.isCurrentUser ? Color("BW") : Color("WB"))
+                    .ignoresSafeArea()
+                    .foregroundColor(user.isCurrentUser ? Color("WB") : Color("WB"))
+
                     .cornerRadius(6)
                     .overlay(
                         RoundedRectangle(cornerRadius: 6)

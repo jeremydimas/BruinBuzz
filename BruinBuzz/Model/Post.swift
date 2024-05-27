@@ -20,28 +20,34 @@ struct Post: Identifiable, Hashable, Codable {
     let caption: String
     var rsvp: Int
     let timestamp: Timestamp
+    
+    //    let currentTime: Date?
+    //    let pastTime: Date?
+    
     var user: User?
     let title: String
     let location: String
     let organizer: String
     let organization: String
     
-    // start date information
-    let startMM: String
-    let startDD: String
-    let startYYYY: String
+    let currentTime: String?
+    let pastTime: String?
     
-    // end date information
-    let endMM: String
-    let endDD: String
-    let endYYYY: String
-    
-    // time information
-    let starttime: String
-    let endtime: String
+//    let link1: String
+//    let link2: String
+//    let link3: String
     
     // rsvp
     var didRsvp: Bool? = false
+    
+//    let startMM: String
+//    let startDD: String
+//    let startYYYY: String
+//    let endMM: String
+//    let endDD: String
+//    let endYYYY: String
+//    let starttime: String
+//    let endtime: String
 }
 
 extension Post {
@@ -58,41 +64,11 @@ extension Post {
             location: "ucla",
             organizer: "gene block",
             organization: "charity",
-            
-            startMM: "12",
-            startDD: "18",
-            startYYYY: "2003",
-            
-            endMM: "05",
-            endDD: "09",
-            endYYYY: "2024",
-            
-            starttime: "10:37",
-            endtime: "9:33"
-        ),
-        .init(
-            id: NSUUID().uuidString,
-            ownerUid: NSUUID().uuidString,
-            imageUrl: "UCLA2",
-            caption: "UCLA",
-            rsvp: 0,
-            timestamp: Timestamp(),
-            user: User.MOCK_USERS[1],
-            title: "Royce",
-            location: "ucla",
-            organizer: "gene block",
-            organization: "charity",
-            
-            startMM: "12",
-            startDD: "18",
-            startYYYY: "2003",
-            
-            endMM: "05",
-            endDD: "09",
-            endYYYY: "2024",
-            
-            starttime: "10:37",
-            endtime: "9:33"
+            currentTime: "morning",
+            pastTime: "goodnight"
+//            link1: "https",
+//            link2: "https",
+//            link3: "https",
 
         ),
         .init(
@@ -107,17 +83,31 @@ extension Post {
             location: "ucla",
             organizer: "gene block",
             organization: "charity",
-            
-            startMM: "12",
-            startDD: "18",
-            startYYYY: "2003",
-            
-            endMM: "05",
-            endDD: "09",
-            endYYYY: "2024",
-            
-            starttime: "10:37",
-            endtime: "9:33"
+            currentTime: "morning",
+            pastTime: "goodnight"
+//            link1: "https",
+//            link2: "https",
+//            link3: "https",
+
+        ),
+        .init(
+            id: NSUUID().uuidString,
+            ownerUid: NSUUID().uuidString,
+            imageUrl: "UCLA2",
+            caption: "UCLA",
+            rsvp: 0,
+            timestamp: Timestamp(),
+            user: User.MOCK_USERS[1],
+            title: "Royce",
+            location: "ucla",
+            organizer: "gene block",
+            organization: "charity",
+            currentTime: "morning",
+            pastTime: "goodnight"
+//            link1: "https",
+//            link2: "https",
+//            link3: "https",
+
 
         ),
         .init(
@@ -132,17 +122,12 @@ extension Post {
             location: "ucla",
             organizer: "gene block",
             organization: "charity",
-            
-            startMM: "12",
-            startDD: "18",
-            startYYYY: "2003",
-            
-            endMM: "05",
-            endDD: "09",
-            endYYYY: "2024",
-            
-            starttime: "10:37",
-            endtime: "9:33"
+            currentTime: "morning",
+            pastTime: "goodnight"
+//            link1: "https",
+//            link2: "https",
+//            link3: "https",
+
         )
         
     ]

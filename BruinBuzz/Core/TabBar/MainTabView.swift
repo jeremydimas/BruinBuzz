@@ -7,11 +7,10 @@
 import SwiftUI
 struct MainTabView: View {
     let user: User
-//    let twitterBlue = Color(UIColor(red: 0.016, green: 0.25, blue: 0.47, alpha: 1))
     let twitterBlue = Color(UIColor(red: 0.494, green: 0.752, blue: 0.898, alpha: 1))
-
-    
+    @Environment(\.colorScheme) var colorScheme
     @State private var selectedIndex = 0
+    
     var body: some View {
         TabView(selection: $selectedIndex) {
             HomeView()
@@ -39,12 +38,10 @@ struct MainTabView: View {
         }
         .onAppear() {
             let tabBarAppearance = UITabBarAppearance()
-            tabBarAppearance.backgroundColor = UIColor(.white)
+            tabBarAppearance.backgroundColor = UIColor(Color("WB"))
             UITabBar.appearance().standardAppearance = tabBarAppearance
         }
-        .tint(.black)
-        
-        
+        .tint(.primary)
     }
 }
 

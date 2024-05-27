@@ -2,12 +2,10 @@ import SwiftUI
 
 struct ProfileView: View {
     let user: User
-    
-//    let twitterBlue = Color(UIColor(red: 0.016, green: 0.25, blue: 0.47, alpha: 1))
     let twitterBlue = Color(UIColor(red: 0.494, green: 0.752, blue: 0.898, alpha: 1))
     
     @StateObject private var viewModel: PostViewModel
-    
+    @Environment(\.colorScheme) var colorScheme
     @State private var refreshedUser: User? = nil
     
     init(user: User) {
@@ -21,23 +19,17 @@ struct ProfileView: View {
     var body: some View {
         
         ZStack {
-            RadialGradient(gradient: Gradient(colors: [ .white]), center: .center, startRadius: 500, endRadius: -900)
+            Color(colorScheme == .dark ? .black : .white)
                 .ignoresSafeArea()
-            
             ScrollView {
                 // Header
-                
                 HStack {
                     Spacer()
-
-                    
                     Text("Profile")
-                        .foregroundColor(.black)
+                        .foregroundColor(.primary)
                         .fontWeight(.semibold)
                     
                     Spacer()
-                                            
-
                 }
                 .padding(.top, -32)
                 
@@ -45,7 +37,7 @@ struct ProfileView: View {
                 
                 PostView(user: user)
             }
-            .foregroundColor(.white)
+            .foregroundColor(.primary)
             .navigationBarTitleDisplayMode(.inline)
             .refreshable {
                 print("refreshing..")
@@ -63,9 +55,6 @@ struct ProfileView: View {
                 }
             }
         }
-    
-        
-
     }
 }
 

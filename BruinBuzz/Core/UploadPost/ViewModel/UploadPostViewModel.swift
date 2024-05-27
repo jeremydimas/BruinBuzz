@@ -32,16 +32,12 @@ class UploadPostViewModel: ObservableObject {
         organizer: String,
         organization: String,
         location: String,
-        startMM: String,
-        startDD: String,
-        startYYYY: String,
+        currentTime: String,
+        pastTime: String
+//        link1: String,
+//        link2: String,
+//        link3: String,
 
-        endMM: String,
-        endDD: String,
-        endYYYY: String,
-
-        starttime: String,
-        endtime: String
     ) async throws {
         guard let uid = Auth.auth().currentUser?.uid else { return }
         guard let uiImage = uiImage else { return }
@@ -59,17 +55,12 @@ class UploadPostViewModel: ObservableObject {
             location: location,
             organizer: organizer,
             organization: organization,
+            currentTime: currentTime,
+            pastTime: pastTime
+//            link1: link1,
+//            link2: link2,
+//            link3: link3,
             
-            startMM: startMM,
-            startDD: startDD,
-            startYYYY: startYYYY,
-
-            endMM: endMM,
-            endDD: endDD,
-            endYYYY: endYYYY,
-
-            starttime: starttime,
-            endtime: endtime
         )
         guard let encodedPost = try? Firestore.Encoder().encode(post) else { return }
          

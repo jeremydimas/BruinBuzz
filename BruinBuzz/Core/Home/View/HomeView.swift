@@ -9,20 +9,15 @@ import SwiftUI
 import Foundation
 
 struct HomeView: View {
-    
-    // Fetch Feed
     @StateObject var viewModel = HomeViewModel()
     @State private var isSearching: Bool = false
-    // Ends here
-    
-//    let twitterBlue = Color(UIColor(red: 0.016, green: 0.25, blue: 0.47, alpha: 1))
     let twitterBlue = Color(UIColor(red: 0.494, green: 0.752, blue: 0.898, alpha: 1))
-
-    @State private var searchText: String = ""
-    
     @Environment(\.horizontalSizeClass) var horizontalSizeClass
     @Environment(\.verticalSizeClass) var verticalSizeClass
-    
+    @Environment(\.colorScheme) var colorScheme
+
+    @State private var searchText: String = ""
+
     enum DeviceType {
         case iPhone8Plus
         case iPadPro129
@@ -157,16 +152,16 @@ struct HomeView: View {
         NavigationStack {
             
             ZStack {
-                RadialGradient(gradient: Gradient(colors: [ .white]), center: .center, startRadius: 500, endRadius: -900)
+                Color(colorScheme == .dark ? .black : .white)
                     .ignoresSafeArea()
-
                 ScrollView {
                     VStack {
                         // Search Bar
                         Text("BRUINBUZZ")
                             .font(Font.custom("NexaRustSans-Trial-Black2", size: 20))
-                            .foregroundColor(.black)
+                            .foregroundColor(.primary)
                             .padding(horizontalPaddingForText())
+                            .padding(.top)
                         
                         ZStack(alignment: .leading)
                         {
@@ -192,13 +187,11 @@ struct HomeView: View {
                         {
                             isSearching = true // Set searching state to true when tapped
                         }
-            //          .padding(.horizontal, 30)
                         .padding(horizontalPaddingForSizeClass())
-            //          .padding(.bottom)
                         
                         Text("All Events")
                             .font(Font.custom("NexaRustSans-Trial-Black2", size: 20))
-                            .foregroundColor(.black)
+                            .foregroundColor(.primary)
                             .padding(horizontalPaddingForText2())
                         
     //                    ScrollView {
@@ -221,6 +214,8 @@ struct HomeView: View {
     //                        }
     //                    }
                     }
+                    .padding(.top,-10)
+                    
                 }
                 .refreshable {
                     print("fetching")
@@ -232,9 +227,8 @@ struct HomeView: View {
                     }
                 }
                 Spacer()
-
-
             }
+            
         }
         .fullScreenCover(isPresented: $isSearching)
         {

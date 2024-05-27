@@ -11,26 +11,33 @@ import PhotosUI
 struct EditProfileView: View {
     @Environment(\.dismiss) var dismiss
     @StateObject var viewModel: EditProfileViewModel
+    @Environment(\.colorScheme) var colorScheme
     init(viewModel: EditProfileViewModel) {
         self._viewModel = StateObject(wrappedValue: viewModel)
     }
     
     var body: some View {
         ZStack {
-            RadialGradient(gradient: Gradient(colors: [ .white]), center: .center, startRadius: 500, endRadius: -900)
+            Color(colorScheme == .dark ? .black : .white)
                 .ignoresSafeArea()
+            
             VStack {
                 HStack {
                     Button("Cancel") {
+//                        viewModel.resetChanges()
+//                        viewModel.resetImageSelection()
+
                         dismiss()
                     }
+                    .foregroundColor(.primary)
+                    
                     
                     Spacer()
                     
                     Text("Edit Profile")
                         .font(.subheadline)
                         .fontWeight(.semibold)
-                        .foregroundStyle(Color(.black))
+                        .foregroundColor(.primary)
                     Spacer()
 
                     Button {
@@ -40,13 +47,13 @@ struct EditProfileView: View {
                         }
                     } label: {
                         Text("Done")
-                            .font(.subheadline)
-                            .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+                            .foregroundColor(.primary)
                     }
                 }
                 .padding(.horizontal)
+                .padding(16)
                 
-                Divider()
+//                Divider()
                                 
                 PhotosPicker(selection: $viewModel.selectedImage) {
                     VStack {
@@ -71,46 +78,49 @@ struct EditProfileView: View {
                             .font(.subheadline)
                             .fontWeight(.semibold)
                         
-                        
                         Divider()
+                            .padding(.top,15)
                     }
                 }
                 .padding(.vertical, 8)
                 
                 // edit profile info
+                ZStack {
+                    
+                    VStack {
 
-                VStack
-                {
-                    VStack (alignment: .leading)
-                    {
+                        RoundedRectangle(cornerRadius: 20)
+                            .fill(colorScheme == .dark ? Color(red: 0.1, green: 0.1, blue: 0.1) : Color.white)
+                                    
+                            .shadow(color: colorScheme == .dark ? Color.white.opacity(0.1) : Color.black.opacity(0.25), radius: 10, x: 0, y: 0)
+                                    .ignoresSafeArea()
+                    }
+                    .padding(.horizontal, 35) // Add padding to the outer VStack to ensure border visibility and spacing
+                    .padding(.vertical)
+                    VStack (alignment: .leading){
                         EditProfileRowView(
                             title: "Name",
                             placeholder: "Enter your name..",
                             text: $viewModel.fullname)
                         .padding(.top, 10)
-                        .foregroundStyle(Color(.black))
+                        .foregroundColor(.primary)
                         
                         EditProfileRowView(
                             title: "Bio",
                             placeholder: "Enter your bio..",
                             text: $viewModel.bio)
                         .padding(.bottom, 10)
-                        .foregroundStyle(Color(.black))
-                        
+                        .foregroundColor(.primary)
                     }
                     .padding(.horizontal, 20) // Add horizontal padding to keep elements away from the border line
                     .padding(.bottom,15)
                     
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 20)
-                            .stroke(Color.black, lineWidth: 1) // Add border line
-                            
-                    )
                     .padding() // Add padding to the outer VStack to ensure border visibility and spacing
                     .cornerRadius(20)
-                    .frame(width: 350)
+
                 }
-                
+                .padding(.top,90)
+                .frame(height: 200)
                 Spacer()
             }
         }
@@ -125,27 +135,31 @@ struct EditProfileRowView: View {
     @Binding var text: String
     
     var body: some View {
-        HStack {
-            Text(title)
-                .font(.title2)
-                .bold()
-                .padding(.top, 10)
-            
-        }
-        .font(.subheadline)
-        .frame(height: 36)
-        VStack {
+        Text(title)
+            .padding(.top, 10)
+            .foregroundColor(.primary)
+            .font(.subheadline)
+            .frame(height: 36)
+        ZStack {
+            if placeholder == "Enter your name.." {
+                Image(systemName: "person.fill")
+                    .foregroundColor(.primary)
+                    .padding(.leading, -145)
+            }
+            else if placeholder == "Enter your bio.."{
+                Image(systemName: "pencil.and.scribble")
+                    .foregroundColor(.primary)
+                    .padding(.leading, -145)
+            }
             TextField(placeholder, text: $text)
                 .autocapitalization(.none)
                 .padding()
+                .padding(.leading,35)
                 .background(Color.gray.opacity(0.2))
                 .cornerRadius(10)
-                .frame(width: 325, height: 50)
-            Divider()
+                .frame(width: 325, height: 40)
         }
-        
     }
-    
 }
 
 struct EditProfileView_Previews: PreviewProvider {

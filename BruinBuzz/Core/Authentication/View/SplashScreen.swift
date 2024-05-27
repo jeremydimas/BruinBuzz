@@ -8,6 +8,7 @@ struct SplashScreen: View {
     
     @StateObject var viewModel = ContentViewModel()
     @StateObject var registrationViewModel = RegistrationViewModel()
+    @Environment(\.colorScheme) var colorScheme
     
     let twitterBlue = Color(UIColor(red: 0.494, green: 0.752, blue: 0.898, alpha: 1))
     
@@ -15,7 +16,7 @@ struct SplashScreen: View {
         
         ZStack {
             if isActive {
-                RadialGradient(gradient: Gradient(colors: [.white]), center: .center, startRadius: 500, endRadius: -900)
+                Color(colorScheme == .dark ? .black : .white)
                     .ignoresSafeArea()
                 Group {
                     // xcode suggested $
@@ -63,6 +64,7 @@ struct SplashScreen: View {
                 }
             }
         }
+
     }
 }
 

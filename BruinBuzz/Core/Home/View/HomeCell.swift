@@ -10,6 +10,9 @@ struct HomeCell: View {
 //    let twitterBlue = Color(UIColor(red: 0.016, green: 0.25, blue: 0.47, alpha: 1))
     let twitterBlue = Color(UIColor(red: 0.494, green: 0.752, blue: 0.898, alpha: 1))
     let uclaBlue = Color(UIColor(red: 0.152, green: 0.454, blue: 0.682, alpha: 1))
+    @Environment(\.horizontalSizeClass) var horizontalSizeClass
+    @Environment(\.verticalSizeClass) var verticalSizeClass
+    @Environment(\.colorScheme) var colorScheme
     
     @StateObject var signInToRsvp = ContentViewModel()
     @State private var showRequest = false
@@ -27,8 +30,7 @@ struct HomeCell: View {
     @State var showingBottomSheet = false
     @State private var isImageTapped = false
     
-    @Environment(\.horizontalSizeClass) var horizontalSizeClass
-    @Environment(\.verticalSizeClass) var verticalSizeClass
+    
     
     // Size Classes for Different Screen Displays
     enum DeviceType {
@@ -188,15 +190,14 @@ struct HomeCell: View {
         VStack(spacing: 15) {
             KFImage(URL(string: post.imageUrl))
                 .resizable()
-                // orginal - w: 360, h: 535
-                //.frame(width: 360, height: 535)
                 .frame(maxWidth: maxWidthForImage(), maxHeight: maxHeightForImage())
                 .aspectRatio(contentMode: .fill)
                 .overlay(
                     OverlayView(post)
-                        //.frame(maxWidth: .infinity, maxHeight: .infinity)
-                        .frame(maxWidth: maxWidthForImage(),
-                                               maxHeight: maxHeightForImage())
+                        .frame(
+                            maxWidth: maxWidthForImage(),
+                            maxHeight: maxHeightForImage()
+                        )
                         .clipShape(.rect(cornerRadius: 15))
                 )
                 .onTapGesture {
@@ -206,9 +207,8 @@ struct HomeCell: View {
                 
                 .sheet(isPresented: $showingBottomSheet) {
                     ZStack {
-                        RadialGradient(gradient: Gradient(colors: [ .white]), center: .center, startRadius: 500, endRadius: -900)
+                        Color(colorScheme == .dark ? .black : .white)
                             .ignoresSafeArea()
-                        
                         ScrollView {
                             
                             VStack {
@@ -216,7 +216,10 @@ struct HomeCell: View {
                                     KFImage(URL(string: post.imageUrl))
                                         .resizable()
                                         // Image in bottom sheet
-                                        .frame(width: maxWidthForBSImage(), height: maxHeightForBSImage())
+                                        .frame(
+                                            width: maxWidthForBSImage(),
+                                            height: maxHeightForBSImage()
+                                        )
                                         .clipShape(CurvedShape())
                                         .overlay(
                                             OverlayView(post)
@@ -227,82 +230,149 @@ struct HomeCell: View {
                                         .padding(.top, 40)
                                 }
                                 
-                                HStack {
-                                    Text("Organizer:")
-                                        .fontWeight(.bold)
-                                    Text(post.organizer)
+                                Divider()
+                                    .frame(width:350)
+                                    .padding(.top,15)
+                                HStack{
+                                    Text("Event Info")
+                                        .font(.title2)
+                                        .bold()
+                                        .foregroundColor(.primary)
                                     Spacer()
                                 }
                                 .padding(.leading, 40)
+                                .padding(.top,10)
                                 .padding(.bottom, 10)
-                                .foregroundColor(.black)
-
-                                HStack {
-                                    Text("Description: ")
-                                        .fontWeight(.bold) +
-                                    Text(post.caption)
-
-                                    Spacer()
-                                }
-                                .padding(.leading, 40)
-                                .padding(.trailing, 40)
-                                .padding(.bottom, 10)
-                                .foregroundColor(.black)
-
-                                HStack {
-                                    Text("Start Date: ")
-                                        .fontWeight(.bold) +
-                                    Text("\(post.startMM)/\(post.startDD)/\(post.startYYYY)") +
-                                    Text(" - ")
-                                        .fontWeight(.bold) +
-                                    Text(post.starttime)
-                                        .fontWeight(.regular)
-                                    Spacer()
-                                }
-                                .padding(.leading, 40)
-                                .padding(.trailing, 40)
-                                .padding(.bottom, 10)
-                                .foregroundColor(.black)
+                                .foregroundColor(.primary)
                                 
-                                HStack {
-                                    Text("End Date: ")
-                                        .fontWeight(.bold) +
-                                    Text("\(post.endMM)/\(post.endDD)/\(post.endYYYY)") +
-                                    Text(" - ")
-                                        .fontWeight(.bold) +
-                                    Text(post.endtime)
-                                        .fontWeight(.regular)
-                                    Spacer()
-                                }
-                                .padding(.leading, 40)
-                                .padding(.trailing, 40)
-                                .padding(.bottom, 10)
-                                .foregroundColor(.black)
-                                
-                                VStack {
-                                    HStack {
-                                        Text("Location:")
-                                            .fontWeight(.bold)
-                                        Text(post.location)
+                                VStack{
+                                    HStack(alignment: .top) {
+                                        Image(systemName: "person.fill")
+                                            .foregroundColor(.primary)
+                                        Text(post.organizer)
+                                            .bold()
+                                            .foregroundColor(.primary) +
+                                        Text(": ")
+                                            .foregroundColor(.primary) +
+                                        Text(post.caption)
+                                            .foregroundColor(.primary)
+                                        
                                         Spacer()
                                     }
                                     .padding(.leading, 40)
-                                    .foregroundColor(.black)
+                                    .padding(.trailing, 40)
+                                    .padding(.top, 5)
+                                    .padding(.bottom, 10)
+                                    .foregroundColor(.primary)
+
+                                }
+                                VStack{
+                                    HStack(alignment: .top) {
+                                        Image(systemName: "location.fill")
+                                            .foregroundColor(.primary)
+                                        Text(post.location)
+                                            .foregroundColor(.primary)
+                                        Spacer()
+                                    }
+                                    .padding(.leading, 40)
+                                    .padding(.trailing, 40)
+                                    .padding(.top, 5)
+                                    .padding(.bottom, 10)
+                                    .foregroundColor(.primary)
+
+                                }
+                                
+                                VStack{
+                                    HStack(alignment: .top) {
+                                        Image(systemName: "calendar")
+                                            .foregroundColor(.primary)
+                                        Text("\(post.currentTime ?? "Unavailable")")
+                                            .foregroundColor(.primary) +
+                                        Text(" - \(post.pastTime ?? "Unavailable")")
+                                            .foregroundColor(.primary)
+                                        Spacer()
+                                    }
+                                    .padding(.leading, 40)
+                                    .padding(.trailing, 40)
+                                    .padding(.top, 5)
+                                    .padding(.bottom, 10)
+                                    .foregroundColor(.primary)
+
+                                }
+                                Divider()
+                                    .frame(width:350)
+                                    .padding(.top,15)
+                                HStack{
+                                    Text("Attachments")
+                                        .font(.title2)
+                                        .bold()
+                                        .foregroundColor(.primary)
+                                    Spacer()
+                                }
+                                .padding(.leading, 40)
+                                .padding(.top,10)
+                                .padding(.bottom, 10)
+                                .foregroundColor(.primary)
+                                
+                                // Links
+                                VStack{
+                                    HStack(alignment: .top) {
+                                        Image(systemName: "link")
+                                            .foregroundColor(.primary)
+//                                        Link("Link 1", destination: URL(string: post.link1)!)
+//                                            .foregroundColor(.blue)
+                                        Spacer()
+                                    }
+                                    .padding(.leading, 40)
+                                    .padding(.trailing, 40)
+                                    .padding(.top, 5)
+                                    .padding(.bottom, 10)
+                                    .foregroundColor(.primary)
+                                }
+////                                
+//                                VStack{
+//                                    HStack(alignment: .top) {
+//                                        Image(systemName: "link")
+//                                            .foregroundColor(.primary)
+//                                        Link("Link 2", destination: URL(string: post.link2)!)
+//                                            .foregroundColor(.blue)
+//                                        Spacer()
+//                                    }
+//                                    .padding(.leading, 40)
+//                                    .padding(.trailing, 40)
+//                                    .padding(.top, 5)
+//                                    .padding(.bottom, 10)
+//                                    .foregroundColor(.primary)
+//                                }
+////                                
+//                                VStack{
+//                                    HStack(alignment: .top) {
+//                                        Image(systemName: "link")
+//                                            .foregroundColor(.primary)
+//                                        Link("Link 3", destination: URL(string: post.link3)!)
+//                                            .foregroundColor(.blue)
+//                                        Spacer()
+//                                    }
+//                                    .padding(.leading, 40)
+//                                    .padding(.trailing, 40)
+//                                    .padding(.top, 5)
+//                                    .padding(.bottom, 10)
+//                                    .foregroundColor(.primary)
+//                                }
     //                                MapView()
     //                                    .frame(width: 350, height: 200)
     //                                    .clipShape(CurvedShape())
     //                                    .padding(.top, -1)
-                                }
-                                .presentationDragIndicator(.visible)
+                                
                             }
                     }
-                    }
                 }
-                .clipShape(.rect(cornerRadius: 15))
-                .shadow(color: Color.black.opacity(0.25), radius: 8, x: 5, y: 10)
+                
+            }
             
+            .clipShape(.rect(cornerRadius: 15))
+            .shadow(color: Color.black.opacity(0.25), radius: 8, x: 5, y: 10)
 
-  
             Button {
                 // if the user is not signed in and tries to rsvp..
                 if signInToRsvp.userSession == nil {
@@ -319,11 +389,12 @@ struct HomeCell: View {
             } label: {
                 Text("RSVP")
                     // if the user did rsvp change the text color from white to black - unrsvp vice versa
-                    .foregroundColor(RsvpViewModel.post.didRsvp ?? false ? Color(.black) : Color(.white))
+//                    .foregroundColor(RsvpViewModel.post.didRsvp ?? false ? Color(.black) : Color(.white))
+                    .foregroundColor(RsvpViewModel.post.didRsvp ?? false ? Color("BW") : Color("WB"))
                     .padding()
                     .frame(width: 110, height: 50)
                     // if the user did rsvp change the button color from black to gold - unrsvp vice versa
-                    .background(RsvpViewModel.post.didRsvp ?? false ? gold : Color(.black))
+                    .background(RsvpViewModel.post.didRsvp ?? false ? gold : Color("BW"))
                     .cornerRadius(8)
             }
             .fullScreenCover(isPresented: $showRequest) {
