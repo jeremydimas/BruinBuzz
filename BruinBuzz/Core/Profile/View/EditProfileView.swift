@@ -24,9 +24,7 @@ struct EditProfileView: View {
             VStack {
                 HStack {
                     Button("Cancel") {
-//                        viewModel.resetChanges()
-//                        viewModel.resetImageSelection()
-
+                        viewModel.resetChanges()
                         dismiss()
                     }
                     .foregroundColor(.primary)

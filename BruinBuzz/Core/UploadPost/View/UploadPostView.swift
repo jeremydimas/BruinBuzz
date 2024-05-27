@@ -18,7 +18,7 @@ struct UploadPostView: View
     @State private var organization = ""
     @State private var location = ""
     @State private var caption = ""
-    @State private var imagePickerPresented = false
+//    @State private var imagePickerPresented = false
     @StateObject var viewModel = UploadPostViewModel()
     @StateObject var refreshCall = HomeViewModel()
     @Binding var tabIndex: Int
@@ -519,11 +519,11 @@ struct UploadPostView: View
                         }
                         
                     }
-                    .onAppear
-                    {
-                        imagePickerPresented.toggle()
-                    }
-                    .photosPicker(isPresented: $imagePickerPresented, selection: $viewModel.selectedImage)
+//                    .onAppear
+//                    {
+//                        imagePickerPresented.toggle()
+//                    }
+//                    .photosPicker(isPresented: $imagePickerPresented, selection: $viewModel.selectedImage)
                 }
             }
             

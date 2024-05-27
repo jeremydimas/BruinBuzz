@@ -27,33 +27,33 @@ class EditProfileViewModel: ObservableObject {
     private var uiImage: UIImage?
     
     
-//    private var initialFullname: String
-//    private var initialBio: String
-    
-    init(user: User) {
-        self.user = user
-        
-        if let fullname = user.fullname {
-            self.fullname = fullname
-            print(self.fullname)
-        }
-        
-        if let bio = user.bio {
-            self.bio = bio
-        }
-    }
+    private var initialFullname: String
+    private var initialBio: String
     
 //    init(user: User) {
 //        self.user = user
 //        
-//        self.initialFullname = user.fullname ?? ""
+//        if let fullname = user.fullname {
+//            self.fullname = fullname
+//            print(self.fullname)
+//        }
 //        
-//        self.initialBio = user.bio ?? ""
-//        
-//        self.fullname = initialFullname
-//        self.bio = initialBio
-//
+//        if let bio = user.bio {
+//            self.bio = bio
+//        }
 //    }
+    
+    init(user: User) {
+        self.user = user
+        
+        self.initialFullname = user.fullname ?? ""
+        
+        self.initialBio = user.bio ?? ""
+        
+        self.fullname = initialFullname
+        self.bio = initialBio
+
+    }
     
     func loadImage(fromItem item: PhotosPickerItem?) async {
         guard let item = item else {return}
@@ -78,6 +78,10 @@ class EditProfileViewModel: ObservableObject {
             profileImageUrl = imageUrl
             print("Photo has updated")
             
+        } else {
+            data["profileImageUrl"] = user.profileImageUrl
+            profileImageUrl = user.profileImageUrl
+            print("Image preserved?")
         }
         
         
@@ -99,17 +103,17 @@ class EditProfileViewModel: ObservableObject {
         }
     }
     
-//    func resetImageSelection() {
-//        selectedImage = nil
-//        profileImage = nil
-//        uiImage = nil
-//        print("Image selection reset")
-//    }
+    func resetImageSelection() {
+        selectedImage = nil
+        profileImage = nil
+        uiImage = nil
+        print("Image selection reset")
+    }
     
-//    func resetChanges() {
-//        resetImageSelection()
-//        fullname = initialFullname
-//        bio = initialBio
-//        print("Changes have been reset")
-//    }
+    func resetChanges() {
+        resetImageSelection()
+        fullname = initialFullname
+        bio = initialBio
+        print("Changes have been reset")
+    }
 }
