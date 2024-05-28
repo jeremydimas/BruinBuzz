@@ -7,6 +7,9 @@ struct PostView: View {
     @Environment(\.horizontalSizeClass) var horizontalSizeClass
     @Environment(\.verticalSizeClass) var verticalSizeClass
     
+    let lightGrayColor = Color(red: 0.9, green: 0.9, blue: 0.9)
+
+    
     enum DeviceType {
         case iPhone8Plus
         case iPadPro129
@@ -16,9 +19,9 @@ struct PostView: View {
             let screenWidth = UIScreen.main.bounds.width
             let screenHeight = UIScreen.main.bounds.height
             
-            if (screenWidth == 414 && screenHeight == 736) || (screenWidth == 736 && screenHeight == 414) {
+            if (screenWidth == 414 && screenHeight == 414) || (screenWidth == 736 && screenHeight == 736) {
                 return .iPhone8Plus
-            } else if (screenWidth == 1024 && screenHeight == 1366) || (screenWidth == 1366 && screenHeight == 1024) {
+            } else if (screenWidth == 1024 && screenHeight == 1024) || (screenWidth == 1366 && screenHeight == 1366) {
                 return .iPadPro129
             } else {
                 return .other
@@ -51,19 +54,19 @@ struct PostView: View {
         
         switch deviceType {
         case .iPhone8Plus:
-            return 400
+            return 290
         case .iPadPro129:
-            return 840
+            return 950
         case .other:
             switch (horizontalSizeClass, verticalSizeClass) {
             // iPhone
             case (.compact, .regular):
-                return 535
+                return 372
             // iPad
             case (.regular, .regular):
-                return 840
+                return 740
             default:
-                return 535
+                return 360
             }
         }
     }
@@ -170,14 +173,39 @@ struct PostView: View {
             .padding(horizontalPaddingForText())
         
         ScrollView(.horizontal, showsIndicators: false) {
-            HStack { // Adjust spacing between posts as needed
-                ForEach(viewModel.posts) { post in
-                    StoreImage(post: post)
+                if viewModel.posts.isEmpty {
+                    // Placeholder view when there are no posts
+                    ZStack {
+                        RoundedRectangle(cornerRadius: 15)
+                            .foregroundStyle(lightGrayColor)
+                            .frame(width: maxWidthForHVImage(), height: maxHeightForHVImage()) // Sets the frame size
+                        VStack {
+                            Image(systemName: "square.and.pencil.circle.fill")
+                                .resizable()
+                                .scaledToFill()
+                                .frame(width: 100, height: 100)
+                                .foregroundColor(Color(.gray))
+                            
+                            Text("No personal events posted")
+                                .foregroundStyle(Color.gray)
+                                .padding(.top, 15)
+                        }
+
+                    }
+                    .padding(.bottom, 25)
+                    .padding(horizontalPaddingForSizeClass())
+                } else {
+                    HStack {
+                        // Display the posts
+                        ForEach(viewModel.posts) { post in
+                            StoreImage(post: post)
+                        }
+                        .frame(width: maxWidthForHVImage())
+                        .padding(horizontalPaddingForSizeClass())
+                        .padding(.bottom, 30)
+                    }
                 }
-                .frame(width: maxWidthForHVImage())
-                .padding(horizontalPaddingForSizeClass())
-                .padding(.bottom, 30)
-            }
+            
         }
 
         Text("Upcoming Events")
@@ -187,14 +215,37 @@ struct PostView: View {
             .padding(.top, -25)
         
         ScrollView(.horizontal, showsIndicators: false) {
-            HStack {
-                ForEach(viewModel.posts(forFilter: .rsvp)) { post in
-                    HomeCell(post: post)
-                }
-                .frame(width: maxWidthForHVImage())
-                .padding(horizontalPaddingForSizeClass())
-                .padding(.bottom, 30)
+            if viewModel.posts(forFilter: .rsvp).isEmpty {
+                // Placeholder view when there are no posts
+                ZStack {
+                    RoundedRectangle(cornerRadius: 15)
+                        .foregroundStyle(lightGrayColor)
+                        .frame(width: maxWidthForHVImage(), height: maxHeightForHVImage()) // Sets the frame size
+                    VStack {
+                        Image(systemName: "bookmark.fill")
+                            .resizable()
+                            .scaledToFill()
+                            .frame(width: 50, height: 50)
+                            .foregroundColor(Color(.gray))
+                        
+                        Text("No RSVP events listed")
+                            .foregroundStyle(Color.gray)
+                            .padding(.top, 30)
+                    }
 
+                }
+                .padding(.bottom, 25)
+                .padding(horizontalPaddingForSizeClass())
+            } else {
+                HStack {
+                    // Display the rsvp posts
+                    ForEach(viewModel.posts(forFilter: .rsvp)) { post in
+                        HomeCell(post: post)
+                    }
+                    .frame(width: maxWidthForHVImage())
+                    .padding(horizontalPaddingForSizeClass())
+                    .padding(.bottom, 30)
+                }
             }
         }
     }

@@ -28,9 +28,9 @@ struct StoreImage: View {
             let screenWidth = UIScreen.main.bounds.width
             let screenHeight = UIScreen.main.bounds.height
             
-            if (screenWidth == 414 && screenHeight == 736) || (screenWidth == 736 && screenHeight == 414) {
+            if (screenWidth == 414 && screenHeight == 414) || (screenWidth == 736 && screenHeight == 736) {
                 return .iPhone8Plus
-            } else if (screenWidth == 1024 && screenHeight == 1366) || (screenWidth == 1366 && screenHeight == 1024) {
+            } else if (screenWidth == 1024 && screenHeight == 1024) || (screenWidth == 1366 && screenHeight == 1366) {
                 return .iPadPro129
             } else {
                 return .other
@@ -65,19 +65,19 @@ struct StoreImage: View {
         
         switch deviceType {
         case .iPhone8Plus:
-            return 400
+            return 290
         case .iPadPro129:
-            return 840
+            return 950
         case .other:
             switch (horizontalSizeClass, verticalSizeClass) {
             // iPhone
             case (.compact, .regular):
-                return 535
+                return 372
             // iPad
             case (.regular, .regular):
-                return 840
+                return 740
             default:
-                return 535
+                return 360
             }
         }
     }
@@ -267,9 +267,9 @@ struct StoreImage: View {
                                 HStack(alignment: .top) {
                                     Image(systemName: "calendar")
                                         .foregroundColor(.primary)
-                                    Text("\(post.currentTime ?? "Unavailable")")
+                                    Text("\(post.currentTime ?? "No date")")
                                         .foregroundColor(.primary) +
-                                    Text(" - \(post.pastTime ?? "Unavailable")")
+                                    Text(" - \(post.pastTime ?? "No date")")
                                         .foregroundColor(.primary)
                                     Spacer()
                                 }
@@ -280,6 +280,7 @@ struct StoreImage: View {
                                 .foregroundColor(.primary)
 
                             }
+                            
                             Divider()
                                 .frame(width:350)
                                 .padding(.top,15)
@@ -296,12 +297,17 @@ struct StoreImage: View {
                             .foregroundColor(.primary)
                             
                             // Links
-                            VStack{
+                            
+                            VStack {
                                 HStack(alignment: .top) {
                                     Image(systemName: "link")
                                         .foregroundColor(.primary)
-//                                        Link("Link 1", destination: URL(string: post.link1)!)
-//                                            .foregroundColor(.blue)
+                                    if let link1 = post.link1, !link1.isEmpty, let url = URL(string: link1.hasPrefix("http") ? link1 : "https://\(link1)") {
+                                        Link(link1, destination: url)
+                                            .foregroundColor(.blue)
+                                    } else {
+                                        Text("No link provided")
+                                    }
                                     Spacer()
                                 }
                                 .padding(.leading, 40)
@@ -310,57 +316,26 @@ struct StoreImage: View {
                                 .padding(.bottom, 10)
                                 .foregroundColor(.primary)
                             }
-//
-//                            VStack{
-//                                HStack(alignment: .top) {
-//                                    Image(systemName: "link")
-//                                        .foregroundColor(.primary)
-//                                        Link("Link 2", destination: URL(string: post.link2)!)
-//                                            .foregroundColor(.blue)
-//                                    Spacer()
-//                                }
-//                                .padding(.leading, 40)
-//                                .padding(.trailing, 40)
-//                                .padding(.top, 5)
-//                                .padding(.bottom, 10)
-//                                .foregroundColor(.primary)
-//                            }
-////
-//                            VStack{
-//                                HStack(alignment: .top) {
-//                                    Image(systemName: "link")
-//                                        .foregroundColor(.primary)
-//                                        Link("Link 3", destination: URL(string: post.link3)!)
-//                                            .foregroundColor(.blue)
-//                                    Spacer()
-//                                }
-//                                .padding(.leading, 40)
-//                                .padding(.trailing, 40)
-//                                .padding(.top, 5)
-//                                .padding(.bottom, 10)
-//                                .foregroundColor(.primary)
-//                            }
+
                             
-//                            Section{
-//                                Text("Start Time: \(currentTime, formatter: dateFormatter)")
-//                                    .foregroundColor(.black) +
-//                                Text(" at ")
-//                                    .foregroundColor(.black) +
-//                                Text("\(currentTime, formatter: timeFormatter)")
-//                                    .foregroundColor(.black)
-//                                
-//                            }
-//                            .padding(.top,15)
-//                            
-//                            Section{
-//                                Text("End Time: \(pastTime, formatter: dateFormatter)")
-//                                    .foregroundColor(.black) +
-//                                Text(" at ")
-//                                    .foregroundColor(.black) +
-//                                Text("\(pastTime, formatter: timeFormatter)")
-//                                    .foregroundColor(.black)
-//                            }
-//                            .padding(.top,15)
+                            VStack {
+                                HStack(alignment: .top) {
+                                    Image(systemName: "link")
+                                        .foregroundColor(.primary)
+                                    if let link2 = post.link2, !link2.isEmpty, let url = URL(string: link2.hasPrefix("http") ? link2 : "https://\(link2)") {
+                                        Link(link2, destination: url)
+                                            .foregroundColor(.blue)
+                                    } else {
+                                        Text("No link provided")
+                                    }
+                                    Spacer()
+                                }
+                                .padding(.leading, 40)
+                                .padding(.trailing, 40)
+                                .padding(.top, 5)
+                                .padding(.bottom, 10)
+                                .foregroundColor(.primary)
+                            }
                  
 //                                MapView()
 //                                    .frame(width: 350, height: 200)
@@ -372,7 +347,6 @@ struct StoreImage: View {
                 }
                 
             }
-
             .clipShape(.rect(cornerRadius: 15))
             .shadow(color: Color.black.opacity(0.25), radius: 8, x: 5, y: 10)
     }

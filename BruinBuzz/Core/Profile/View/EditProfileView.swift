@@ -27,9 +27,7 @@ struct EditProfileView: View {
                         viewModel.resetChanges()
                         dismiss()
                     }
-                    .foregroundColor(.primary)
-                    
-                    
+                    .foregroundColor(.primary)  
                     Spacer()
                     
                     Text("Edit Profile")
@@ -100,22 +98,17 @@ struct EditProfileView: View {
                             title: "Name",
                             placeholder: "Enter your name..",
                             text: $viewModel.fullname)
-                        .padding(.top, 10)
                         .foregroundColor(.primary)
                         
                         EditProfileRowView(
                             title: "Bio",
                             placeholder: "Enter your bio..",
                             text: $viewModel.bio)
-                        .padding(.bottom, 10)
                         .foregroundColor(.primary)
                     }
                     .padding(.horizontal, 20) // Add horizontal padding to keep elements away from the border line
-                    .padding(.bottom,15)
-                    
-                    .padding() // Add padding to the outer VStack to ensure border visibility and spacing
+                    .padding(.vertical, 30) // Add padding to the outer VStack to ensure border visibility and spacing
                     .cornerRadius(20)
-
                 }
                 .padding(.top,90)
                 .frame(height: 200)
@@ -134,35 +127,33 @@ struct EditProfileRowView: View {
     
     var body: some View {
         Text(title)
-            .padding(.top, 10)
             .foregroundColor(.primary)
             .font(.subheadline)
-            .frame(height: 36)
-        ZStack {
+        ZStack(alignment: .leading) {
             if placeholder == "Enter your name.." {
                 Image(systemName: "person.fill")
                     .foregroundColor(.primary)
-                    .padding(.leading, -145)
-            }
-            else if placeholder == "Enter your bio.."{
+                    .padding(.horizontal)
+            } else if placeholder == "Enter your bio.." {
                 Image(systemName: "pencil.and.scribble")
                     .foregroundColor(.primary)
-                    .padding(.leading, -145)
+                    .padding(.horizontal)
             }
             TextField(placeholder, text: $text)
-                .autocapitalization(.none)
-                .padding()
-                .padding(.leading,35)
-                .background(Color.gray.opacity(0.2))
-                .cornerRadius(10)
-                .frame(width: 325, height: 40)
+                .foregroundColor(.primary)
+                .accentColor(.primary)
+                .padding(.horizontal, 50)
         }
+        .frame(width: 325, height: 40)
+        .background(Color.gray.opacity(0.2))
+        .autocapitalization(.none)
+        .cornerRadius(10)
+        .padding(.bottom, 10)
     }
 }
 
 struct EditProfileView_Previews: PreviewProvider {
     static var previews: some View {
-//        EditProfileView(user: User.MOCK_USERS[0])
         EditProfileView(viewModel: EditProfileViewModel(user: User.MOCK_USERS[0]))
     }
 }

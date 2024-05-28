@@ -21,9 +21,6 @@ struct Post: Identifiable, Hashable, Codable {
     var rsvp: Int
     let timestamp: Timestamp
     
-    //    let currentTime: Date?
-    //    let pastTime: Date?
-    
     var user: User?
     let title: String
     let location: String
@@ -33,21 +30,13 @@ struct Post: Identifiable, Hashable, Codable {
     let currentTime: String?
     let pastTime: String?
     
-//    let link1: String
-//    let link2: String
+    let link1: String?
+    let link2: String?
 //    let link3: String
     
     // rsvp
     var didRsvp: Bool? = false
     
-//    let startMM: String
-//    let startDD: String
-//    let startYYYY: String
-//    let endMM: String
-//    let endDD: String
-//    let endYYYY: String
-//    let starttime: String
-//    let endtime: String
 }
 
 extension Post {
@@ -65,9 +54,9 @@ extension Post {
             organizer: "gene block",
             organization: "charity",
             currentTime: "morning",
-            pastTime: "goodnight"
-//            link1: "https",
-//            link2: "https",
+            pastTime: "goodnight",
+            link1: "https",
+            link2: "https"
 //            link3: "https",
 
         ),
@@ -84,9 +73,9 @@ extension Post {
             organizer: "gene block",
             organization: "charity",
             currentTime: "morning",
-            pastTime: "goodnight"
-//            link1: "https",
-//            link2: "https",
+            pastTime: "goodnight",
+            link1: "https",
+            link2: "https"
 //            link3: "https",
 
         ),
@@ -103,9 +92,9 @@ extension Post {
             organizer: "gene block",
             organization: "charity",
             currentTime: "morning",
-            pastTime: "goodnight"
-//            link1: "https",
-//            link2: "https",
+            pastTime: "goodnight",
+            link1: "https",
+            link2: "https"
 //            link3: "https",
 
 
@@ -123,9 +112,9 @@ extension Post {
             organizer: "gene block",
             organization: "charity",
             currentTime: "morning",
-            pastTime: "goodnight"
-//            link1: "https",
-//            link2: "https",
+            pastTime: "goodnight",
+            link1: "https",
+            link2: "https"
 //            link3: "https",
 
         )

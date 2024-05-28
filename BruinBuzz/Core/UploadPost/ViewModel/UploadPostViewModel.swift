@@ -33,9 +33,9 @@ class UploadPostViewModel: ObservableObject {
         organization: String,
         location: String,
         currentTime: String,
-        pastTime: String
-//        link1: String,
-//        link2: String,
+        pastTime: String,
+        link1: String,
+        link2: String
 //        link3: String,
 
     ) async throws {
@@ -56,9 +56,9 @@ class UploadPostViewModel: ObservableObject {
             organizer: organizer,
             organization: organization,
             currentTime: currentTime,
-            pastTime: pastTime
-//            link1: link1,
-//            link2: link2,
+            pastTime: pastTime,
+            link1: link1,
+            link2: link2
 //            link3: link3,
             
         )

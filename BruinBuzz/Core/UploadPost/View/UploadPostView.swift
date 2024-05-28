@@ -23,8 +23,8 @@ struct UploadPostView: View
     @StateObject var refreshCall = HomeViewModel()
     @Binding var tabIndex: Int
     @Environment(\.colorScheme) var colorScheme
-    //    @State private var link1 = ""
-    //    @State private var link2 = ""
+    @State private var link1 = ""
+    @State private var link2 = ""
     //    @State private var link3 = ""
     
     let lightGrayColor = Color(red: 0.9, green: 0.9, blue: 0.9)
@@ -121,10 +121,10 @@ struct UploadPostView: View
                                                 organization: organization,
                                                 location: location,
                                                 currentTime: formattedCurrentTime,
-                                                pastTime: formattedPastTime
+                                                pastTime: formattedPastTime,
                                                 
-                                                //                                            link1: link1,
-                                                //                                            link2: link2,
+                                                link1: link1,
+                                                link2: link2
                                                 //                                            link3: link3,
                                             )
                                             clearPostDataAndReturnToFeed()
@@ -175,11 +175,18 @@ struct UploadPostView: View
                                                     .frame(width: 350, height: 350) // Sets the frame size
                                                     .shadow(color: Color.black, radius: 10, x: 0, y: 0)
                                                 
-                                                Image(systemName: "photo.on.rectangle.angled")
-                                                    .resizable()
-                                                    .scaledToFill()
-                                                    .frame(width: 100, height: 100)
-                                                    .foregroundColor(Color(.gray))
+                                                VStack {
+                                                    Image(systemName: "photo.on.rectangle.angled")
+                                                        .resizable()
+                                                        .scaledToFill()
+                                                        .frame(width: 100, height: 100)
+                                                        .foregroundColor(Color(.gray))
+                                                    
+                                                    Text("Tap to select image")
+                                                        .foregroundStyle(Color.gray)
+                                                        .padding(.top, 15)
+                                                }
+
                                             }
                                             .padding(.top, 15)
                                             .padding(.bottom,15)
@@ -254,7 +261,7 @@ struct UploadPostView: View
                                 }
                                 
                                 ZStack(alignment: .leading) {
-                                    Image(systemName: "ellipsis.bubble.fill")
+                                    Image(systemName: "text.bubble.fill")
                                         .foregroundColor(.primary)
                                         .offset(x:-2,y:-48)
                                     
@@ -264,16 +271,19 @@ struct UploadPostView: View
                                             .foregroundColor(Color(.lightGray))
                                             .frame(width:280)
                                     }
+
                                     
                                     MultilineTextField(text: $caption)
                                         .offset(y:7)
                                         .padding(.leading, 26)
                                         .frame(width: 290, height: 150)
+                                        .foregroundColor(.primary)
                                     
                                 }
                                 .frame(width: 325, height: 150)
                                 .background(Color.gray.opacity(0.2))
                                 .cornerRadius(10)
+
                                 
                                 HStack {
                                     Text("Organization")
@@ -373,6 +383,9 @@ struct UploadPostView: View
                                         .bold()
                                         .padding(.top, 5)
                                         .foregroundColor(.primary)
+                                    Text("*")
+                                        .foregroundColor(.red)
+                                        .padding(.top, 15)
                                 }
                                 
                                 // Start Time
@@ -390,7 +403,7 @@ struct UploadPostView: View
                                     .frame(width: 325, height: 50)
                                 }
                                 .padding(.top,0)
-                                
+                                .padding(.bottom, 12)
                                 .foregroundColor(.primary)
                                 
                                 // End Time
@@ -426,63 +439,63 @@ struct UploadPostView: View
                                 }
                                 
                                 HStack {
-                                    Text("Link")
+                                    Text("Link 1")
                                         .padding(.top, 0)
                                         .foregroundColor(.primary)
                                     
                                 }
                                 
-//                            HStack{
-//                                ZStack(alignment: .leading) {
-//                                    Image(systemName: "link")
-//                                        .foregroundColor(.black)
-//                                        .padding(.horizontal, 20)
-//                                    if link1.isEmpty {
-//                                        Text("Link")
-//                                            .padding(.horizontal, 50)
-//                                            .foregroundColor(Color(.lightGray))
-//
-//                                    }
-//
-//                                    TextField("", text: $link1)
-//                                        .foregroundColor(.black)
-//                                        .accentColor(.black)
-//                                        .padding(.horizontal, 50)
-//                                }
-//                                .frame(width: 325, height: 40)
-//                                .background(Color.gray.opacity(0.2))
-//                                .autocapitalization(.none)
-//                                .cornerRadius(10)
-//                            }
-//                                HStack {
-//                                    Text("Link 2")
-//                                        .padding(.top, 0)
-//                                        .foregroundColor(.primary)
-//
-//                                }
+                                HStack{
+                                    ZStack(alignment: .leading) {
+                                        Image(systemName: "link")
+                                            .foregroundColor(.primary )
+                                            .padding(.horizontal, 20)
+                                        if link1.isEmpty {
+                                            Text("Link 1")
+                                                .padding(.horizontal, 50)
+                                                .foregroundColor(Color(.lightGray))
 
-//                            HStack{
-//                                ZStack(alignment: .leading) {
-//                                    Image(systemName: "link")
-//                                        .foregroundColor(.black)
-//                                        .padding(.horizontal, 20)
-//                                    if link2.isEmpty {
-//                                        Text("Link")
-//                                            .padding(.horizontal, 50)
-//                                            .foregroundColor(Color(.lightGray))
-//
-//                                    }
-//
-//                                    TextField("", text: $link2)
-//                                        .foregroundColor(.black)
-//                                        .accentColor(.black)
-//                                        .padding(.horizontal, 50)
-//                                }
-//                                .frame(width: 325, height: 40)
-//                                .background(Color.gray.opacity(0.2))
-//                                .autocapitalization(.none)
-//                                .cornerRadius(10)
-//                            }
+                                        }
+
+                                        TextField("", text: $link1)
+                                            .foregroundColor(.black)
+                                            .accentColor(.black)
+                                            .padding(.horizontal, 50)
+                                    }
+                                    .frame(width: 325, height: 40)
+                                    .background(Color.gray.opacity(0.2))
+                                    .autocapitalization(.none)
+                                    .cornerRadius(10)
+                                }
+                                    
+                                HStack {
+                                    Text("Link 2")
+                                        .padding(.top, 5)
+                                        .foregroundColor(.primary)
+                                }
+
+                                HStack {
+                                    ZStack(alignment: .leading) {
+                                        Image(systemName: "link")
+                                            .foregroundColor(.primary)
+                                            .padding(.horizontal, 20)
+                                        if link2.isEmpty {
+                                            Text("Link 2")
+                                                .padding(.horizontal, 50)
+                                                .foregroundColor(Color(.lightGray))
+
+                                        }
+
+                                        TextField("", text: $link2)
+                                            .foregroundColor(.black)
+                                            .accentColor(.black)
+                                            .padding(.horizontal, 50)
+                                    }
+                                    .frame(width: 325, height: 40)
+                                    .background(Color.gray.opacity(0.2))
+                                    .autocapitalization(.none)
+                                    .cornerRadius(10)
+                                }
 
 //                                HStack {
 //                                    Text("Link 3")
@@ -517,13 +530,7 @@ struct UploadPostView: View
                             .padding(.bottom,35)
                             .padding(.horizontal, 20)
                         }
-                        
                     }
-//                    .onAppear
-//                    {
-//                        imagePickerPresented.toggle()
-//                    }
-//                    .photosPicker(isPresented: $imagePickerPresented, selection: $viewModel.selectedImage)
                 }
             }
             
@@ -538,8 +545,8 @@ struct UploadPostView: View
             viewModel.selectedImage = nil
             viewModel.postImage = nil
             tabIndex = 0
-//        link1 = ""
-//        link2 = ""
+            link1 = ""
+            link2 = ""
 //        link3 = ""
         }
         
@@ -571,7 +578,7 @@ struct UploadPostView: View
             textView.isUserInteractionEnabled = true
             textView.font = UIFont.systemFont(ofSize: 17)
             textView.backgroundColor = UIColor.clear
-            textView.textColor = UIColor.black
+//            textView.textColor = UIColor.black
             return textView
         }
         
